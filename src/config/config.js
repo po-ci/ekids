@@ -1,0 +1,1 @@
+export const soundAbcPath = "/sounds/abc/";
