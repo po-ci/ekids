@@ -1,10 +1,10 @@
 <template>
-    <v-container fluid>
+    <v-container fluid >
         <v-slide-y-transition mode="out-in">
             <v-layout row wrap>
 
                 <v-flex xs12 sm12 lg12>
-                    <v-card>
+                    <v-card class="ma-2">
 
                         <v-card-title primary-title>
                             <div>
@@ -15,32 +15,47 @@
                             </div>
 
                         </v-card-title>
+                    </v-card>
 
-
+                    <v-card class="ma-2">
                         <v-card-text>
                             <v-layout row wrap>
-                                <v-flex xs3 sm3 lg3>
-                                    <v-btn fab :color="getPlayColor" v-on:click="randomLetter()">
-                                        <v-icon>{{getIcon}}</v-icon>
-                                    </v-btn>
-                                </v-flex>
 
-                                <v-flex xs3 sm3 lg3>
-                                    <div v-if="helpShow">
-                                        <h1 v-if="letterShow" class="green--text">YES</h1>
-                                        <h1 v-if="!letterShow" class="red--text">No No No!</h1>
-                                    </div>
-                                </v-flex>
-                                <v-flex xs3 sm3 lg3 align-center>
-                                    <h1 class="text-xs-center">Letter: <span class="green--text">{{getLetter}}</span>
-                                    </h1>
-                                </v-flex>
-                                <v-flex xs3 sm3 lg3>
-                                    <h1 class="text-xs-center">Points: <span class="blue--text">{{points}}</span></h1>
-                                </v-flex>
+                                <v-toolbar>
+
+                                    <v-toolbar-title>
+                                        <v-btn fab small :color="getPlayColor" v-on:click="randomLetter()">
+                                            <v-icon>{{getIcon}}</v-icon>
+                                        </v-btn>
+                                    </v-toolbar-title>
+
+                                    <v-divider vertical></v-divider>
+                                    <v-toolbar-title class="pr-3">
+                                        Points: <span class="blue--text">{{points}}</span>
+                                    </v-toolbar-title>
+
+                                    <v-divider vertical></v-divider>
+                                    <v-toolbar-title class="pr-3">
+                                        Letter: <span
+                                            class="green--text">{{getLetter}}</span>
+                                    </v-toolbar-title>
+
+                                    <v-spacer></v-spacer>
+
+                                    <v-toolbar-title>
+                                        <div v-if="helpShow">
+                                         <v-icon v-if="letterShow" class="green--text" >thumb_up</v-icon>
+                                            <v-icon v-if="!letterShow" class="red--text" >thumb_down</v-icon>
+                                        </div>
+                                    </v-toolbar-title>
+
+
+                                </v-toolbar>
+
+
                             </v-layout>
 
-                            <div>
+                            <div class="pa-3">
                                 <v-btn v-for="letter in abc" depressed small :color="letterBtnColor(letter)"
                                        v-on:click="checkLetter(letter)">{{letter}}
                                 </v-btn>
@@ -84,14 +99,14 @@
       }
     },
     methods: {
-      letterBtnColor: function(letter){
-        if(this.abcGame.find(item => item === letter)){
+      letterBtnColor: function (letter) {
+        if (this.abcGame.find(item => item === letter)) {
           return "blue"
         }
         return "red"
       },
-      removeLetter: function(letter){
-        this.abcGame.splice(this.abcGame.findIndex(item => item === letter),1)
+      removeLetter: function (letter) {
+        this.abcGame.splice(this.abcGame.findIndex(item => item === letter), 1)
       },
       checkLetter: function (letter) {
         if (this.ready == true) {
