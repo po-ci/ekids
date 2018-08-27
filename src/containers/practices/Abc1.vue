@@ -1,27 +1,24 @@
 <template>
-    <v-container fluid >
-        <v-slide-y-transition mode="out-in">
+    <v-container grid-list-md>
             <v-layout row wrap>
 
-                <v-flex xs12 sm12 lg12>
-                    <v-card class="ma-2">
+                <v-flex xs12>
+                    <v-card >
 
                         <v-card-title primary-title>
                             <div>
                                 <div class="headline">Practice: Alphabet</div>
                                 <div class="pink--text">Practicar: Abecedario</div>
                                 <p>Para comenzar, oprime el  boton verde y luego has click en la letra que escuchaste.
-                                    Suma 10 puntos si la respuesta es correcta, resta 1 punto si es incorrecta. </p>
+                                    Suma 3 puntos si la respuesta es correcta, resta 1 punto si es incorrecta. </p>
                             </div>
 
                         </v-card-title>
                     </v-card>
 
-                    <v-card class="ma-2">
-                        <v-card-text>
-                            <v-layout row wrap>
+                    <v-card >
 
-                                <v-toolbar>
+                                <v-toolbar  card >
 
                                     <v-toolbar-title>
                                         <v-btn fab small :color="getPlayColor" v-on:click="randomLetter()">
@@ -31,14 +28,10 @@
 
                                     <v-divider vertical></v-divider>
                                     <v-toolbar-title class="pr-3">
-                                        Points: <span class="blue--text">{{points}}</span>
+                                      <span class="blue--text">{{points}}</span>
                                     </v-toolbar-title>
 
-                                    <v-divider vertical></v-divider>
-                                    <v-toolbar-title class="pr-3">
-                                        Letter: <span
-                                            class="green--text">{{getLetter}}</span>
-                                    </v-toolbar-title>
+
 
                                     <v-spacer></v-spacer>
 
@@ -48,26 +41,24 @@
                                             <v-icon v-if="!letterShow" class="red--text" >thumb_down</v-icon>
                                         </div>
                                     </v-toolbar-title>
-
+                                    <v-toolbar-title class="pr-3">
+                                        <span class="green--text">{{getLetter}}</span>
+                                    </v-toolbar-title>
 
                                 </v-toolbar>
 
-
-                            </v-layout>
-
-                            <div class="pa-3">
-                                <v-btn v-for="letter in abc" depressed small :color="letterBtnColor(letter)"
+                            <div class="pa-1">
+                                <v-btn v-for="letter in abc" depressed small fab :color="letterBtnColor(letter)"
                                        v-on:click="checkLetter(letter)">{{letter}}
                                 </v-btn>
                             </div>
-                        </v-card-text>
+
 
                     </v-card>
                 </v-flex>
 
 
             </v-layout>
-        </v-slide-y-transition>
     </v-container>
 </template>
 
@@ -119,7 +110,7 @@
           this.ready = true
           this.letterShow = letter
           this.helpShow = true;
-          this.points = this.points + 10;
+          this.points = this.points + 3;
           this.removeLetter(letter);
         } else {
           this.points--;
@@ -152,7 +143,7 @@
         letterSelected: null,
         letterShow: "",
         ready: true,
-        points: 100,
+        points: 10,
         helpShow: null,
       };
     }

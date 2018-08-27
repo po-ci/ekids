@@ -111,55 +111,67 @@
 </template>
 
 <script>
-  import MyNameIs from './components/MyNameIs.vue'
+    import MyNameIs from './components/MyNameIs.vue'
 
-  export default {
-    name: 'App',
-    components: {
-      MyNameIs
-    },
-    data() {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [
-          {
-            icon: 'home',
-            text: 'Home',
-            link: {name: "home"}
+    export default {
+        name: 'App',
+        components: {
+            MyNameIs
+        },
+        data() {
+            return {
+                clipped: false,
+                drawer: true,
+                fixed: false,
+                items: [
+                    {
+                        icon: 'home',
+                        text: 'Home',
+                        link: {name: "home"}
 
-          },
-          {
-            icon: 'keyboard_arrow_up',
-            'icon-alt': 'keyboard_arrow_down',
-            text: 'Alphabet / Abecedario',
-            children: [
-              {
-                icon: 'local_library',
-                text: 'Learn / Aprender',
-                link: {name: "abc"}
-              },
-              {
-                icon: 'build',
-                text: 'Practice / Practicar',
-                link: {name: "abc1"}
-              },
-            ]
+                    },
+                    {
+                        icon: 'keyboard_arrow_up',
+                        'icon-alt': 'keyboard_arrow_down',
+                        text: 'Alphabet / Abecedario',
+                        children: [
+                            {
+                                icon: 'local_library',
+                                text: 'Learn / Aprender',
+                                link: {name: "abc"}
+                            },
+                            {
+                                icon: 'build',
+                                text: 'Practice / Practicar',
+                                link: {name: "abc1"}
+                            },
+                        ]
 
-          },
-          {
-            icon: 'color_lens',
-            text: 'Colors',
-            link: {name: "colors"}
-
-          }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'EKIDS'
-      }
+                    },
+                    {
+                        icon: 'keyboard_arrow_up',
+                        'icon-alt': 'keyboard_arrow_down',
+                        text: 'Colors / Colores',
+                        link: {name: "colors"},
+                        children: [
+                            {
+                                icon: 'local_library',
+                                text: 'Learn / Aprender',
+                                link: {name: "colors"}
+                            },
+                            {
+                                icon: 'build',
+                                text: 'Practice / Practicar',
+                                link: {name: "colors1"}
+                            },
+                        ]
+                    }
+                ],
+                miniVariant: false,
+                right: true,
+                rightDrawer: false,
+                title: 'EKIDS'
+            }
+        }
     }
-  }
 </script>

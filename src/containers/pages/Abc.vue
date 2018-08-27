@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-md>
+    <v-container fluid>
         <v-slide-y-transition mode="out-in">
             <v-layout row wrap>
 
@@ -19,7 +19,7 @@
                         <v-card-text>
 
                             <div>
-                                <v-btn v-for="letter in abc" depressed small color="primary"
+                                <v-btn small fab depressed  v-for="letter in abc"  color="primary"
                                        v-on:click="playSound(letter)">{{letter}}
                                 </v-btn>
                             </div>
