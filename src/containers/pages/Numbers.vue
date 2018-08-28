@@ -1,43 +1,40 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <learn-page :words="words.colors" :fab="false" :headers="headers"
-                        :exercises="exercises" :textEnable="false" :soundPath="getSoundPath">
-            </learn-page>
-
+            <learn-page :words="words.numbers" :headers="headers" :exercises="exercises" :soundPath="getSoundPath"></learn-page>
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
-    import {soundColorsPath} from '../../config/config'
+    import {soundNumbersPath} from '../../config/config'
     import LearnPage from '../../components/LearnPage.vue'
     import { mapState } from 'vuex'
 
     export default {
-        name: 'Abc',
+        name: 'Numbers',
         components: {LearnPage},
         props: {
             msg: String
         },
         computed: {
             ...mapState([
-                'words'
+               'words'
             ]),
             getSoundPath: function(){
-                return soundColorsPath;
+                return soundNumbersPath;
             }
         },
         data: function(){
             return {
                 headers: {
-                    enTitle: "Colors",
-                    esTitle: "Colores",
-                    enDesc: "Press the colors to hear their pronunciation",
-                    esDesc: "Oprime los colores para escuchar su pronunciación"
+                    enTitle: "Numbers",
+                    esTitle: "Numeros",
+                    enDesc: "Press the button to hear how it is pronounced",
+                    esDesc: "Oprime el Boton para escuchar como se pronuncia"
                 },
                 exercises: [
-                    {name:"1. Practice", to:"/colors1"}
+                    {name:"1. Practice", to:"/numbers1"}
                 ]
             }
         }

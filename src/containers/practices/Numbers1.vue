@@ -1,6 +1,6 @@
 <template>
     <v-container grid-list-md>
-        <practice-one-page :words="words.abc"
+        <practice-one-page :words="words.numbers"
                            :headers="headers"
                            :soundPath="getSoundPath">
         </practice-one-page>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-    import {soundAbcPath} from '../../config/config'
+    import {soundNumbersPath} from '../../config/config'
     import HeaderPage from '../../components/HeaderPage.vue'
     import PracticeOnePage from '../../components/PracticeOnePage.vue'
     import { mapState } from 'vuex'
 
     export default {
-        name: 'Abc1',
+        name: 'Numbers1',
         components: {PracticeOnePage, HeaderPage},
         props: {
             msg: String
@@ -24,7 +24,7 @@
                 'words'
             ]),
             getSoundPath: function () {
-                return soundAbcPath;
+                return soundNumbersPath;
             },
 
         },
@@ -32,10 +32,10 @@
         data: function () {
             return {
                 headers: {
-                    enTitle: "Alphabet",
-                    esTitle: "Abecedario",
-                    enDesc: "Press the green button and click on the letter you heard. Correct answer: +3. Incorrect answer: -1",
-                    esDesc: "Oprime el  boton verde y has click en la letra que escuchaste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
+                    enTitle: "Numbers",
+                    esTitle: "Numeros",
+                    enDesc: "Press the green button and click on the number you heard. Correct answer: +3. Incorrect answer: -1",
+                    esDesc: "Oprime el  boton verde y has click en el numero que escuchaste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
                 },
             };
         }

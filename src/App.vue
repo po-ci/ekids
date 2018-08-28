@@ -131,40 +131,28 @@
 
                     },
                     {
-                        icon: 'keyboard_arrow_up',
-                        'icon-alt': 'keyboard_arrow_down',
-                        text: 'Alphabet / Abecedario',
-                        children: [
-                            {
-                                icon: 'local_library',
-                                text: 'Learn / Aprender',
-                                link: {name: "abc"}
-                            },
-                            {
-                                icon: 'build',
-                                text: 'Practice / Practicar',
-                                link: {name: "abc1"}
-                            },
-                        ]
+                        icon: 'format_list_numbered',
+                        text: 'Numbers / Numeros',
+                        link: {name: "numbers"}
 
                     },
                     {
-                        icon: 'keyboard_arrow_up',
-                        'icon-alt': 'keyboard_arrow_down',
+                        icon: 'format_color_text',
+                        text: 'Alphabet / Abecedario',
+                        link: {name: "abc"}
+
+                    },
+                    {
+                        icon: 'palette',
                         text: 'Colors / Colores',
                         link: {name: "colors"},
-                        children: [
-                            {
-                                icon: 'local_library',
-                                text: 'Learn / Aprender',
-                                link: {name: "colors"}
-                            },
-                            {
-                                icon: 'build',
-                                text: 'Practice / Practicar',
-                                link: {name: "colors1"}
-                            },
-                        ]
+
+                    },
+                    {
+                        icon: 'add',
+                        text: 'Professions / Profesiones',
+                        link: {name: "professions"},
+
                     }
                 ],
                 miniVariant: false,

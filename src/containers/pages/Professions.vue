@@ -1,18 +1,25 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <learn-page :words="words.abc" :headers="headers" :exercises="exercises" :soundPath="getSoundPath"></learn-page>
+            <learn-page :words="words.professions"
+                        :headers="headers"
+                        :exercises="exercises"
+                        :soundPath="getSoundPath"
+                        :img="true" :imgPath="getImgPath"
+            >
+
+            </learn-page>
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
-    import {soundAbcPath} from '../../config/config'
+    import {soundProfessionsPath, imgProfessionsPath} from '../../config/config'
     import LearnPage from '../../components/LearnPage.vue'
     import { mapState } from 'vuex'
 
     export default {
-        name: 'Abc',
+        name: 'Professions',
         components: {LearnPage},
         props: {
             msg: String
@@ -22,19 +29,22 @@
                'words'
             ]),
             getSoundPath: function(){
-                return soundAbcPath;
+                return soundProfessionsPath;
+            },
+            getImgPath: function(){
+                return imgProfessionsPath;
             }
         },
         data: function(){
             return {
                 headers: {
-                    enTitle: "Alphabet",
-                    esTitle: "Abecedario",
+                    enTitle: "Professions",
+                    esTitle: "Profesiones",
                     enDesc: "Press the button to hear how it is pronounced",
                     esDesc: "Oprime el Boton para escuchar como se pronuncia"
                 },
                 exercises: [
-                    {name:"1. Practice", to:"/abc1"}
+                    {name:"1. Practice", to:"/professions1"}
                 ]
             }
         }
