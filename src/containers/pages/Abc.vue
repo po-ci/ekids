@@ -14,9 +14,6 @@
     export default {
         name: 'Abc',
         components: {LearnPage},
-        props: {
-            msg: String
-        },
         computed: {
             ...mapState([
                'words'
@@ -34,7 +31,7 @@
                     esDesc: "Oprime el Boton para escuchar como se pronuncia"
                 },
                 exercises: [
-                    {name:"1. Practice", to:"/abc1"}
+                    {name:"1. Listen and identify | Escucha e Identifica", to:"/abc1"}
                 ]
             }
         }

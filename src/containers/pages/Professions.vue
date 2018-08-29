@@ -21,9 +21,6 @@
     export default {
         name: 'Professions',
         components: {LearnPage},
-        props: {
-            msg: String
-        },
         computed: {
             ...mapState([
                'words'
@@ -44,7 +41,7 @@
                     esDesc: "Oprime el Boton para escuchar como se pronuncia"
                 },
                 exercises: [
-                    {name:"1. Practice", to:"/professions1"}
+                    {name:"1. Listen and identify | Escucha e Identifica", to:"/professions1"}
                 ]
             }
         }

@@ -6,6 +6,9 @@ import {router} from './routes.js'
 
 import {store} from './store/store.js'
 
+import VueCookies from 'vue-cookies'
+
+Vue.use(VueCookies)
 
 Vue.config.productionTip = false
 

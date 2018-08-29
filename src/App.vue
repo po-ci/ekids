@@ -14,7 +14,7 @@
             <my-name-is></my-name-is>
 
             <v-list dense>
-                <template v-for="item in items">
+                <template v-for="item in nav">
                     <v-layout
                             v-if="item.heading"
                             :key="item.heading"
@@ -47,7 +47,7 @@
                         <v-list-tile
                                 v-for="(child, i) in item.children"
                                 :key="i"
-                                :to="child.link"
+                                :to="child.link" exact
                         >
                             <v-list-tile-action v-if="child.icon">
                                 <v-icon>{{ child.icon }}</v-icon>
@@ -59,7 +59,7 @@
                             </v-list-tile-content>
                         </v-list-tile>
                     </v-list-group>
-                    <v-list-tile v-else :key="item.text" :to="item.link">
+                    <v-list-tile v-else :key="item.text" :to="item.link" exact>
                         <v-list-tile-action>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-tile-action>
@@ -82,15 +82,6 @@
                 :clipped-left="clipped"
         >
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <!--<v-btn icon @click.stop="miniVariant = !miniVariant">-->
-            <!--<v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>-->
-            <!--</v-btn>-->
-            <!--<v-btn icon @click.stop="clipped = !clipped">-->
-            <!--<v-icon>web</v-icon>-->
-            <!--</v-btn>-->
-            <!--<v-btn icon @click.stop="fixed = !fixed">-->
-            <!--<v-icon>remove</v-icon>-->
-            <!--</v-btn>-->
             <v-toolbar-title v-text="title"></v-toolbar-title>
             <v-spacer></v-spacer>
 
@@ -111,55 +102,30 @@
 </template>
 
 <script>
-    import MyNameIs from './components/MyNameIs.vue'
+  import MyNameIs from './components/MyNameIs.vue'
+  import {mapState} from 'vuex'
 
-    export default {
-        name: 'App',
-        components: {
-            MyNameIs
-        },
-        data() {
-            return {
-                clipped: false,
-                drawer: true,
-                fixed: false,
-                items: [
-                    {
-                        icon: 'home',
-                        text: 'Home',
-                        link: {name: "home"}
+  export default {
+    name: 'App',
+    components: {
+      MyNameIs
+    },
+    computed: {
+      ...mapState([
+        'nav'
+      ]),
+    },
+    data() {
+      return {
+        clipped: false,
+        drawer: true,
+        fixed: false,
 
-                    },
-                    {
-                        icon: 'format_list_numbered',
-                        text: 'Numbers / Numeros',
-                        link: {name: "numbers"}
-
-                    },
-                    {
-                        icon: 'format_color_text',
-                        text: 'Alphabet / Abecedario',
-                        link: {name: "abc"}
-
-                    },
-                    {
-                        icon: 'palette',
-                        text: 'Colors / Colores',
-                        link: {name: "colors"},
-
-                    },
-                    {
-                        icon: 'add',
-                        text: 'Professions / Profesiones',
-                        link: {name: "professions"},
-
-                    }
-                ],
-                miniVariant: false,
-                right: true,
-                rightDrawer: false,
-                title: 'EKIDS'
-            }
-        }
+        miniVariant: false,
+        right: true,
+        rightDrawer: false,
+        title: 'EKIDS'
+      }
     }
+  }
 </script>

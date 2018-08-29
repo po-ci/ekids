@@ -1,15 +1,16 @@
 <template>
-    <v-container fluid>
+    <v-container fluid grid-list-md>
         <v-slide-y-transition mode="out-in">
-            <v-layout row align-center fill-height>
-                <v-flex xs12 sm12 lg12 >
-                    <v-card>
-                        <v-card-title primary-title>
-                            <div>
-                                <h3 class="headline mb-0">Ingles  para chicos</h3>
-                                <div>Proyecto iniciado...</div>
-                            </div>
+            <v-layout row wrap  fill-height>
+                <v-flex xs6 sm6 md4 lg3 v-for="item in nav" v-if="item.panel != false">
+                    <v-card class="purple white--text" :to="item.link">
+                        <v-card-title class="justify-center">
+                                <h3 class="subheading text-xs-center">{{item.text}}</h3>
                         </v-card-title>
+
+                        <v-card-text class="text-xs-center">
+                            <v-icon class="white--text" x-large>{{item.icon}}</v-icon>
+                        </v-card-text>
                     </v-card>
                 </v-flex>
             </v-layout>
@@ -18,11 +19,17 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+
   export default {
     name: 'Home',
     props: {
-      msg: String
-    }
+    },
+    computed: {
+      ...mapState([
+        'nav'
+      ]),
+    },
   }
 </script>
 
