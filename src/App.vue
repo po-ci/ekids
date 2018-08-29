@@ -12,7 +12,9 @@
         >
 
             <my-name-is></my-name-is>
-
+            <v-divider></v-divider>
+            <stats class="pa-2"></stats>
+<v-divider></v-divider>
             <v-list dense>
                 <template v-for="item in nav">
                     <v-layout
@@ -103,12 +105,13 @@
 
 <script>
   import MyNameIs from './components/MyNameIs.vue'
+  import Stats from './components/Stats.vue'
   import {mapState} from 'vuex'
 
   export default {
     name: 'App',
     components: {
-      MyNameIs
+      MyNameIs,Stats
     },
     computed: {
       ...mapState([

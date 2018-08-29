@@ -6,14 +6,13 @@ import {router} from './routes.js'
 
 import {store} from './store/store.js'
 
-import VueCookies from 'vue-cookies'
-
-Vue.use(VueCookies)
-
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App),
+    mounted: function () {
+        this.$store.dispatch("initLocalStorage")
+    }
 }).$mount('#app')

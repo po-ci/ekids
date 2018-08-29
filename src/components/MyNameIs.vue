@@ -27,38 +27,44 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+    import {mapGetters} from 'vuex'
+    import {mapState} from 'vuex'
 
-  export default {
-    name: 'MyNameIs',
-    mounted: function () {
-      this.myName = this.getName;
-    },
-    methods: {
-      saveName: function () {
-        this.$store.commit("setName", this.myName);
-      }
-    },
-    computed: {
-      ...mapGetters([
-        'getName'
-      ]),
-      getInputNameClass: function () {
-        if (!this.myName) {
-          return "name parpadea"
-        } else {
-          return ""
+    export default {
+        name: 'MyNameIs',
+        watch: {
+          name: function(){
+              this.myName = this.name
+          }
+        },
+        methods: {
+            saveName: function () {
+                this.$store.commit("setName", this.myName);
+            }
+        },
+        computed: {
+            ...mapState([
+                'name'
+            ]),
+            ...mapGetters([
+                'getName'
+            ]),
+            getInputNameClass: function () {
+                if (!this.myName) {
+                    return "name parpadea"
+                } else {
+                    return ""
+                }
+            }
+        },
+        data: function () {
+            return {
+                myName: "",
+                tile: false,
+                avatarSize: 50
+            };
         }
-      }
-    },
-    data: function () {
-      return {
-        myName: "",
-        tile: false,
-        avatarSize: 50
-      };
     }
-  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

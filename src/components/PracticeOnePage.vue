@@ -57,6 +57,7 @@
             </v-card>
         </v-flex>
 
+        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"></reward-dialog>
     </v-layout>
 </template>
 
@@ -64,10 +65,10 @@
     import MultiButtons from './MultiButtons.vue'
     import HeaderPage from './HeaderPage.vue'
     import {soundHelpersPath} from '../config/config'
-
+    import RewardDialog from './RewardDialog.vue'
     export default {
         name: 'PracticeOnePage',
-        components: {MultiButtons, HeaderPage},
+        components: {MultiButtons, HeaderPage,RewardDialog},
         props: {
             words: Array,
             headers: Object,
@@ -77,8 +78,8 @@
             imgPath: String,
             img: {type: Boolean, default: false},
             fab: {type: Boolean, default: true},
-            textEnable:  {type: Boolean, default: true},
-            gameBgColor:  {type: String, default: "green"},
+            textEnable: {type: Boolean, default: true},
+            gameBgColor: {type: String, default: "green"},
         },
         mounted: function () {
             this.baseList = Object.assign([], this.words);
@@ -93,7 +94,10 @@
                 itemShow: "",
                 ready: true,
                 points: 10,
+                stars: 1,
                 helpShow: null,
+                finishGame: false,
+                dialog: false,
             }
         },
         computed: {
@@ -120,9 +124,18 @@
             }
         },
         methods: {
+            pay: function () {
+                this.$store.commit("addStars", this.stars)
+                this.$store.commit("addPoints", this.points)
+                this.dialog = true
+            },
             removeItem: function (item) {
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
                 this.gameListDone.push(item)
+                if (this.gameList.length == 0) {
+                    this.finishGame = true
+                    this.pay()
+                }
             },
             playYes: function () {
                 var audio = new Audio(soundHelpersPath + 'yes.mp3')
@@ -163,11 +176,11 @@
                     this.playSound(this.itemSelected);
                 }
             },
-            getSound: function(item){
+            getSound: function (item) {
                 if (typeof item === "string") {
                     return item
                 }
-                if (item.text != undefined &&  typeof item.text === "string") {
+                if (item.text != undefined && typeof item.text === "string") {
                     return item.text
                 }
                 return "";

@@ -55,128 +55,132 @@
 </template>
 
 <script>
-  import MultiButtons from './MultiButtons.vue'
-  import Spell from './Spell.vue'
-  import HeaderPage from './HeaderPage.vue'
-  import {soundHelpersPath} from '../config/config'
+    import MultiButtons from './MultiButtons.vue'
+    import Spell from './Spell.vue'
+    import HeaderPage from './HeaderPage.vue'
+    import {soundHelpersPath} from '../config/config'
 
-  export default {
-    name: 'PracticeTwoPage',
-    components: {MultiButtons, HeaderPage, Spell},
-    props: {
-      words: Array,
-      headers: Object,
-      exercises: Array,
-      soundPath: String,
-      //MultiButtons
-      imgPath: String,
-      img: {type: Boolean, default: false},
-      fab: {type: Boolean, default: true},
-      textEnable: {type: Boolean, default: true},
-      gameBgColor: {type: String, default: "green"},
-    },
-    mounted: function () {
-      this.baseList = Object.assign([], this.words);
-      this.gameList = Object.assign([], this.words);
-    },
-    data: function () {
-      return {
-        inputText: "",
-        baseList: [],
-        gameList: [],
-        gameListDone: [],
-        itemSelected: null,
-        itemShow: "",
-        ready: true,
-        points: 10,
-        helpShow: null,
-      }
-    },
-    computed: {
-      getIcon: function () {
-        if (this.ready == true) {
-          return "play_arrow"
-        } else {
-          return "refresh"
-        }
-      },
-      getPlayColor: function () {
-        return (this.ready == true) ? 'green' : 'yellow'
-      },
-      getItemShow: function () {
+    export default {
+        name: 'PracticeTwoPage',
+        components: {MultiButtons, HeaderPage, Spell},
+        props: {
+            words: Array,
+            headers: Object,
+            exercises: Array,
+            soundPath: String,
+            //MultiButtons
+            imgPath: String,
+            img: {type: Boolean, default: false},
+            fab: {type: Boolean, default: true},
+            textEnable: {type: Boolean, default: true},
+            gameBgColor: {type: String, default: "green"},
+        },
+        mounted: function () {
+            this.baseList = Object.assign([], this.words);
+            this.gameList = Object.assign([], this.words);
+        },
+        data: function () {
+            return {
+                inputText: "",
+                baseList: [],
+                gameList: [],
+                gameListDone: [],
+                itemSelected: null,
+                itemShow: "",
+                ready: true,
+                points: 10,
+                helpShow: null,
+                finishGame: false
+            }
+        },
+        computed: {
+            getIcon: function () {
+                if (this.ready == true) {
+                    return "play_arrow"
+                } else {
+                    return "refresh"
+                }
+            },
+            getPlayColor: function () {
+                return (this.ready == true) ? 'green' : 'yellow'
+            },
+            getItemShow: function () {
 
-        if (this.itemShow && typeof this.itemShow === "string") {
-          return this.itemShow.toUpperCase()
-        }
-        if (this.itemShow && this.itemShow.text != undefined && typeof this.itemShow.text === "string") {
-          return this.itemShow.text.toUpperCase()
-        }
-        console.log(this.itemShow)
-        return "";
-      }
-    },
-    methods: {
-      onSpell: function(){
-        this.$refs.inputText.focus()
-      },
-      removeItem: function (item) {
-        this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
-        this.gameListDone.push(item)
-      },
-      playYes: function () {
-        var audio = new Audio(soundHelpersPath + 'yes.mp3')
-        audio.play()
-      },
-      playNo: function () {
-        var audio = new Audio(soundHelpersPath + 'nonono.mp3')
-        audio.play()
-      },
-      checkName: function () {
-        if (this.ready == true) {
-          return
-        }
-        if (this.inputText == this.getText(this.itemSelected)) {
-          this.playYes()
-          this.ready = true
-          this.itemShow = this.inputText
-          this.helpShow = true
-          this.points = this.points + 3
-          this.removeItem(this.itemSelected)
+                if (this.itemShow && typeof this.itemShow === "string") {
+                    return this.itemShow.toUpperCase()
+                }
+                if (this.itemShow && this.itemShow.text != undefined && typeof this.itemShow.text === "string") {
+                    return this.itemShow.text.toUpperCase()
+                }
+                console.log(this.itemShow)
+                return "";
+            }
+        },
+        methods: {
+            onSpell: function () {
+                this.$refs.inputText.focus()
+            },
+            removeItem: function (item) {
+                this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
+                this.gameListDone.push(item)
+                if (this.gameList.length == 0) {
+                    this.finishGame = true;
+                }
+            },
+            playYes: function () {
+                var audio = new Audio(soundHelpersPath + 'yes.mp3')
+                audio.play()
+            },
+            playNo: function () {
+                var audio = new Audio(soundHelpersPath + 'nonono.mp3')
+                audio.play()
+            },
+            checkName: function () {
+                if (this.ready == true) {
+                    return
+                }
+                if (this.inputText == this.getText(this.itemSelected)) {
+                    this.playYes()
+                    this.ready = true
+                    this.itemShow = this.inputText
+                    this.helpShow = true
+                    this.points = this.points + 3
+                    this.removeItem(this.itemSelected)
 
-        }
-      },
-      randomItem: function () {
-        if (this.ready == true) {
-          this.inputText = ""
-          this.$refs.inputText.focus()
-          this.helpShow = null
-          this.itemShow = null
-          this.ready = false
-          var item = this.gameList[Math.floor(Math.random() * this.gameList.length)]
-          this.itemSelected = item
-          this.playSound(item)
-        } else {
-          this.playSound(this.itemSelected);
-        }
-      },
-      getText: function (item) {
-        if (typeof item === "string") {
-          return item
-        }
-        if (item && item.text != undefined && typeof item.text === "string") {
-          return item.text
-        }
-        return null;
-      },
-      getSound: function (item) {
-        return this.getText(item)
-      },
-      playSound: function (item) {
-        var target = this.soundPath + this.getSound(item) + '.mp3';
-        var audio = new Audio(target);
-        audio.play()
+                }
+            },
+            randomItem: function () {
+                if (this.ready == true) {
+                    this.inputText = ""
+                    this.$refs.inputText.focus()
+                    this.helpShow = null
+                    this.itemShow = null
+                    this.ready = false
+                    var item = this.gameList[Math.floor(Math.random() * this.gameList.length)]
+                    this.itemSelected = item
+                    this.playSound(item)
+                } else {
+                    this.playSound(this.itemSelected);
+                }
+            },
+            getText: function (item) {
+                if (typeof item === "string") {
+                    return item
+                }
+                if (item && item.text != undefined && typeof item.text === "string") {
+                    return item.text
+                }
+                return null;
+            },
+            getSound: function (item) {
+                return this.getText(item)
+            },
+            playSound: function (item) {
+                var target = this.soundPath + this.getSound(item) + '.mp3';
+                var audio = new Audio(target);
+                audio.play()
 
-      },
+            },
+        }
     }
-  }
 </script>
