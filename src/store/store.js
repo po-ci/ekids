@@ -85,9 +85,9 @@ export const store = new Vuex.Store({
     actions: {
         initLocalStorage: ({commit}) => {
             commit("setName", localStorage.getItem("name"))
-            commit("setLevel", localStorage.getItem("level"))
-            commit("setStars", localStorage.getItem("stars"))
-            commit("setPoints", localStorage.getItem("points"))
+            commit("setLevel",localStorage.getItem("level")?localStorage.getItem("level"):0)
+            commit("setStars", localStorage.getItem("stars")?localStorage.getItem("stars"):0)
+            commit("setPoints",localStorage.getItem("points")?localStorage.getItem("points"):0)
         }
     },
     mutations: {
