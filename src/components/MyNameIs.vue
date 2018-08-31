@@ -9,7 +9,7 @@
                               :size="avatarSize"
                               color="grey lighten-4"
                     >
-                        <img src="/img/avatars/pikachu.png" alt="avatar">
+                        <img src="/img/avatars/NortonA.png" alt="avatar">
                     </v-avatar>
 
                 </v-flex>

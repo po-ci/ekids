@@ -16,7 +16,7 @@ export default {
   },
   data: function(){
     return {
-      avatars: ["pikachu.png",]
+      avatars: ["NortonA.png"]
     };
   }
 }
