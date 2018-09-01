@@ -1,9 +1,9 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <learn-page :words="words.colors" :fab="false" :headers="headers"
-                        :exercises="exercises" :textEnable="false" :soundPath="getSoundPath">
-            </learn-page>
+            <tabs :words="words.colors"  :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
+                  :fab="fab"  :textEnable="textEnable" :soundPath="getSoundPath" :img="img" >
+            </tabs>
 
         </v-slide-y-transition>
     </v-container>
@@ -11,12 +11,12 @@
 
 <script>
   import {soundColorsPath} from '../../config/config'
-  import LearnPage from '../../components/LearnPage.vue'
+  import Tabs from '../tabs/Tabs.vue'
   import {mapState} from 'vuex'
 
   export default {
     name: 'Abc',
-    components: {LearnPage},
+    components: {Tabs},
     computed: {
       ...mapState([
         'words'
@@ -27,16 +27,18 @@
     },
     data: function () {
       return {
-        headers: {
+          fab: false,
+          textEnable: false,
+          img:false,
+          enName: "color",
+          esName: "el color",
           enTitle: "Colors",
           esTitle: "Colores",
-          enDesc: "Press the colors to hear their pronunciation",
-          esDesc: "Oprime los colores para escuchar su pronunciación"
-        },
-        exercises: [
-          {name: "1. Listen and identify | Escucha e Identifica", to: "/colors1"},
-          {name: "2. Listen and write | Escucha y escribe", to: "/colors2"}
-        ]
+          exercises: {
+              identify: {enable: true},
+              dictation: {enable: true},
+              pairs: {enable: true}
+          }
       }
     }
   }

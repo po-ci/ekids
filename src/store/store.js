@@ -28,7 +28,11 @@ export const store = new Vuex.Store({
             professions: [
                 {text: "policeman", src: "policeman.png"},
                 {text: "fireman", src: "fireman.png"},
-                {text: "medic", src: "medic.png"}
+                {text: "medic", src: "medic.png"},
+                {text: "farmer", src: "farmer.png"},
+                {text: "journalist", src: "journalist.png"},
+                {text: "student", src: "student.png"},
+                {text: "artist", src: "artist.png"}
             ]
         },
         nav: [

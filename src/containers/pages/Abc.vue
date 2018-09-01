@@ -1,38 +1,42 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <learn-page :words="words.abc" :headers="headers" :exercises="exercises" :soundPath="getSoundPath"></learn-page>
+            <tabs :words="words.abc" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
+                        :soundPath="getSoundPath"  :fab="fab"  :textEnable="textEnable" :img="img" ></tabs>
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
     import {soundAbcPath} from '../../config/config'
-    import LearnPage from '../../components/LearnPage.vue'
-    import { mapState } from 'vuex'
+    import Tabs from '../tabs/Tabs.vue'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'Abc',
-        components: {LearnPage},
+        components: {Tabs},
         computed: {
             ...mapState([
-               'words'
+                'words'
             ]),
-            getSoundPath: function(){
+            getSoundPath: function () {
                 return soundAbcPath;
             }
         },
-        data: function(){
+        data: function () {
             return {
-                headers: {
-                    enTitle: "Alphabet",
-                    esTitle: "Abecedario",
-                    enDesc: "Press the button to hear how it is pronounced",
-                    esDesc: "Oprime el Boton para escuchar como se pronuncia"
-                },
-                exercises: [
-                    {name:"1. Listen and identify | Escucha e Identifica", to:"/abc1"}
-                ]
+                fab: true,
+                textEnable: true,
+                img:false,
+                enName: "letter",
+                esName: "la letra",
+                enTitle: "Alphabet",
+                esTitle: "Abecedario",
+                exercises: {
+                    identify: {enable: true},
+                    dictation: {enable: true},
+                    pairs: {enable: true}
+                }
             }
         }
     }

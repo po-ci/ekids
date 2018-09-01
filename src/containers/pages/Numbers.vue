@@ -1,19 +1,21 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <learn-page :words="words.numbers" :headers="headers" :exercises="exercises" :soundPath="getSoundPath"></learn-page>
+            <tabs :words="words.numbers"  :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
+                  :fab="fab"  :textEnable="textEnable" :soundPath="getSoundPath" :img="img" >
+            </tabs>
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
     import {soundNumbersPath} from '../../config/config'
-    import LearnPage from '../../components/LearnPage.vue'
+    import Tabs from '../tabs/Tabs.vue'
     import { mapState } from 'vuex'
 
     export default {
         name: 'Numbers',
-        components: {LearnPage},
+        components: {Tabs},
         computed: {
             ...mapState([
                'words'
@@ -24,15 +26,18 @@
         },
         data: function(){
             return {
-                headers: {
-                    enTitle: "Numbers",
-                    esTitle: "Numeros",
-                    enDesc: "Press the button to hear how it is pronounced",
-                    esDesc: "Oprime el Boton para escuchar como se pronuncia"
-                },
-                exercises: [
-                    {name:"1. Listen and identify | Escucha e Identifica", to:"/numbers1"}
-                ]
+                fab: true,
+                textEnable: true,
+                img: false,
+                enName: "number",
+                esName: "el numero",
+                enTitle: "Numbers",
+                esTitle: "Numeros",
+                exercises: {
+                    identify: {enable: true},
+                    dictation: {enable: true},
+                    pairs: {enable: true}
+                }
             }
         }
     }

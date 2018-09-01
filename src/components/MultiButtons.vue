@@ -76,11 +76,14 @@
         return ""
       },
       getBgColor: function (item) {
-        if (this.gameListDone.find(obj => obj === item)) {
+        if (this.img && this.gameListDone.find(obj => obj === item)) {
           return this.gameBgColor
         }
 
         if (item.bgcolor != undefined) {
+            if(this.gameListDone.find(obj => obj === item)) {
+                return item.bgcolor + " imgReady"
+            }
           return item.bgcolor
         }
         return this.defaultBgColor

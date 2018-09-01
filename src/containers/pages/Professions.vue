@@ -1,26 +1,21 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <learn-page :words="words.professions"
-                        :headers="headers"
-                        :exercises="exercises"
-                        :soundPath="getSoundPath"
-                        :img="true" :imgPath="getImgPath"
-            >
-
-            </learn-page>
+            <tabs :words="words.professions"  :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
+                  :fab="fab"  :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
+            </tabs>
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
     import {soundProfessionsPath, imgProfessionsPath} from '../../config/config'
-    import LearnPage from '../../components/LearnPage.vue'
+    import Tabs from '../tabs/Tabs.vue'
     import { mapState } from 'vuex'
 
     export default {
         name: 'Professions',
-        components: {LearnPage},
+        components: {Tabs},
         computed: {
             ...mapState([
                'words'
@@ -34,15 +29,18 @@
         },
         data: function(){
             return {
-                headers: {
-                    enTitle: "Professions",
-                    esTitle: "Profesiones",
-                    enDesc: "Press the button to hear how it is pronounced",
-                    esDesc: "Oprime el Boton para escuchar como se pronuncia"
-                },
-                exercises: [
-                    {name:"1. Listen and identify | Escucha e Identifica", to:"/professions1"}
-                ]
+                fab: false,
+                textEnable: false,
+                img: true,
+                enName: "profession",
+                esName: "la profesion",
+                enTitle: "Professions",
+                esTitle: "Profesiones",
+                exercises: {
+                    identify: {enable: true},
+                    dictation: {enable: true},
+                    pairs: {enable: true}
+                }
             }
         }
     }
