@@ -154,7 +154,7 @@
                 if (this.ready == true) {
                     return
                 }
-                if (this.inputText == this.getText(this.itemSelected)) {
+                if (this.inputText && this.inputText.toLowerCase() == this.getText(this.itemSelected)) {
                     this.playYes()
                     this.ready = true
                     this.itemShow = this.inputText
@@ -180,10 +180,10 @@
             },
             getText: function (item) {
                 if (typeof item === "string") {
-                    return item
+                    return item.toLowerCase()
                 }
                 if (item && item.text != undefined && typeof item.text === "string") {
-                    return item.text
+                    return item.text.toLowerCase()
                 }
                 return null;
             },
