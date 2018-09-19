@@ -1,18 +1,24 @@
 <template>
-    <div v-if="!getShowCard" class="gameCard" :class="getGameCardClass" v-on:click="pickCard"></div>
+    <div v-if="!getShowCard && item" class="gameCard" :class="getGameCardClass" v-on:click="pickCard"></div>
 
 
-    <v-img v-else-if="img" class="pa-0" :class="getImgClass" :src="getSrc" :contain="true" max-height="100px">
+    <v-img v-else-if="img && item" class="pa-0" :class="getImgClass" :src="getSrc" :contain="true" max-height="100px">
     </v-img>
 
 
-    <div v-else  class="gameCard text-xs-center" :class="getBgColor">
-        <span class="display-2">{{getBtnText}}</span>
+    <div v-else-if="item"  class="gameCard text-xs-center" :class="getBgColor">
+
+    </div>
+
+    <div v-else>
+
     </div>
 
 </template>
 
 <script>
+
+
     export default {
         name: 'Card',
         props: {
@@ -63,7 +69,7 @@
                 if (this.img && this.gameListDone.find(obj => obj === this.item)) {
                     return "imgReady"
                 }
-                if (this.item.bgcolor != undefined) {
+                if (this.item && this.item.bgcolor != undefined) {
                     if (this.gameListDone.find(obj => obj === this.item)) {
                         return "imgReady "+this.item.bgcolor
                     }
@@ -85,10 +91,10 @@
                 return this.getText
             },
             getText: function () {
-                if (typeof this.item === "string") {
+                if (this.item && typeof this.item === "string") {
                     return this.item
                 }
-                if (this.item.text != undefined && typeof this.item.text === "string") {
+                if (this.item && this.item.text != undefined && typeof this.item.text === "string") {
                     return this.item.text
                 }
                 return "";

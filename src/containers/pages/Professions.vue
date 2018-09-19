@@ -1,8 +1,9 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.professions"  :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
-                  :fab="fab"  :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
+            <tabs :words="words.professions" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+                  :exercises="exercises"
+                  :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
         </v-slide-y-transition>
     </v-container>
@@ -11,23 +12,23 @@
 <script>
     import {soundProfessionsPath, imgProfessionsPath} from '../../config/config'
     import Tabs from '../tabs/Tabs.vue'
-    import { mapState } from 'vuex'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'Professions',
         components: {Tabs},
         computed: {
             ...mapState([
-               'words'
+                'words'
             ]),
-            getSoundPath: function(){
+            getSoundPath: function () {
                 return soundProfessionsPath;
             },
-            getImgPath: function(){
+            getImgPath: function () {
                 return imgProfessionsPath;
             }
         },
-        data: function(){
+        data: function () {
             return {
                 fab: false,
                 textEnable: false,
@@ -39,7 +40,8 @@
                 exercises: {
                     identify: {enable: true},
                     dictation: {enable: true},
-                    pairs: {enable: true}
+                    pairs: {enable: true},
+                    remember: {enable: true}
                 }
             }
         }

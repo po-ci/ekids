@@ -13,7 +13,8 @@
                 <v-tab key="0"  ripple>Learn</v-tab>
                 <v-tab key="1" ripple>Identify</v-tab>
                 <v-tab key="2" ripple>Dictation</v-tab>
-                <v-tab key="3" ripple>Pairs</v-tab>
+                <v-tab key="3" ripple>Memotest</v-tab>
+                <v-tab key="4" ripple>Remember</v-tab>
 
                 <!--Learn-->
                 <v-tab-item key="0">
@@ -24,25 +25,33 @@
 
 
                 <!--Identify-->
-                <v-tab-item key="1">
+                <v-tab-item key="1"  v-if="exercises.identify.enable">
                     <identify :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                               :soundPath="soundPath" :img="img" :imgPath="imgPath"  :fab="fab"  :textEnable="textEnable">
                     </identify>
                 </v-tab-item>
 
                 <!--Dictation-->
-                <v-tab-item key="2">
+                <v-tab-item key="2"  v-if="exercises.dictation.enable">
                     <dictation :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                                :soundPath="soundPath" :img="img" :imgPath="imgPath"  :fab="fab"  :textEnable="textEnable">
                     </dictation>
                 </v-tab-item>
 
                 <!--Pairs-->
-                <v-tab-item key="3">
+                <v-tab-item key="3"  v-if="exercises.pairs.enable">
                     <pairs :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                                :soundPath="soundPath" :img="img" :imgPath="imgPath" :textEnable="textEnable">
                     </pairs>
                 </v-tab-item>
+
+                <!--Remember-->
+                <v-tab-item key="4"  v-if="exercises.remember.enable">
+                    <Remember :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+                               :soundPath="soundPath" :img="img" :imgPath="imgPath"  :fab="fab"  :textEnable="textEnable">
+                    </Remember>
+                </v-tab-item>
+
 
             </v-tabs>
 
@@ -57,9 +66,10 @@
     import Identify from './Identify'
     import Dictation from './Dictation'
     import Pairs from './Pairs'
+    import Remember from './Remember.vue'
     export default {
         name: 'Tabs',
-        components: {Learn,Identify,Dictation,Pairs},
+        components: {Learn,Identify,Dictation,Pairs,Remember},
         props: {
             words: Array,
             learnHeaders: Object,

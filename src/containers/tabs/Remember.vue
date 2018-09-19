@@ -4,8 +4,7 @@
         <v-flex xs12 sm12 lg12>
             <v-card>
                 <!--Header-->
-                <header-page :enTitle="headers.enTitle" :esTitle="headers.esTitle" :enDesc="headers.enDesc"
-                             :esDesc="headers.esDesc">
+                <header-page :enTitle="enTitle" :esTitle="esTitle" :enDesc="enDesc" :esDesc="esDesc">
                 </header-page>
 
                 <!--ToolBar-->
@@ -36,40 +35,45 @@
 
                 </v-toolbar>
 
+                <!--show item-->
+                <v-card-text>
+                    <card
+                            :item="itemSelected"
+                            :showCard="getShowCard"
+                            :img="img"
+                            :imgPath="imgPath"
+                            :soundPath="imgPath"
+                            :ready="ready"
+                            :gameListDone="gameListDone"
+                    />
+                </v-card-text>
+
                 <!--Excercise-->
                 <v-card-text>
                     <div>
-                        <multi-buttons
-                                :soundEnable="false"
-                                :items="this.baseList"
-                                :fab="fab"
-                                :soundPath="soundPath"
-                                :img="img" :imgPath="imgPath"
-                                :gameListDone="gameListDone"
-                                :textEnable="textEnable"
-                                :gameBgColor="gameBgColor"
-                                v-on:playButton="playButton"
-                        >
-                        </multi-buttons>
+                        <v-text-field v-model="inputText" @keyup="checkName" ref="inputText"></v-text-field>
                     </div>
                 </v-card-text>
 
             </v-card>
         </v-flex>
 
-        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"></reward-dialog>
     </v-layout>
 </template>
 
 <script>
-    import MultiButtons from './MultiButtons.vue'
-    import HeaderPage from './HeaderPage.vue'
-    import {soundHelpersPath} from '../config/config'
-    import RewardDialog from './RewardDialog.vue'
+    import Card from './../../components/Card.vue'
+    import HeaderPage from './../../components/HeaderPage'
+    import {soundHelpersPath} from '../../config/config'
+
     export default {
-        name: 'PracticeOnePage',
-        components: {MultiButtons, HeaderPage,RewardDialog},
+        name: 'Remember',
+        components: {HeaderPage, Card},
         props: {
+            enName: String,
+            esName: String,
+            enTitle: String,
+            esTitle: String,
             words: Array,
             headers: Object,
             exercises: Array,
@@ -87,6 +91,7 @@
         },
         data: function () {
             return {
+                inputText: "",
                 baseList: [],
                 gameList: [],
                 gameListDone: [],
@@ -94,13 +99,23 @@
                 itemShow: "",
                 ready: true,
                 points: 10,
-                stars: 1,
                 helpShow: null,
-                finishGame: false,
-                dialog: false,
+                finishGame: false
             }
         },
         computed: {
+            getShowCard: function(){
+              if(this.itemSelected){
+                  return true
+              }
+              return false
+            },
+            enDesc: function () {
+                return "Press the green button and write the "+this.enName+" you heard. Correct answer: +3"
+            },
+            esDesc: function () {
+                return "Oprime el  boton verde y escribe "+this.esName+" que escuchaste. Respuesta correcta: +3"
+            },
             getIcon: function () {
                 if (this.ready == true) {
                     return "play_arrow"
@@ -119,7 +134,7 @@
                 if (this.itemShow && this.itemShow.text != undefined && typeof this.itemShow.text === "string") {
                     return this.itemShow.text.toUpperCase()
                 }
-                console.log(this.itemShow)
+
                 return "";
             }
         },
@@ -129,11 +144,14 @@
                 this.$store.commit("addPoints", this.points)
                 this.dialog = true
             },
+            onSpell: function () {
+                this.$refs.inputText.focus()
+            },
             removeItem: function (item) {
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
                 this.gameListDone.push(item)
                 if (this.gameList.length == 0) {
-                    this.finishGame = true
+                    this.finishGame = true;
                     this.pay()
                 }
             },
@@ -145,27 +163,24 @@
                 var audio = new Audio(soundHelpersPath + 'nonono.mp3')
                 audio.play()
             },
-            playButton: function (item) {
+            checkName: function () {
                 if (this.ready == true) {
                     return
                 }
-
-                if (item == this.itemSelected) {
+                if (this.inputText && this.inputText.toLowerCase() == this.getText(this.itemSelected)) {
                     this.playYes()
                     this.ready = true
-                    this.itemShow = item
+                    this.itemShow = this.inputText
                     this.helpShow = true
                     this.points = this.points + 3
-                    this.removeItem(item)
+                    this.removeItem(this.itemSelected)
 
-                } else {
-                    this.points--
-                    this.helpShow = true
-                    this.playNo()
                 }
             },
             randomItem: function () {
                 if (this.ready == true) {
+                    this.inputText = ""
+                    this.$refs.inputText.focus()
                     this.helpShow = null
                     this.itemShow = null
                     this.ready = false
@@ -176,14 +191,17 @@
                     this.playSound(this.itemSelected);
                 }
             },
-            getSound: function (item) {
+            getText: function (item) {
                 if (typeof item === "string") {
-                    return item
+                    return item.toLowerCase()
                 }
-                if (item.text != undefined && typeof item.text === "string") {
-                    return item.text
+                if (item && item.text != undefined && typeof item.text === "string") {
+                    return item.text.toLowerCase()
                 }
-                return "";
+                return null;
+            },
+            getSound: function (item) {
+                return this.getText(item)
             },
             playSound: function (item) {
                 var target = this.soundPath + this.getSound(item) + '.mp3';

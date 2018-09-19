@@ -177,11 +177,6 @@
                 this.index2 = null
                 this.ready = true
             },
-            pay: function () {
-                this.$store.commit("addStars", this.stars)
-                this.$store.commit("addPoints", this.points)
-                this.dialog = true
-            },
             removeItem: function (item) {
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
