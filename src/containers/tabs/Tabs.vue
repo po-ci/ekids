@@ -11,10 +11,10 @@
             >
                 <v-tabs-slider color="yellow"></v-tabs-slider>
                 <v-tab key="0"  ripple>Learn</v-tab>
-                <v-tab key="1" ripple>Identify</v-tab>
-                <v-tab key="2" ripple>Dictation</v-tab>
-                <v-tab key="3" ripple>Memotest</v-tab>
-                <v-tab key="4" ripple>Remember</v-tab>
+                <v-tab key="1" ripple  v-if="exercises.identify.enable">Identify</v-tab>
+                <v-tab key="2" ripple  v-if="exercises.dictation.enable">Dictation</v-tab>
+                <v-tab key="3" ripple  v-if="exercises.pairs.enable">Memotest</v-tab>
+                <v-tab key="4" ripple  v-if="exercises.remember.enable">Remember</v-tab>
 
                 <!--Learn-->
                 <v-tab-item key="0">

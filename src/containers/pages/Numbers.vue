@@ -36,7 +36,8 @@
                 exercises: {
                     identify: {enable: true},
                     dictation: {enable: true},
-                    pairs: {enable: true}
+                    pairs: {enable: true},
+                    remember: {enable: false}
                 }
             }
         }

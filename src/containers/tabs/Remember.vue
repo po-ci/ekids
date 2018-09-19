@@ -45,6 +45,7 @@
                             :soundPath="imgPath"
                             :ready="ready"
                             :gameListDone="gameListDone"
+                            :soundEnable="false"
                     />
                 </v-card-text>
 
@@ -111,10 +112,10 @@
               return false
             },
             enDesc: function () {
-                return "Press the green button and write the "+this.enName+" you heard. Correct answer: +3"
+                return "Press the green button and write the "+this.enName+" you see. Correct answer: +3"
             },
             esDesc: function () {
-                return "Oprime el  boton verde y escribe "+this.esName+" que escuchaste. Respuesta correcta: +3"
+                return "Oprime el  boton verde y escribe "+this.esName+" que ves. Respuesta correcta: +3"
             },
             getIcon: function () {
                 if (this.ready == true) {
