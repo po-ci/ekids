@@ -41,10 +41,14 @@
                 </v-toolbar>
 
                 <!--Excercise-->
+                <!--<v-card-text>-->
+                    <!--<div>-->
+                        <!--<v-text-field v-model="inputText" @keyup="checkName" ref="inputText"></v-text-field>-->
+                    <!--</div>-->
+                <!--</v-card-text>-->
+
                 <v-card-text>
-                    <div>
-                        <v-text-field v-model="inputText" @keyup="checkName" ref="inputText"></v-text-field>
-                    </div>
+                    <input-split :word="getItemSelectedText" v-on:match="match"></input-split>
                 </v-card-text>
 
             </v-card>
@@ -58,10 +62,11 @@
     import Spell from './../../components/Spell.vue'
     import HeaderPage from './../../components/HeaderPage'
     import {soundHelpersPath} from '../../config/config'
+    import InputSplit from './../../components/InputSplit.vue'
 
     export default {
         name: 'Dictation',
-        components: {MultiButtons, HeaderPage, Spell},
+        components: {MultiButtons, HeaderPage, Spell, InputSplit},
         props: {
             enName: String,
             esName: String,
@@ -98,10 +103,10 @@
         },
         computed: {
             enDesc: function () {
-                return "Press the green button and write the "+this.enName+" you heard. Correct answer: +3"
+                return "Press the green button and write the " + this.enName + " you heard. Correct answer: +3"
             },
             esDesc: function () {
-                return "Oprime el  boton verde y escribe "+this.esName+" que escuchaste. Respuesta correcta: +3"
+                return "Oprime el  boton verde y escribe " + this.esName + " que escuchaste. Respuesta correcta: +3"
             },
             getIcon: function () {
                 if (this.ready == true) {
@@ -123,7 +128,16 @@
                 }
                 console.log(this.itemShow)
                 return "";
-            }
+            },
+            getItemSelectedText: function () {
+                if (typeof this.itemSelected === "string") {
+                    return this.itemSelected.toLowerCase()
+                }
+                if (this.itemSelected && this.itemSelected.text != undefined && typeof this.itemSelected.text === "string") {
+                    return this.itemSelected.text.toLowerCase()
+                }
+                return null;
+            },
         },
         methods: {
             pay: function () {
@@ -150,6 +164,18 @@
                 var audio = new Audio(soundHelpersPath + 'nonono.mp3')
                 audio.play()
             },
+            match: function (word) {
+                if (this.ready == true) {
+                    return
+                }
+                this.playYes()
+                this.ready = true
+                this.itemShow = word
+                this.helpShow = true
+                this.points = this.points + 3
+                this.removeItem(this.itemSelected)
+
+            },
             checkName: function () {
                 if (this.ready == true) {
                     return
@@ -167,7 +193,7 @@
             randomItem: function () {
                 if (this.ready == true) {
                     this.inputText = ""
-                    this.$refs.inputText.focus()
+                    //this.$refs.inputText.focus()
                     this.helpShow = null
                     this.itemShow = null
                     this.ready = false
