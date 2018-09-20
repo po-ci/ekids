@@ -136,6 +136,11 @@
     .gameCardHide {
         background: darkblue;
         border: aliceblue 1px solid;
+        background:
+                linear-gradient(135deg, #1a237e 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
+                linear-gradient(225deg, #1a237e 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
+        background-color:#1a237e;
+        background-size: 64px 128px
     }
 
     .imgReady {

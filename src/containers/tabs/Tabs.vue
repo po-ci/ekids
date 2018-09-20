@@ -2,7 +2,7 @@
         <div style="position: relative">
             <v-tabs
                     v-model="active"
-                    color="cyan"
+                    color="indigo"
                     dark
                     slider-color="yellow"
                     :show-arrows="true"

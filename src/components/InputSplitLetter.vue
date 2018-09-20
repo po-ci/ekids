@@ -2,13 +2,13 @@
 
     <v-flex align-center align-content-center justify-center pa-1>
         <v-text-field
-                @keyup="checkLetter"
-                @keydown="blank"
+                @keyup="keyUp"
                 :success="success"
                 :error="error"
                 ref="i"
-                maxlength="1"
+                maxlength="2"
                 v-model="inputLetter"
+                :value="inputLetter"
                 :full-width="false"
                 class="splitLetter title" :class="getClass"
                 :autofocus="getFocus"
@@ -39,6 +39,18 @@
                 if ((this.focus == this.index)) {
                     this.$refs.i.focus()
                 }
+            },
+            inputLetter: function(){
+                console.log("Watch")
+                if (this.inputLetter.toUpperCase() == this.letter.toUpperCase()) {
+                    this.success = true
+                    this.error = false
+                    this.$emit("letterState", {state: true, letter: this.letter, index: this.index})
+                } else {
+                    this.success = false
+                    this.error = true
+                    this.$emit("letterState", {state: false, letter: this.letter, index: this.index})
+                }
             }
         },
         computed: {
@@ -55,31 +67,10 @@
             }
         },
         methods: {
-            blank: function (event) {
-                console.log("blank");
-                this.inputLetter = this.getLetter(event)
-            },
-            checkLetter: function (event) {
-                if (this.getLetter(event).length > 1) {
-                    this.inputLetter = ""
+            keyUp: function(){
+                if (this.inputLetter.length > 1) {
+                    this.inputLetter = this.inputLetter.split('').pop()
                 }
-
-                if (this.inputLetter.toUpperCase() == this.letter.toUpperCase()) {
-                    this.success = true
-                    this.error = false
-                    this.$emit("letterState", {state: true, letter: this.letter, index: this.index})
-                } else {
-                    this.success = false
-                    this.error = true
-                    this.$emit("letterState", {state: false, letter: this.letter, index: this.index})
-                    this.lastLetter = this.inputLetter
-                }
-            },
-            getLetter(e) {
-                if (e.key) return e.key
-                let keyFromCode = String.fromCharCode(e.keyCode)
-                if (keyFromCode) return keyFromCode
-                return null
             }
         }
 
