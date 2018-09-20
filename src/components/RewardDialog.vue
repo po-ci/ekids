@@ -6,9 +6,19 @@
         <v-card>
             <v-card-title class="headline">Reward / Recompenza</v-card-title>
 
-            <v-card-text>
-                <h4 ><v-icon yellow x-large>star</v-icon> {{stars}}</h4><br>
-                <h4 ><v-icon blue x-large>control_point</v-icon> {{points}}</h4>
+            <v-card-text class="text-lg-center text-xs-center">
+                <h4 class="display-1">
+                    <v-tooltip bottom>
+                        <v-icon  color="yellow" slot="activator" yellow x-large>star</v-icon>
+                        <span>Star</span>
+                    </v-tooltip>
+                    +{{stars}}
+                    <v-tooltip bottom>
+                    <v-icon  color="red" slot="activator" blue x-large>control_point</v-icon>   <span>Points</span>
+                    </v-tooltip>
+                    +{{points}}</h4>
+
+                <h4 class="display-1"> </h4>
             </v-card-text>
 
             <v-card-actions>

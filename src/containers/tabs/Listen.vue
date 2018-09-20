@@ -10,37 +10,48 @@
                 <!--ToolBar-->
                 <v-toolbar card>
 
+                    <v-toolbar-title>
+                        <v-btn fab small :color="getPlayColor" v-on:click="randomItem()">
+                            <v-icon>{{getIcon}}</v-icon>
+                        </v-btn>
+                    </v-toolbar-title>
+
+                    <v-divider vertical></v-divider>
+
                     <v-toolbar-title class="pr-3">
                         <span class="blue--text">{{points}}</span>
                     </v-toolbar-title>
 
-                </v-toolbar>
 
+                    <v-spacer></v-spacer>
+
+                    <v-toolbar-title>
+                        <div v-if="helpShow">
+                            <v-icon v-if="itemShow" class="green--text">thumb_up</v-icon>
+                            <v-icon v-if="!itemShow" class="red--text">thumb_down</v-icon>
+                            <span class="green--text"> {{getItemShow}}</span>
+                        </div>
+                    </v-toolbar-title>
+
+                </v-toolbar>
 
                 <!--Excercise-->
                 <v-card-text>
                     <div>
-                        <cards
+                        <multi-buttons
                                 :soundEnable="false"
-                                :items="gameList"
+                                :items="this.baseList"
+                                :fab="fab"
                                 :soundPath="soundPath"
                                 :img="img" :imgPath="imgPath"
                                 :gameListDone="gameListDone"
                                 :textEnable="textEnable"
                                 :gameBgColor="gameBgColor"
-                                :index1="index1"
-                                :index2="index2"
-                                :ready="ready"
-                                v-on:pickCard="onPickCard"
+                                v-on:playButton="playButton"
                         >
-                        </cards>
+                        </multi-buttons>
                     </div>
                 </v-card-text>
-
-                <v-card-text>
-                    <h4 v-if="itemShow" class="text-xs-center display-1">{{getItemShow}}</h4>
-                </v-card-text>
-
 
             </v-card>
         </v-flex>
@@ -50,41 +61,32 @@
 </template>
 
 <script>
-    import Cards from '../../components/Cards.vue'
+    import MultiButtons from '../../components/MultiButtons.vue'
     import HeaderPage from '../../components/HeaderPage.vue'
     import {soundHelpersPath} from '../../config/config'
     import RewardDialog from '../../components/RewardDialog.vue'
-    import shuffle from './../../helpers/shuffle'
 
     export default {
-        name: 'Pairs',
-        components: {HeaderPage, RewardDialog, Cards},
+        name: 'Listen',
+        components: {MultiButtons, HeaderPage, RewardDialog},
         props: {
             enName: String,
             esName: String,
             enTitle: String,
             esTitle: String,
             words: Array,
+            exercises: Array,
             soundPath: String,
-            //Cards
+            //MultiButtons
             imgPath: String,
             img: {type: Boolean, default: false},
             fab: {type: Boolean, default: true},
             textEnable: {type: Boolean, default: true},
             gameBgColor: {type: String, default: "green"},
-            limit: {type: Number, default: 6}
         },
         mounted: function () {
             this.baseList = Object.assign([], this.words);
-
-            var a = shuffle(this.baseList)
-            var b = [];
-            for (var i = 0; i < this.getLimit; i++) {
-                b.push(a[i]);
-                b.push(a[i]);
-            }
-
-            this.gameList = shuffle(b)
+            this.gameList = Object.assign([], this.words);
         },
         data: function () {
             return {
@@ -92,31 +94,31 @@
                 gameList: [],
                 gameListDone: [],
                 itemSelected: null,
-                itemShow: " ",
+                itemShow: "",
                 ready: true,
                 points: 10,
                 stars: 1,
                 helpShow: null,
                 finishGame: false,
                 dialog: false,
-                index1: null,
-                index2: null,
-                item1: null,
-                item2: null
             }
         },
         computed: {
-            getLimit: function () {
-                if (this.limit < this.words.length) {
-                    return this.limit
-                }
-                return this.words.length
-            },
             enDesc: function () {
-                return "Find Pairs "
+                return "Press the green button and click on the " + this.enName + " you heard. Correct answer: +3. Incorrect answer: -1"
             },
             esDesc: function () {
-                return "Encuentra los pares"
+                return "Oprime el  boton verde y has click en " + this.esName + " que escuchaste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
+            },
+            getIcon: function () {
+                if (this.ready == true) {
+                    return "play_arrow"
+                } else {
+                    return "refresh"
+                }
+            },
+            getPlayColor: function () {
+                return (this.ready == true) ? 'green' : 'yellow'
             },
             getItemShow: function () {
 
@@ -136,49 +138,7 @@
                 this.$store.commit("addPoints", this.points)
                 this.dialog = true
             },
-            onPickCard: function (index, item) {
-                this.itemShow = this.getText(item)
-                if (this.index1 === null) {
-                    this.index1 = index
-                    this.item1 = item
-                } else if (this.index2 === null) {
-                    this.index2 = index
-                    this.item2 = item
-                    this.ready = false
-                }
-
-
-                if (this.index1 != null && this.index2 != null) {
-                    if (this.item1 === this.item2) {
-                        this.playYes()
-                        this.gameListDone.push(this.item1)
-                        this.points = this.points +3
-
-
-                        if (this.gameList.length == (this.gameListDone.length * 2)) {
-                            this.finishGame = true
-                            this.pay()
-                        }else {
-                            this.nextCards()
-                        }
-                    } else {
-                        this.playNo()
-                        setTimeout(this.nextCards, 1000)
-                    }
-
-                }
-
-            },
-            nextCards: function () {
-                this.itemShow = "-"
-                this.item1 = null
-                this.item2 = null
-                this.index1 = null
-                this.index2 = null
-                this.ready = true
-            },
             removeItem: function (item) {
-                this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
                 this.gameListDone.push(item)
                 if (this.gameList.length == 0) {
@@ -194,6 +154,37 @@
                 var audio = new Audio(soundHelpersPath + 'nonono.mp3')
                 audio.play()
             },
+            playButton: function (item) {
+                if (this.ready == true) {
+                    return
+                }
+
+                if (item == this.itemSelected) {
+                    this.playYes()
+                    this.ready = true
+                    this.itemShow = item
+                    this.helpShow = true
+                    this.points = this.points + 3
+                    this.removeItem(item)
+
+                } else {
+                    this.points--
+                    this.helpShow = true
+                    this.playNo()
+                }
+            },
+            randomItem: function () {
+                if (this.ready == true) {
+                    this.helpShow = null
+                    this.itemShow = null
+                    this.ready = false
+                    var item = this.gameList[Math.floor(Math.random() * this.gameList.length)]
+                    this.itemSelected = item
+                    this.playSound(item)
+                } else {
+                    this.playSound(this.itemSelected);
+                }
+            },
             getSound: function (item) {
                 if (typeof item === "string") {
                     return item
@@ -208,16 +199,6 @@
                 var audio = new Audio(target);
                 audio.play()
 
-            },
-            getText: function (item) {
-
-                if (typeof item === "string") {
-                    return item
-                }
-                if (item.text != undefined && typeof item.text === "string") {
-                    return item.text
-                }
-                return "";
             },
         }
     }

@@ -33,6 +33,13 @@ export const store = new Vuex.Store({
                 {text: "journalist", src: "journalist.png"},
                 {text: "student", src: "student.png"},
                 {text: "artist", src: "artist.png"}
+            ],
+            shapes: [
+                {text: "square", src: "square.png"},
+                {text: "triangle", src: "triangle.png"},
+                {text: "circle", src: "circle.png"},
+                {text: "rectangle", src: "rectangle.png"},
+                {text: "diamond", src: "diamond.png"},
             ]
         },
         nav: [
@@ -66,6 +73,12 @@ export const store = new Vuex.Store({
                 text: 'Professions / Profesiones',
                 link: {name: "professions"},
 
+            },
+            {
+                icon: 'work',
+                text: 'Shapes / Figuras',
+                link: {name: "shapes"},
+
             }
         ],
     },
@@ -88,10 +101,10 @@ export const store = new Vuex.Store({
     },
     actions: {
         initLocalStorage: ({commit}) => {
-            commit("setName", localStorage.getItem("name"))
-            commit("setLevel",localStorage.getItem("level")?localStorage.getItem("level"):0)
-            commit("setStars", localStorage.getItem("stars")?localStorage.getItem("stars"):0)
-            commit("setPoints",localStorage.getItem("points")?localStorage.getItem("points"):0)
+            commit("setName", localStorage.getItem("name")?localStorage.getItem("name"):"")
+            commit("setLevel",localStorage.getItem("level")?parseInt(localStorage.getItem("level")):1)
+            commit("setStars", localStorage.getItem("stars")?parseInt(localStorage.getItem("stars")):0)
+            commit("setPoints",localStorage.getItem("points")?parseInt(localStorage.getItem("points")):0)
         }
     },
     mutations: {
@@ -111,12 +124,22 @@ export const store = new Vuex.Store({
             state.points = points
             localStorage.setItem("points", state.points)
         },
+        addLevel(state) {
+            state.level = parseInt(state.level) + 1
+            localStorage.setItem("level", state.level)
+        },
         addStars(state, stars) {
             state.stars = parseInt(state.stars) + parseInt(stars)
             localStorage.setItem("stars", state.stars)
         },
         addPoints(state, points) {
             state.points = parseInt(state.points) + parseInt(points)
+
+            if(state.points >= 100){
+                state.level = parseInt(state.level) + 1
+                state.points = 0
+            }
+
             localStorage.setItem("points", state.points)
         }
     }

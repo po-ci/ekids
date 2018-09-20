@@ -35,6 +35,10 @@
 
                 </v-toolbar>
 
+                <v-card-text>
+                    <h4 v-if="itemSelected" class="text-xs-center display-1">{{getItemSelectedText.toUpperCase()}}</h4>
+                </v-card-text>
+
                 <!--Excercise-->
                 <v-card-text>
                     <div>
@@ -67,7 +71,7 @@
     import RewardDialog from '../../components/RewardDialog.vue'
 
     export default {
-        name: 'Identify',
+        name: 'Read',
         components: {MultiButtons, HeaderPage, RewardDialog},
         props: {
             enName: String,
@@ -105,10 +109,10 @@
         },
         computed: {
             enDesc: function () {
-                return "Press the green button and click on the " + this.enName + " you heard. Correct answer: +3. Incorrect answer: -1"
+                return "Press the green button and click on the " + this.enName + " you read. Correct answer: +3. Incorrect answer: -1"
             },
             esDesc: function () {
-                return "Oprime el  boton verde y has click en " + this.esName + " que escuchaste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
+                return "Oprime el  boton verde y has click en " + this.esName + " que leiste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
             },
             getIcon: function () {
                 if (this.ready == true) {
@@ -130,7 +134,16 @@
                 }
                 console.log(this.itemShow)
                 return "";
-            }
+            },
+            getItemSelectedText: function () {
+                if (typeof this.itemSelected === "string") {
+                    return this.itemSelected.toLowerCase()
+                }
+                if (this.itemSelected && this.itemSelected.text != undefined && typeof this.itemSelected.text === "string") {
+                    return this.itemSelected.text.toLowerCase()
+                }
+                return null;
+            },
         },
         methods: {
             pay: function () {
@@ -180,9 +193,7 @@
                     this.ready = false
                     var item = this.gameList[Math.floor(Math.random() * this.gameList.length)]
                     this.itemSelected = item
-                    this.playSound(item)
-                } else {
-                    this.playSound(this.itemSelected);
+
                 }
             },
             getSound: function (item) {

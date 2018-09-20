@@ -34,7 +34,7 @@
                 enTitle: "Numbers",
                 esTitle: "Numeros",
                 exercises: {
-                    identify: {enable: true},
+                    listen: {enable: true},
                     dictation: {enable: true},
                     pairs: {enable: true},
                     remember: {enable: false}

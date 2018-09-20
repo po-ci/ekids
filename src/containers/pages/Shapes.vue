@@ -1,40 +1,42 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.colors" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.shapes" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
-                  :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img">
+                  :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
-
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
-    import {soundColorsPath} from '../../config/config'
+    import {soundShapesPath, imgShapesPath} from '../../config/config'
     import Tabs from '../tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Abc',
+        name: 'Shapes',
         components: {Tabs},
         computed: {
             ...mapState([
                 'words'
             ]),
             getSoundPath: function () {
-                return soundColorsPath;
+                return soundShapesPath;
+            },
+            getImgPath: function () {
+                return imgShapesPath;
             }
         },
         data: function () {
             return {
                 fab: false,
                 textEnable: false,
-                img: false,
-                enName: "color",
-                esName: "el color",
-                enTitle: "Colors",
-                esTitle: "Colores",
+                img: true,
+                enName: "shapes",
+                esName: "las figuras geometricas",
+                enTitle: "Shapes",
+                esTitle: "Shapes",
                 exercises: {
                     listen: {enable: true},
                     read: {enable: true},

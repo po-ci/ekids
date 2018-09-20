@@ -38,7 +38,8 @@
                 enTitle: "Professions",
                 esTitle: "Profesiones",
                 exercises: {
-                    identify: {enable: true},
+                    listen: {enable: true},
+                    read: {enable: true},
                     dictation: {enable: true},
                     pairs: {enable: true},
                     remember: {enable: true}

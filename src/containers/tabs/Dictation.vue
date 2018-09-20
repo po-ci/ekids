@@ -53,7 +53,7 @@
 
             </v-card>
         </v-flex>
-
+        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"></reward-dialog>
     </v-layout>
 </template>
 
@@ -63,10 +63,12 @@
     import HeaderPage from './../../components/HeaderPage'
     import {soundHelpersPath} from '../../config/config'
     import InputSplit from './../../components/InputSplit.vue'
+    import RewardDialog from '../../components/RewardDialog.vue'
+
 
     export default {
         name: 'Dictation',
-        components: {MultiButtons, HeaderPage, Spell, InputSplit},
+        components: {MultiButtons, HeaderPage, Spell, InputSplit,RewardDialog},
         props: {
             enName: String,
             esName: String,
@@ -97,6 +99,7 @@
                 itemShow: "",
                 ready: true,
                 points: 10,
+                stars: 1,
                 helpShow: null,
                 finishGame: false
             }
@@ -146,7 +149,8 @@
                 this.dialog = true
             },
             onSpell: function () {
-                this.$refs.inputText.focus()
+                //TODO Focus
+              //  this.$refs.inputText.focus()
             },
             removeItem: function (item) {
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
