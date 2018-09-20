@@ -10,8 +10,9 @@
                 maxlength="1"
                 v-model="inputLetter"
                 :full-width="false"
-                class="splitLetter title"
+                class="splitLetter title" :class="getClass"
                 :autofocus="getFocus"
+                :disabled="success"
         >
         </v-text-field>
     </v-flex>
@@ -43,12 +44,20 @@
         computed: {
             getFocus: function () {
                 return (this.focus == this.index) ? true : false
+            },
+            getClass: function(){
+                if(this.success){
+                    return "splitLetterSuccess"
+                }else if(this.error){
+                    return "splitLetterError"
+                }
+                return ""
             }
         },
         methods: {
-            blank: function () {
+            blank: function (event) {
                 console.log("blank");
-                this.inputLetter = ""
+                this.inputLetter = this.getLetter(event)
             },
             checkLetter: function (event) {
                 if (this.getLetter(event).length > 1) {
@@ -80,6 +89,15 @@
 <style>
     .splitLetter input[type=text] {
         text-align: center !important;
+        text-transform: uppercase;
+    }
+
+    .splitLetterSuccess  input[type=text]{
+        color: darkgreen !important;
+    }
+
+    .splitLetterError  input[type=text]{
+        color: darkred !important;
     }
 
 </style>
