@@ -1,13 +1,11 @@
 <template>
-        <div>
+        <div style="position: relative">
             <v-tabs
                     v-model="active"
                     color="cyan"
                     dark
                     slider-color="yellow"
-                    next-icon="mdi-arrow-right-bold-box-outline"
-                    prev-icon="mdi-arrow-left-bold-box-outline"
-                    show-arrows
+                    :show-arrows="true"
             >
                 <v-tabs-slider color="yellow"></v-tabs-slider>
                 <v-tab key="0"  ripple>Learn</v-tab>
@@ -55,9 +53,18 @@
 
             </v-tabs>
 
-            <div class="text-xs-center mt-3">
-                <v-btn @click="next">next</v-btn>
-            </div>
+                <!--<v-btn-->
+                        <!--dark-->
+                        <!--fab-->
+                        <!--top-->
+                        <!--right-->
+                        <!--color="pink"-->
+                        <!--class="v-btn&#45;&#45;absolute"-->
+                        <!--style=" top: -4px; right: -10px"-->
+                        <!--@click="next"-->
+                    <!--<v-icon>navigate_next</v-icon>-->
+                <!--</v-btn>-->
+
         </div>
 </template>
 
@@ -92,7 +99,7 @@
         methods: {
             next() {
                 const active = parseInt(this.active)
-                this.active = (active < 3 ? active + 1 : 0)
+                this.active = (active < 4 ? active + 1 : 0)
             }
         }
     }

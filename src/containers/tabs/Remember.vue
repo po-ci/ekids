@@ -47,10 +47,7 @@
                             :gameListDone="gameListDone"
                             :soundEnable="false"
                     />
-                </v-card-text>
 
-                <!--Excercise-->
-                <v-card-text>
                     <input-split :word="getItemSelectedText" v-on:match="match"></input-split>
                 </v-card-text>
 
