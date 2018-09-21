@@ -91,13 +91,13 @@ export const store = new Vuex.Store({
 
             },
             {
-                icon: 'work',
+                icon: 'category',
                 text: 'Shapes / Formas',
                 link: {name: "shapes"},
 
             },
             {
-                icon: 'work',
+                icon: 'loyalty',
                 text: 'Clothes / Ropa',
                 link: {name: "clothes"},
 
