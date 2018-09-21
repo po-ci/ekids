@@ -37,7 +37,7 @@
                 textEnable: false,
                 img: true,
                 enName: "shapes",
-                esName: "las figuras geometricas",
+                esName: "las formas",
                 enTitle: "Shapes",
                 esTitle: "Shapes",
                 exercises: {

@@ -92,7 +92,7 @@ export const store = new Vuex.Store({
             },
             {
                 icon: 'work',
-                text: 'Shapes / Figuras',
+                text: 'Shapes / Formas',
                 link: {name: "shapes"},
 
             },
