@@ -198,6 +198,10 @@
                 }
             },
             randomItem: function () {
+                if(this.finishGame){
+                    this.repeat()
+                }
+
                 if (this.ready == true) {
                     this.inputText = ""
                     //this.$refs.inputText.focus()

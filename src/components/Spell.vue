@@ -1,6 +1,6 @@
 <template>
-    <v-btn fab small color="orange" v-on:click="spell()" :disabled="getDisabled">
-        <v-icon>spellcheck</v-icon>
+    <v-btn small color="orange" v-on:click="spell()" :disabled="getDisabled">
+       SPELL IT
     </v-btn>
 </template>
 

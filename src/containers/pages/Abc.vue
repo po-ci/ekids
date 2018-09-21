@@ -16,7 +16,7 @@
         name: 'Abc',
         components: {Tabs},
         mounted: function(){
-          this.$store.commit("setMaxTab",this.exercises.length)
+          this.$store.commit("setMaxTab",4)
         },
         computed: {
             ...mapState([
@@ -38,8 +38,7 @@
                 exercises: {
                     listen: {enable: true},
                     dictation: {enable: true},
-                    pairs: {enable: true},
-                    remember: {enable: false}
+                    pairs: {enable: true}
                 }
             }
         }

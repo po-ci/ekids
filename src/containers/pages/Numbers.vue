@@ -25,7 +25,7 @@
             }
         },
         mounted: function(){
-            this.$store.commit("setMaxTab",this.exercises.length)
+            this.$store.commit("setMaxTab",4)
         },
         data: function(){
             return {
@@ -40,7 +40,6 @@
                     listen: {enable: true},
                     dictation: {enable: true},
                     pairs: {enable: true},
-                    remember: {enable: false}
                 }
             }
         }

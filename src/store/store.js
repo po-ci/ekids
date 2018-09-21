@@ -130,8 +130,11 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        setTab(state,tab) {
+            state.activeTab = tab
+        },
         nextTab(state) {
-            state.activeTab = (state.activeTab < state.maxTab ? state.activeTab + 1 : 0)
+            state.activeTab = (state.activeTab < state.maxTab)?state.activeTab + 1 : 0
         },
         setMaxTab(state, max) {
             state.maxTab = max;

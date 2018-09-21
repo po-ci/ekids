@@ -27,7 +27,7 @@
             }
         },
         mounted: function(){
-            this.$store.commit("setMaxTab",this.exercises.length)
+            this.$store.commit("setMaxTab",6)
         },
         data: function () {
             return {

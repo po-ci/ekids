@@ -19,7 +19,7 @@
 
                 <!--Excercise-->
                 <v-card-text>
-                    <div>
+
                         <cards
                                 :soundEnable="false"
                                 :items="gameList"
@@ -34,7 +34,7 @@
                                 v-on:pickCard="onPickCard"
                         >
                         </cards>
-                    </div>
+
                 </v-card-text>
 
                 <v-card-text>

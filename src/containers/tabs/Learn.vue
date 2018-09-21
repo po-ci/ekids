@@ -11,16 +11,26 @@
                 </header-page>
                 <!--Buttons-->
                 <v-card-text>
-                    <div>
-                        <multi-buttons :items="this.words"
-                                       :fab="fab"
-                                       :textEnable="textEnable"
-                                       :soundPath="soundPath"
-                                       :img="img" :imgPath="imgPath"
-                        >
 
-                        </multi-buttons>
-                    </div>
+                        <template v-if="img">
+                            <multi-imgs :items="this.words"
+                                        :fab="fab"
+                                        :textEnable="textEnable"
+                                        :soundPath="soundPath"
+                                        :showName="true"
+                                        :img="img" :imgPath="imgPath"
+                            ></multi-imgs>
+                        </template>
+
+                        <template v-else>
+                            <multi-buttons :items="this.words"
+                                           :fab="fab"
+                                           :textEnable="textEnable"
+                                           :soundPath="soundPath"
+                                           :showName="true"
+                            ></multi-buttons>
+                        </template>
+
                 </v-card-text>
 
 
@@ -32,11 +42,12 @@
 
 <script>
     import MultiButtons from './../../components/MultiButtons.vue'
+    import MultiImgs from '../../components/MultiImgs.vue'
     import HeaderPage from './../../components/HeaderPage.vue'
 
     export default {
         name: 'Learn',
-        components: {MultiButtons, HeaderPage},
+        components: {MultiButtons, MultiImgs, HeaderPage},
         props: {
             enName: String,
             esName: String,
@@ -48,15 +59,15 @@
             soundPath: String,
             imgPath: String,
             img: {type: Boolean, default: false},
-            textEnable:  {type: Boolean, default: true},
-            fab: {type:Boolean,default:true}
+            textEnable: {type: Boolean, default: true},
+            fab: {type: Boolean, default: true}
         },
-        computed:{
+        computed: {
             enDesc: function () {
-                return "Press the "+this.enName+" to hear their pronunciation"
+                return "Press the " + this.enName + " to hear their pronunciation"
             },
             esDesc: function () {
-                return "Oprime "+this.esName+" para escuchar su pronunciación"
+                return "Oprime " + this.esName + " para escuchar su pronunciación"
             },
         }
     }

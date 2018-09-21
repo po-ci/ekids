@@ -1,39 +1,32 @@
 <template>
-    <div>
-        <v-container fluid>
-        <v-layout row wrap>
-            <v-flex v-for="(item,index) in items" xs3 sm3 md2 lg2 >
-                <card
-                        :key="index"
-                        :item="item"
-                        :img="img"
-                        :imgPath="imgPath"
-                        :soundPath="soundPath"
-                        :index1="index1"
-                        :index2="index2"
-                        :index="index"
-                        :ready="ready"
-                        :gameListDone="gameListDone"
-                        v-on:pickCard="onPickCard"
-                />
-            </v-flex>
+    <v-container fluid grid-list-xs class="pa-0 ma-0">
+        <v-layout row wrap align-start>
+            <template v-for="(item,index) in items">
+                <v-flex lg2 sm3 xs3 class="text-xs-center">
+
+                    <img :key="'img'+index" class="pa-1 btnImg"
+                         :class="getImgClass(item) "
+                         :src="getSrc(item)" height="120px"
+                         v-on:click="playButton(item)"
+                    />
+                    <br>
+                    <span v-if="showName" :key="'text'+index">{{getText(item).toUpperCase()}}</span>
+                </v-flex>
+            </template>
         </v-layout>
-        </v-container>
-    </div>
+    </v-container>
 </template>
 
 <script>
-    import Card from './Card.vue'
-
     export default {
-        name: 'Cards',
-        components: {Card},
+        name: 'MultiImg',
         props: {
-            ready: {type: Boolean, default: false},
+            showName: {type: Boolean, default: false},
             cssclass: String,
             items: Array,
             soundPath: String,
             imgPath: String,
+            fab: {type: Boolean, default: true},
             img: {type: Boolean, default: false},
             soundEnable: {type: Boolean, default: true},
             textEnable: {type: Boolean, default: true},
@@ -44,21 +37,9 @@
                 }
             },
             gameBgColor: {type: String, default: "green"},
-            index1: {default: null},
-            index2: {default: null},
         },
-        mounted: function(){
-
-        },
-        computed: {
-            showCard: function (item) {
-
-            }
-        },
+        computed: {},
         methods: {
-            onPickCard: function (index,item) {
-                this.$emit("pickCard", index, item)
-            },
             playSound: function (sound) {
                 var target = this.soundPath + sound + '.mp3';
                 var audio = new Audio(target);
@@ -93,11 +74,14 @@
                 return ""
             },
             getBgColor: function (item) {
-                if (this.gameListDone.find(obj => obj === item)) {
+                if (this.img && this.gameListDone.find(obj => obj === item)) {
                     return this.gameBgColor
                 }
 
                 if (item.bgcolor != undefined) {
+                    if (this.gameListDone.find(obj => obj === item)) {
+                        return item.bgcolor + " imgReady"
+                    }
                     return item.bgcolor
                 }
                 return this.defaultBgColor
@@ -114,15 +98,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-    .ecardHide {
-        background: darkblue;
-        border: aliceblue 1px solid;
-    }
-
     .imgReady {
         -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
         mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+
+    .btnImg {
+        cursor: pointer;
     }
 
 </style>

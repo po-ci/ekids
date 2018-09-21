@@ -37,20 +37,34 @@
 
                 <!--Excercise-->
                 <v-card-text>
-                    <div>
+                    <template v-if="img">
+                        <multi-imgs
+                                :soundEnable="false"
+                                :items="this.baseList"
+                                :fab="fab"
+                                :soundPath="soundPath"
+                                :showName="false"
+                                :img="img" :imgPath="imgPath"
+                                :textEnable="textEnable"
+                                :gameBgColor="gameBgColor"
+                                :gameListDone="gameListDone"
+                                v-on:playButton="playButton"
+                        ></multi-imgs>
+                    </template>
+
+                    <template v-else>
                         <multi-buttons
                                 :soundEnable="false"
                                 :items="this.baseList"
                                 :fab="fab"
                                 :soundPath="soundPath"
-                                :img="img" :imgPath="imgPath"
-                                :gameListDone="gameListDone"
+                                :showName="false"
                                 :textEnable="textEnable"
                                 :gameBgColor="gameBgColor"
+                                :gameListDone="gameListDone"
                                 v-on:playButton="playButton"
-                        >
-                        </multi-buttons>
-                    </div>
+                        ></multi-buttons>
+                    </template>
                 </v-card-text>
 
             </v-card>
@@ -62,6 +76,7 @@
 
 <script>
     import MultiButtons from '../../components/MultiButtons.vue'
+    import MultiImgs from '../../components/MultiImgs.vue'
     import HeaderPage from '../../components/HeaderPage.vue'
     import {soundHelpersPath} from '../../config/config'
     import RewardDialog from '../../components/RewardDialog.vue'
@@ -69,7 +84,7 @@
 
     export default {
         name: 'Listen',
-        components: {MultiButtons, HeaderPage, RewardDialog},
+        components: {MultiButtons,MultiImgs, HeaderPage, RewardDialog},
         mixins: [MixinTabs],
         props: {
             enName: String,
@@ -177,6 +192,10 @@
                 }
             },
             randomItem: function () {
+                if(this.finishGame){
+                    this.repeat()
+                }
+
                 if (this.ready == true) {
                     this.helpShow = null
                     this.itemShow = null
