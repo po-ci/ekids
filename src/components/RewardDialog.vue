@@ -2,6 +2,7 @@
     <v-dialog
             v-model="dialog"
             width="500"
+            persistent
     >
         <v-card>
             <v-card-title class="headline">Reward / Recompenza</v-card-title>
@@ -24,13 +25,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
 
-                <v-btn
-                        color="green darken-1"
-                        flat="flat"
-                        @click="repeat"
-                >
-                    Repeat
-                </v-btn>
+
 
                 <v-btn
                         color="green darken-1"
@@ -38,6 +33,22 @@
                         @click="goHome"
                 >
                     HOME
+                </v-btn>
+
+                <v-btn
+                        color="green darken-1"
+                        flat="flat"
+                        @click="repeat"
+                >
+                    REPEAT
+                </v-btn>
+
+                <v-btn
+                        color="green darken-1"
+                        flat="flat"
+                        @click="nextTab"
+                >
+                    NEXT
                 </v-btn>
             </v-card-actions>
         </v-card>
@@ -63,8 +74,12 @@
             }
         },
         methods: {
+            nextTab: function () {
+                this.dialog = false
+                this.$store.commit("nextTab")
+            },
             repeat: function () {
-                this.dialog = close
+                this.dialog = false
                 this.$emit("repeat")
             },
             goHome: function () {

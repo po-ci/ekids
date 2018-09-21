@@ -60,7 +60,7 @@
             </v-card>
         </v-flex>
 
-        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"></reward-dialog>
+        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog" v-on:repeat="repeat"></reward-dialog>
     </v-layout>
 </template>
 
@@ -69,10 +69,14 @@
     import HeaderPage from '../../components/HeaderPage.vue'
     import {soundHelpersPath} from '../../config/config'
     import RewardDialog from '../../components/RewardDialog.vue'
+    import MixinTabs from './MixinTabs'
+
+
 
     export default {
         name: 'Read',
         components: {MultiButtons, HeaderPage, RewardDialog},
+        mixins: [MixinTabs],
         props: {
             enName: String,
             esName: String,
@@ -100,6 +104,7 @@
                 itemSelected: null,
                 itemShow: "",
                 ready: true,
+                initialPoints: 10,
                 points: 10,
                 stars: 1,
                 helpShow: null,
@@ -146,6 +151,7 @@
             },
         },
         methods: {
+
             pay: function () {
                 this.$store.commit("addStars", this.stars)
                 this.$store.commit("addPoints", this.points)

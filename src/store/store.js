@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
+        activeTab: 0,
+        maxTab: 4,
         name: null,
         stars: null,
         points: null,
@@ -40,6 +42,20 @@ export const store = new Vuex.Store({
                 {text: "circle", src: "circle.png"},
                 {text: "rectangle", src: "rectangle.png"},
                 {text: "diamond", src: "diamond.png"},
+            ],
+            clothes: [
+                {text: "cardigan", src: "cardigan.png"},
+                {text: "coat", src: "coat.png"},
+                {text: "dress", src: "dress.png"},
+                {text: "hat", src: "hat.png"},
+                {text: "jacket", src: "jacket.png"},
+                {text: "shoes", src: "shoes.png"},
+                {text: "shorts", src: "shorts.png"},
+                {text: "socks", src: "socks.png"},
+                {text: "skirt", src: "skirt.png"},
+                {text: "t-shirt", src: "t-shirt.png"},
+                {text: "tracksuit", src: "tracksuit.png"},
+                {text: "trousers", src: "trousers.png"},
             ]
         },
         nav: [
@@ -79,6 +95,12 @@ export const store = new Vuex.Store({
                 text: 'Shapes / Figuras',
                 link: {name: "shapes"},
 
+            },
+            {
+                icon: 'work',
+                text: 'Clothes / Ropa',
+                link: {name: "clothes"},
+
             }
         ],
     },
@@ -108,6 +130,12 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        nextTab(state) {
+            state.activeTab = (state.activeTab < state.maxTab ? state.activeTab + 1 : 0)
+        },
+        setMaxTab(state, max) {
+            state.maxTab = max;
+        },
         setName(state, name) {
             state.name = name;
             localStorage.setItem("name", state.name)
@@ -117,7 +145,7 @@ export const store = new Vuex.Store({
             localStorage.setItem("level", state.level)
         },
         setStars(state, stars) {
-            state.stars = stars
+            state.stars = (stars)?stars:9
             localStorage.setItem("stars", state.stars)
         },
         setPoints(state, points) {
@@ -138,6 +166,7 @@ export const store = new Vuex.Store({
             if(state.points >= 100){
                 state.level = parseInt(state.level) + 1
                 state.points = 0
+                localStorage.setItem("level", state.level)
             }
 
             localStorage.setItem("points", state.points)

@@ -87,6 +87,8 @@
     import Dictation from './Dictation'
     import Pairs from './Pairs'
     import Remember from './Remember.vue'
+    import {mapState} from 'vuex'
+
     export default {
         name: 'Tabs',
         components: {Learn,Listen,Read,Dictation,Pairs,Remember},
@@ -104,16 +106,22 @@
             textEnable: {type: Boolean, default: true},
             fab: {type: Boolean, default: true}
         },
+        watch: {
+          activeTab: function(){
+              this.active = this.activeTab
+          }
+        },
         data() {
             return {
                 active: 0,
             }
         },
+        computed: {
+            ...mapState([
+                'activeTab'
+            ]),
+        },
         methods: {
-            next() {
-                const active = parseInt(this.active)
-                this.active = (active < 4 ? active + 1 : 0)
-            }
         }
     }
 </script>

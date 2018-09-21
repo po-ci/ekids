@@ -28,6 +28,9 @@
                 return imgProfessionsPath;
             }
         },
+        mounted: function(){
+            this.$store.commit("setMaxTab",this.exercises.length)
+        },
         data: function () {
             return {
                 fab: false,

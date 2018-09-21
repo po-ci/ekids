@@ -15,6 +15,9 @@
     export default {
         name: 'Abc',
         components: {Tabs},
+        mounted: function(){
+          this.$store.commit("setMaxTab",this.exercises.length)
+        },
         computed: {
             ...mapState([
                 'words'
@@ -33,7 +36,7 @@
                 enTitle: "Alphabet",
                 esTitle: "Abecedario",
                 exercises: {
-                    identify: {enable: true},
+                    listen: {enable: true},
                     dictation: {enable: true},
                     pairs: {enable: true},
                     remember: {enable: false}

@@ -41,7 +41,6 @@
                 }
             },
             inputLetter: function(){
-                console.log("Watch")
                 if (this.inputLetter.toUpperCase() == this.letter.toUpperCase()) {
                     this.success = true
                     this.error = false

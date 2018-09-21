@@ -4,6 +4,7 @@
         <v-layout justify-space-around row wrap>
             <v-flex v-for="(item,index) in items" xs4 sm4 md3 lg2 >
                 <card
+                        :key="index"
                         :item="item"
                         :img="img"
                         :imgPath="imgPath"
@@ -56,7 +57,6 @@
         },
         methods: {
             onPickCard: function (index,item) {
-                console.log(item)
                 this.$emit("pickCard", index, item)
             },
             playSound: function (sound) {

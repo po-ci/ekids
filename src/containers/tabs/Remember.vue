@@ -53,7 +53,7 @@
 
             </v-card>
         </v-flex>
-        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"></reward-dialog>
+        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog" v-on:repeat="repeat"></reward-dialog>
     </v-layout>
 </template>
 
@@ -63,9 +63,12 @@
     import {soundHelpersPath} from '../../config/config'
     import InputSplit from './../../components/InputSplit.vue'
     import RewardDialog from '../../components/RewardDialog.vue'
+    import MixinTabs from './MixinTabs'
+
     export default {
         name: 'Remember',
         components: {HeaderPage, Card,InputSplit,RewardDialog},
+        mixins: [MixinTabs],
         props: {
             enName: String,
             esName: String,
@@ -95,10 +98,12 @@
                 itemSelected: null,
                 itemShow: "",
                 ready: true,
+                initialPoints: 10,
                 points: 10,
                 stars: 1,
                 helpShow: null,
-                finishGame: false
+                finishGame: false,
+                dialog: false
             }
         },
         computed: {

@@ -45,7 +45,7 @@
             </v-card>
         </v-flex>
 
-        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"></reward-dialog>
+        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog" v-on:repeat="repeat"></reward-dialog>
     </v-layout>
 </template>
 
@@ -94,6 +94,7 @@
                 itemSelected: null,
                 itemShow: " ",
                 ready: true,
+                initialPoints: 10,
                 points: 10,
                 stars: 1,
                 helpShow: null,
@@ -126,11 +127,30 @@
                 if (this.itemShow && this.itemShow.text != undefined && typeof this.itemShow.text === "string") {
                     return this.itemShow.text.toUpperCase()
                 }
-                console.log(this.itemShow)
                 return "";
             }
         },
         methods: {
+            repeat: function(){
+                this.gameListDone = []
+                this.points = this.initialPoints
+                this.finishGame = false
+                this.dialog = false
+                this.itemSelected = null
+                this.index1= null
+                this.index2 = null
+
+
+                var a = shuffle(this.baseList)
+                var b = [];
+                for (var i = 0; i < this.getLimit; i++) {
+                    b.push(a[i]);
+                    b.push(a[i]);
+                }
+
+                this.gameList = shuffle(b)
+                this.ready=true
+            },
             pay: function () {
                 this.$store.commit("addStars", this.stars)
                 this.$store.commit("addPoints", this.points)
