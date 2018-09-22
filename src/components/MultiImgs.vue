@@ -41,7 +41,7 @@
         computed: {},
         methods: {
             playSound: function (sound) {
-                var target = this.soundPath + sound + '.mp3';
+                var target = this.soundPath + sound.replace(' ','_') + '.mp3';
                 var audio = new Audio(target);
                 audio.play()
             },

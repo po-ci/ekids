@@ -34,7 +34,12 @@ export const store = new Vuex.Store({
                 {text: "farmer", src: "farmer.png"},
                 {text: "journalist", src: "journalist.png"},
                 {text: "student", src: "student.png"},
-                {text: "artist", src: "artist.png"}
+                {text: "artist", src: "artist.png"},
+                {text: "chef", src: "chef.png"},
+                {text: "waiter", src: "waiter.png"},
+                {text: "postman", src: "postman.png"},
+                {text: "judge", src: "judge.png"},
+                {text: "pirate", src: "pirate.png"}
             ],
             shapes: [
                 {text: "square", src: "square.png"},
@@ -42,6 +47,7 @@ export const store = new Vuex.Store({
                 {text: "circle", src: "circle.png"},
                 {text: "rectangle", src: "rectangle.png"},
                 {text: "diamond", src: "diamond.png"},
+                {text: "star", src: "star.png"},
             ],
             clothes: [
                 {text: "cardigan", src: "cardigan.png"},
@@ -56,7 +62,25 @@ export const store = new Vuex.Store({
                 {text: "t-shirt", src: "t-shirt.png"},
                 {text: "tracksuit", src: "tracksuit.png"},
                 {text: "trousers", src: "trousers.png"},
-            ]
+            ],
+            house: [
+                {text: "house", src: "house.png"},
+                {text: "kitchen", src: "kitchen.png"},
+                {text: "bathroom", src: "bathroom.png"},
+                {text: "bedroom", src: "bedroom.png"},
+                {text: "living room", src: "living_room.png"},
+                {text: "dining room", src: "dining_room.png"},
+                {text: "garden", src: "garden.png"},
+                {text: "front door", src: "front_door.png"}
+                ],
+            fruits: [
+                {text: "apple", src: "apple.png"},
+                {text: "pear", src: "pear.png"},
+                {text: "grapes", src: "grapes.png"},
+                {text: "orange", src: "orange.png"},
+                {text: "cherries", src: "cherries.png"},
+                {text: "banana", src: "banana.png"},
+            ],
         },
         nav: [
             {
@@ -100,6 +124,18 @@ export const store = new Vuex.Store({
                 icon: 'loyalty',
                 text: 'Clothes / Ropa',
                 link: {name: "clothes"},
+
+            },
+            {
+                icon: 'shopping_basket',
+                text: 'Fruits / Frutas',
+                link: {name: "fruits"},
+
+            },
+            {
+                icon: 'home',
+                text: 'The House / La Casa',
+                link: {name: "house"},
 
             }
         ],

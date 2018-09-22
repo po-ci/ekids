@@ -209,10 +209,10 @@
             },
             getSound: function (item) {
                 if (typeof item === "string") {
-                    return item
+                    return item.replace(' ','_')
                 }
                 if (item.text != undefined && typeof item.text === "string") {
-                    return item.text
+                    return item.text.replace(' ','_')
                 }
                 return "";
             },

@@ -48,7 +48,7 @@
                 <!--</v-card-text>-->
 
                 <v-card-text>
-                    <input-split :word="getItemSelectedText" v-on:match="match"></input-split>
+                    <input-split :word="getItemSelectedText" v-on:match="match" :wfocus="wfocus"></input-split>
                 </v-card-text>
 
             </v-card>
@@ -104,7 +104,8 @@
                 stars: 1,
                 helpShow: null,
                 finishGame: false,
-                dialog: false
+                dialog: false,
+                wfocus: 0
             }
         },
         computed: {
@@ -152,8 +153,7 @@
                 this.dialog = true
             },
             onSpell: function () {
-                //TODO Focus
-              //  this.$refs.inputText.focus()
+                this.wfocus++
             },
             removeItem: function (item) {
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
@@ -213,6 +213,7 @@
                     this.playSound(item)
                 } else {
                     this.playSound(this.itemSelected);
+                    this.wfocus++
                 }
             },
             getText: function (item) {
@@ -225,7 +226,7 @@
                 return null;
             },
             getSound: function (item) {
-                return this.getText(item)
+                return this.getText(item).replace(' ','_')
             },
             playSound: function (item) {
                 var target = this.soundPath + this.getSound(item) + '.mp3';

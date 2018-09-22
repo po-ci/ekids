@@ -11,11 +11,10 @@
             <v-tab key="0" ripple>Learn</v-tab>
             <v-tab key="1" ripple v-if="exercises.listen && exercises.listen.enable">Listen</v-tab>
             <v-tab key="2" ripple v-if="exercises.read && exercises.read.enable">Read</v-tab>
+            <v-tab key="3" ripple v-if="exercises.pairs && exercises.pairs.enable">Memotest</v-tab>
+            <v-tab key="4" ripple v-if="exercises.dictation && exercises.dictation.enable">Dictation</v-tab>
+            <v-tab key="5" ripple v-if="exercises.remember && exercises.remember.enable">Identify</v-tab>
 
-            <v-tab key="3" ripple v-if="exercises.dictation && exercises.dictation.enable">Dictation</v-tab>
-
-            <v-tab key="4" ripple v-if="exercises.remember && exercises.remember.enable">Remember</v-tab>
-            <v-tab key="5" ripple v-if="exercises.pairs && exercises.pairs.enable">Memotest</v-tab>
 
             <!--Learn-->
             <v-tab-item key="0">
@@ -39,8 +38,15 @@
                 </read>
             </v-tab-item>
 
+            <!--Memotest-->
+            <v-tab-item key="3" v-if="exercises.pairs && exercises.pairs.enable">
+                <pairs :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+                       :soundPath="soundPath" :img="img" :imgPath="imgPath" :textEnable="textEnable">
+                </pairs>
+            </v-tab-item>
+
             <!--Dictation-->
-            <v-tab-item key="3" v-if="exercises.dictation && exercises.dictation.enable">
+            <v-tab-item key="4" v-if="exercises.dictation && exercises.dictation.enable">
                 <dictation :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                            :soundPath="soundPath" :img="img" :imgPath="imgPath" :fab="fab" :textEnable="textEnable">
                 </dictation>
@@ -48,17 +54,10 @@
 
 
             <!--Remember-->
-            <v-tab-item key="4" v-if="exercises.remember && exercises.remember.enable">
+            <v-tab-item key="5" v-if="exercises.remember && exercises.remember.enable">
                 <Remember :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                           :soundPath="soundPath" :img="img" :imgPath="imgPath" :fab="fab" :textEnable="textEnable">
                 </Remember>
-            </v-tab-item>
-
-            <!--Memotest-->
-            <v-tab-item key="5" v-if="exercises.pairs && exercises.pairs.enable">
-                <pairs :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
-                       :soundPath="soundPath" :img="img" :imgPath="imgPath" :textEnable="textEnable">
-                </pairs>
             </v-tab-item>
 
 
@@ -107,14 +106,14 @@
         },
         watch: {
             activeTab: function () {
-                if(this.active != this.activeTab){
+                if (this.active != this.activeTab) {
                     this.active = this.activeTab
                 }
 
             },
             active: function () {
-                if(this.active != this.activeTab){
-                   this.$store.commit('setTab',this.active)
+                if (this.active != this.activeTab) {
+                    this.$store.commit('setTab', this.active)
                 }
             }
         },

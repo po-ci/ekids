@@ -167,10 +167,8 @@
                     this.ready = false
                 }
 
-
                 if (this.index1 != null && this.index2 != null) {
                     if (this.item1 === this.item2) {
-                        this.playYes()
                         this.gameListDone.push(this.item1)
                         this.points = this.points +3
 
@@ -182,7 +180,6 @@
                             this.nextCards()
                         }
                     } else {
-                        this.playNo()
                         setTimeout(this.nextCards, 1000)
                     }
 
@@ -216,10 +213,10 @@
             },
             getSound: function (item) {
                 if (typeof item === "string") {
-                    return item
+                    return item.replace(' ','_')
                 }
                 if (item.text != undefined && typeof item.text === "string") {
-                    return item.text
+                    return item.text.replace(' ','_')
                 }
                 return "";
             },

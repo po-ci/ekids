@@ -15,6 +15,10 @@ import Shapes from './containers/pages/Shapes.vue'
 
 import Clothes from './containers/pages/Clothes.vue'
 
+import House from './containers/pages/House.vue'
+
+import Fruits from './containers/pages/Fruits.vue'
+
 Vue.use(VueRouter)
 
 
@@ -30,7 +34,9 @@ const routes = [
     {name: "colors", path: '/colors', component: Colors},
     {name: "professions", path: '/professions', component: Professions},
     {name: "shapes", path: '/shapes', component: Shapes},
-    {name: "clothes", path: '/clothes', component: Clothes}
+    {name: "clothes", path: '/clothes', component: Clothes},
+    {name: "house", path: '/house', component: House},
+    {name: "fruits", path: '/fruits', component: Fruits}
 ]
 
 // 3. Create the router instance and pass the `routes` option

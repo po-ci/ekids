@@ -108,7 +108,7 @@
         },
         methods: {
             playSound: function () {
-                var target = this.soundPath + this.getText + '.mp3';
+                var target = this.soundPath + this.getText.replace(' ','_') + '.mp3';
                 var audio = new Audio(target);
                 audio.play()
             },

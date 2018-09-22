@@ -24,7 +24,8 @@
         props: {
             letter: String,
             index: Number,
-            focus: Number
+            focus: Number,
+            wfocus: Number,
         },
         data: function () {
             return {
@@ -35,6 +36,11 @@
             }
         },
         watch: {
+            wfocus: function(){
+                if ((this.focus == this.index)) {
+                    this.$refs.i.focus()
+                }
+            },
             focus: function () {
                 if ((this.focus == this.index)) {
                     this.$refs.i.focus()

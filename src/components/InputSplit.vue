@@ -9,6 +9,7 @@
                                 :ref="index"
                                 v-on:letterState="letterState"
                                 :focus="focus"
+                                :wfocus="wfocus"
             >
             </input-split-letter>
         </v-layout>
@@ -22,7 +23,8 @@
         name: 'InputSplit',
         components: {InputSplitLetter},
         props: {
-            word: String
+            word: String,
+            wfocus: Number
         },
         data: function () {
             return {
@@ -33,18 +35,17 @@
             }
         },
         watch: {
-          word: function(){
-              this.makeSplitLetters()
-          }
+            word: function () {
+                this.makeSplitLetters()
+            }
         },
-        computed: {
-        },
+        computed: {},
         methods: {
             makeSplitLetters: function () {
                 this.splitLetters = []
 
                 if (this.word) {
-                    this.splitLetters =  this.word.split('')
+                    this.splitLetters = this.word.split('')
                 }
                 this.focus = 0
             },
@@ -55,8 +56,8 @@
                     this.focus = data.index + 1
 
                 }
-                if(this.checkWord()){
-                    this.$emit("match",this.word)
+                if (this.checkWord()) {
+                    this.$emit("match", this.word)
                 }
             },
             checkWord: function () {
