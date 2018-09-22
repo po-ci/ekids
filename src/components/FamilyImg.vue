@@ -1,12 +1,13 @@
 <template>
 
     <div class="text-xs-center">
-    <img class="pa-1 btnImg"
-         :src="getSrc()"
-         v-on:click="playButton()"
-    />
-    <br>
-    <span v-if="showName" :key="'text'+index">{{getText(item).toUpperCase()}}</span>
+        <img class="pa-1 btnImg"
+             :src="getSrc()" height="120px"
+             v-on:click="playButton()"
+        />
+        <br>
+        <span  class="font-weight-bold">{{getText().toUpperCase()}}</span><br>
+        <span >{{getTextEs().toUpperCase()}}</span>
     </div>
 
 </template>
@@ -26,25 +27,25 @@
                 var audio = new Audio(target);
                 audio.play()
             },
-            playButton: function (item) {
+            playButton: function () {
                 if (this.soundEnable == true) {
-                    this.playSound(this.getText(item))
+                    this.playSound(this.getText())
                 }
-                this.$emit('playButton', item);
+                this.$emit('playButton', this.item);
             },
-            getBtnText: function (item) {
-                if (this.textEnable == false) {
-                    return ""
-                }
-                return this.getText(item)
-            },
-            getText: function (item) {
+            getText: function () {
 
-                if (typeof item === "string") {
-                    return item
+                if (typeof this.item === "string") {
+                    return this.item
                 }
-                if (item.text != undefined && typeof item.text === "string") {
-                    return item.text
+                if (this.item.text != undefined && typeof this.item.text === "string") {
+                    return this.item.text
+                }
+                return "";
+            },
+            getTextEs: function () {
+                if (typeof this.item.es === "string") {
+                    return this.item.es
                 }
                 return "";
             },

@@ -73,6 +73,13 @@ export const store = new Vuex.Store({
                 {text: "garden", src: "garden.png"},
                 {text: "front door", src: "front_door.png"}
                 ],
+            weather: [
+                {text: "sunny", src: "sunny.png"},
+                {text: "cloudy", src: "cloudy.png"},
+                {text: "rainy", src: "rainy.png"},
+                {text: "windy", src: "windy.png"},
+                {text: "snowy", src: "snowy.png"}
+            ],
             fruits: [
                 {text: "apple", src: "apple.png"},
                 {text: "pear", src: "pear.png"},
@@ -81,6 +88,19 @@ export const store = new Vuex.Store({
                 {text: "cherries", src: "cherries.png"},
                 {text: "banana", src: "banana.png"},
             ],
+            family: {
+                me: {text: "me", src: "me.png", es: "yo"},
+                sister: {text: "sister", src: "sister.png", es: "hermana"},
+                brother: {text: "brother", src: "brother.png", es: "hermano"},
+                dad: {text: "dad", src: "dad.png", es: "papa"},
+                mum: {text: "mum", src: "mum.png", es: "mama"},
+                grandpa: {text: "grandpa", src: "grandpa.png", es: "abuelo"},
+                grandma: {text: "grandma", src: "grandma.png", es: "abuela"},
+                aunt: {text: "aunt", src: "aunt.png", es: "tia"},
+                uncle: {text: "uncle", src: "uncle.png", es: "tio"},
+                cousin: {text: "cousin", src: "cousin.png", es: "primo"},
+                baby: {text: "baby", src: "baby.png", es: "bebe"},
+            },
         },
         nav: [
             {
@@ -127,6 +147,12 @@ export const store = new Vuex.Store({
 
             },
             {
+                icon: 'wb_sunny',
+                text: 'Weather / Weather',
+                link: {name: "weather"},
+
+            },
+            {
                 icon: 'shopping_basket',
                 text: 'Fruits / Frutas',
                 link: {name: "fruits"},
@@ -136,6 +162,12 @@ export const store = new Vuex.Store({
                 icon: 'home',
                 text: 'The House / La Casa',
                 link: {name: "house"},
+
+            },
+            {
+                icon: 'child_friendly',
+                text: 'Family / Familia',
+                link: {name: "family"},
 
             }
         ],

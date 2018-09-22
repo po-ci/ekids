@@ -39,7 +39,7 @@
                 enName: "shapes",
                 esName: "las formas",
                 enTitle: "Shapes",
-                esTitle: "Shapes",
+                esTitle: "Formas",
                 exercises: {
                     listen: {enable: true},
                     read: {enable: true},

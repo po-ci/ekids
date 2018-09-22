@@ -27,6 +27,10 @@ export const imgHousePath = "/img/house/";
 export const soundFruitsPath = "/sounds/fruits/";
 export const imgFruitsPath = "/img/fruits/";
 
+//Weather
+export const soundWeatherPath = "/sounds/weather/";
+export const imgWeatherPath = "/img/weather/";
+
 //Family
 export const soundFamilyPath = "/sounds/family/";
 export const imgFamilyPath = "/img/family/";

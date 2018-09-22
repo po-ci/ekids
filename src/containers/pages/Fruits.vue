@@ -39,7 +39,7 @@
                 enName: "the parts of House",
                 esName: "las partes de la casa",
                 enTitle: "The House",
-                esTitle: "The House",
+                esTitle: "Frutas",
                 exercises: {
                     listen: {enable: true},
                     read: {enable: true},

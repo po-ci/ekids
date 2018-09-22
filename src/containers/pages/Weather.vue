@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.clothes" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.weather" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
@@ -10,22 +10,22 @@
 </template>
 
 <script>
-    import {soundClothesPath, imgClothesPath} from '../../config/config'
+    import {soundWeatherPath, imgWeatherPath} from '../../config/config'
     import Tabs from '../tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Clothes',
+        name: 'Weather',
         components: {Tabs},
         computed: {
             ...mapState([
                 'words'
             ]),
             getSoundPath: function () {
-                return soundClothesPath;
+                return soundWeatherPath;
             },
             getImgPath: function () {
-                return imgClothesPath;
+                return imgWeatherPath;
             }
         },
         mounted: function(){
@@ -36,10 +36,10 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "clothes",
-                esName: "las ropa",
-                enTitle: "Clothes",
-                esTitle: "Ropa",
+                enName: "weather",
+                esName: "el clima",
+                enTitle: "Weather",
+                esTitle: "Clima",
                 exercises: {
                     listen: {enable: true},
                     read: {enable: true},
