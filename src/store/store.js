@@ -168,7 +168,7 @@ export const store = new Vuex.Store({
 
             },
             {
-                icon: 'home',
+                icon: 'store',
                 text: 'The House',
                 esText: 'La Casa',
                 link: {name: "house"},
