@@ -42,6 +42,7 @@
         computed: {},
         methods: {
             makeSplitLetters: function () {
+                this.inputSplit = []
                 this.splitLetters = []
 
                 if (this.word) {
