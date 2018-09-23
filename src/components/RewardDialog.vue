@@ -5,7 +5,7 @@
             persistent
     >
         <v-card>
-            <v-card-title class="headline">Reward / Recompenza</v-card-title>
+            <v-card-title class="headline">Reward / Recompensa</v-card-title>
 
             <v-card-text class="text-lg-center text-xs-center">
                 <h4 class="display-1">
