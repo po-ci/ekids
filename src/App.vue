@@ -42,7 +42,7 @@
                         <v-list-tile slot="activator">
                             <v-list-tile-content>
                                 <v-list-tile-title>
-                                    {{ item.text }}
+                                    {{ item.text }} / {{ item.esText }}
                                 </v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
@@ -56,7 +56,7 @@
                             </v-list-tile-action>
                             <v-list-tile-content>
                                 <v-list-tile-title>
-                                    {{ child.text }}
+                                    {{ item.text }} / {{ item.esText }}
                                 </v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
@@ -67,7 +67,7 @@
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>
-                                {{ item.text }}
+                                {{ item.text }} / {{ item.esText }}
                             </v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
@@ -121,7 +121,7 @@
     data() {
       return {
         clipped: false,
-        drawer: true,
+        drawer: false,
         fixed: false,
 
         miniVariant: false,

@@ -2,7 +2,7 @@
     <div>
         <v-container fluid>
         <v-layout row wrap>
-            <v-flex v-for="(item,index) in items" xs3 sm3 md2 lg2 >
+            <v-flex v-for="(item,index) in items" >
                 <card
                         :key="index"
                         :item="item"
