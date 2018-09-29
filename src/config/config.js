@@ -1,3 +1,6 @@
+export const soundPath = "/sounds/"
+export const imgPath = "/img/"
+
 //ABC
 export const soundAbcPath = "/sounds/abc/";
 
@@ -34,5 +37,9 @@ export const imgWeatherPath = "/img/weather/";
 //Family
 export const soundFamilyPath = "/sounds/family/";
 export const imgFamilyPath = "/img/family/";
+
+//Animals
+export const soundAnimalsPath = "/sounds/animals/";
+export const imgAnimalsPath = "/img/animals/";
 
 export const soundHelpersPath = "/sounds/helpers/";

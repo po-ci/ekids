@@ -67,7 +67,7 @@
                 return "Press the " + this.enName + " to hear their pronunciation"
             },
             esDesc: function () {
-                return "Oprime " + this.esName + " para escuchar su pronunciación"
+                return "Oprime sobre " + this.esName + " para escuchar su pronunciación"
             },
         }
     }

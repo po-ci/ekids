@@ -101,6 +101,25 @@ export const store = new Vuex.Store({
                 cousin: {text: "cousin", src: "cousin.png", es: "primo"},
                 baby: {text: "baby", src: "baby.png", es: "bebe"},
             },
+            animals: [
+                {text: "dog", src: "dog.png"},
+                {text: "cat", src: "cat.png"},
+                {text: "lion", src: "lion.png"},
+                {text: "turtle", src: "turtle.png"},
+                {text: "horse", src: "horse.png"},
+                {text: "donkey", src: "donkey.png"},
+                {text: "rabbit", src: "rabbit.png"},
+                {text: "hippo", src: "hippo.png"},
+                {text: "gorilla", src: "gorilla.png"},
+                {text: "leopard", src: "leopard.png"},
+                {text: "elephant", src: "elephant.png"},
+                {text: "giraffe", src: "giraffe.png"},
+                {text: "dolphin", src: "dolphin.png"},
+                {text: "monkey", src: "monkey.png"},
+                {text: "penguin", src: "penguin.png"},
+                {text: "snake", src: "snake.png"},
+                {text: "bird", src: "bird.png"}
+            ],
         },
         nav: [
             {
@@ -179,6 +198,13 @@ export const store = new Vuex.Store({
                 text: 'Family',
                 esText: 'Familia',
                 link: {name: "family"},
+
+            },
+            {
+                icon: 'pets',
+                text: 'Animals',
+                esText: 'Animales',
+                link: {name: "animals"},
 
             }
         ],

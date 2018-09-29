@@ -23,6 +23,8 @@ import Family from './containers/pages/Family.vue'
 
 import Weather from './containers/pages/Weather.vue'
 
+import Animals from './containers/pages/Animals.vue'
+
 Vue.use(VueRouter)
 
 
@@ -42,7 +44,8 @@ const routes = [
     {name: "house", path: '/house', component: House},
     {name: "fruits", path: '/fruits', component: Fruits},
     {name: "family", path: '/family', component: Family},
-    {name: "weather", path: '/weather', component: Weather}
+    {name: "weather", path: '/weather', component: Weather},
+    {name: "animals", path: '/animals', component: Animals}
 ]
 
 // 3. Create the router instance and pass the `routes` option
