@@ -52,5 +52,6 @@ const routes = [
 // You can pass in additional options here, but let's
 // keep it simple for now.
 export const router = new VueRouter({
-    routes
+    mode: 'history',
+    routes: routes
 })
