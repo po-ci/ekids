@@ -1,0 +1,20 @@
+{
+  "renderRoutes": [
+    "/",
+    "/abc",
+    "/numbers",
+    "/numbers",
+    "/colors",
+    "/shapes",
+    "/professions",
+    "/clothes",
+    "/house",
+    "/fruits",
+    "/family",
+    "/weather",
+    "/animals"
+  ],
+  "useRenderEvent": false,
+  "headless": true,
+  "onlyProduction": true
+}
