@@ -2,7 +2,7 @@
     <v-container fluid grid-list-xs class="pa-0 ma-0">
         <v-layout row wrap align-start>
             <template v-for="(item,index) in items">
-                <v-flex class="text-xs-center">
+                <v-flex class="text-xs-center" shrink>
 
                     <img :key="'img'+index" class="pa-1 btnImg"
                          :class="getImgClass(item) "

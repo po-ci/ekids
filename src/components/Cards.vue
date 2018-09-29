@@ -1,8 +1,8 @@
 <template>
     <div>
-        <v-container fluid>
+        <v-container fluid grid-list-xs>
         <v-layout row wrap>
-            <v-flex v-for="(item,index) in items" >
+            <v-flex v-for="(item,index) in items" shrink>
                 <card
                         :key="index"
                         :item="item"
@@ -15,6 +15,7 @@
                         :ready="ready"
                         :gameListDone="gameListDone"
                         v-on:pickCard="onPickCard"
+
                 />
             </v-flex>
         </v-layout>

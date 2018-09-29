@@ -18,7 +18,7 @@
 
 
                 <!--Excercise-->
-                <v-card-text>
+                <v-card-text class="pb-0">
 
                         <cards
                                 :soundEnable="false"
@@ -37,7 +37,7 @@
 
                 </v-card-text>
 
-                <v-card-text>
+                <v-card-text class="pa-0 ">
                     <h4 v-if="itemShow" class="text-xs-center display-1">{{getItemShow}}</h4>
                 </v-card-text>
 
@@ -72,7 +72,7 @@
             fab: {type: Boolean, default: true},
             textEnable: {type: Boolean, default: true},
             gameBgColor: {type: String, default: "green"},
-            limit: {type: Number, default: 6}
+            limit: {type: Number, default: 7}
         },
         mounted: function () {
             this.baseList = Object.assign([], this.words);

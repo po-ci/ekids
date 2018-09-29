@@ -99,7 +99,7 @@
             img: {type: Boolean, default: false},
             fab: {type: Boolean, default: true},
             textEnable: {type: Boolean, default: true},
-            gameBgColor: {type: String, default: "green"},
+            gameBgColor: {type: String, default: "lime"},
         },
         mounted: function () {
             this.baseList = Object.assign([], this.words);
@@ -186,7 +186,9 @@
                     this.removeItem(item)
 
                 } else {
-                    this.points--
+                    if(this.points > 1) {
+                        this.points--
+                    }
                     this.helpShow = true
                     this.playNo()
                 }

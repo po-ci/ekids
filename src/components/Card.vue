@@ -1,19 +1,18 @@
 <template>
-    <div v-if="!getShowCard && item" class="gameCard" :class="getGameCardClass" v-on:click="pickCard"></div>
+    <div class="gameCard">
+        <div v-if="!getShowCard && item" :class="getGameCardClass" v-on:click="pickCard"></div>
 
 
-    <v-img v-else-if="img && item" class="pa-0" :class="getImgClass" :src="getSrc" :contain="true" max-height="100px">
-    </v-img>
+        <v-img v-else-if="img && item" class="pa-0" :class="getImgClass" :src="getSrc" :contain="true"
+               max-height="100px">
+        </v-img>
 
 
-    <div v-else-if="item"  class="gameCard text-xs-center" :class="getBgColor">
+        <div v-else-if="item" class="gameCard text-xs-center" :class="getBgColor">
+
+        </div>
 
     </div>
-
-    <div v-else>
-
-    </div>
-
 </template>
 
 <script>
@@ -59,7 +58,7 @@
 
                 return false
             },
-            istItemDone: function(){
+            istItemDone: function () {
                 if (this.gameListDone.find(obj => obj === this.item)) {
                     return true
                 }
@@ -71,7 +70,7 @@
                 }
                 if (this.item && this.item.bgcolor != undefined) {
                     if (this.gameListDone.find(obj => obj === this.item)) {
-                        return "imgReady "+this.item.bgcolor
+                        return "imgReady " + this.item.bgcolor
                     }
                     return this.item.bgcolor
                 }
@@ -108,7 +107,7 @@
         },
         methods: {
             playSound: function () {
-                var target = this.soundPath + this.getText.replace(' ','_') + '.mp3';
+                var target = this.soundPath + this.getText.replace(' ', '_') + '.mp3';
                 var audio = new Audio(target);
                 audio.play()
             },
@@ -129,17 +128,18 @@
 <style scoped>
 
     .gameCard {
+        width: 100px;
         height: 100px;
-        border: black 1px solid;
     }
 
     .gameCardHide {
+        width: 100px;
+        height: 100px;
         background: darkblue;
         border: aliceblue 1px solid;
-        background:
-                linear-gradient(135deg, #1a237e 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
-                linear-gradient(225deg, #1a237e 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
-        background-color:#1a237e;
+        background: linear-gradient(135deg, #1a237e 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
+        linear-gradient(225deg, #1a237e 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px) 0 64px;
+        background-color: #1a237e;
         background-size: 64px 128px
     }
 

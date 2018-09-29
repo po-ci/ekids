@@ -36,7 +36,7 @@
                 }
             },
             playSound: function (sound) {
-                if (sound == " ") {
+                if (sound == " " || sound == "-") {
                     return
                 }
 
