@@ -65,16 +65,14 @@
                 return ""
             },
             getBgColor: function (item) {
-                if (this.img && this.gameListDone.find(obj => obj === item)) {
+                if (this.gameListDone.find(obj => obj === item)) {
                     return this.gameBgColor
                 }
 
                 if (item.bgcolor != undefined) {
-                    if (this.gameListDone.find(obj => obj === item)) {
-                        return item.bgcolor + " imgReady"
-                    }
                     return item.bgcolor
                 }
+
                 return this.defaultBgColor
             },
             getSrc: function (item) {
@@ -89,10 +87,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .imgReady {
-        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    }
 
     .btnImg {
         cursor: pointer;
