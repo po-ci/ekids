@@ -11,6 +11,22 @@ export const store = new Vuex.Store({
         stars: null,
         points: null,
         level: null,
+        sentences: {
+          profile: [
+              {
+                  question: ["What","is","your","name"],
+                  answer: ["My","name","is","#"]
+              },
+              {
+                  question: ["What","is","your","favorite","color"],
+                  answer: ["My","favorite","color","is","#"]
+              },
+              {
+                  question: ["How","old","are","you"],
+                  answer: ["I","am","#","years","old"]
+              }
+          ]
+        },
         words: {
             abc: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
             numbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
@@ -79,6 +95,14 @@ export const store = new Vuex.Store({
                 {text: "rainy", src: "rainy.png"},
                 {text: "windy", src: "windy.png"},
                 {text: "snowy", src: "snowy.png"}
+            ],
+            hair: [
+                {text: "blond", src: "blond.png"},
+                {text: "brown", src: "brown.png"},
+                {text: "long", src: "long.png"},
+                {text: "short", src: "short.png"},
+                {text: "curly", src: "curly.png"},
+                {text: "straight", src: "straight.png"}
             ],
             fruits: [
                 {text: "apple", src: "apple.png"},
@@ -184,6 +208,13 @@ export const store = new Vuex.Store({
                 text: 'Fruits',
                 esText: 'Frutas',
                 link: {name: "fruits"},
+
+            },
+            {
+                icon: 'gesture',
+                text: 'Hair',
+                esText: 'Pelo',
+                link: {name: "hair"},
 
             },
             {
