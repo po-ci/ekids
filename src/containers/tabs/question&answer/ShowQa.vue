@@ -12,15 +12,33 @@
                 <!--Buttons-->
                 <v-card-text>
 
-                    <v-carousel>
-                        <v-carousel-item
-                                v-for="(item,i) in qa"
-                                :key="i"
-                        >
-                            asdasdasdasdasdas
+                    <v-layout v-for="(item,i) in qa" :key="i" class="pa-3 ma-2 text-xs-center">
 
-                        </v-carousel-item>
-                    </v-carousel>
+                        <!--Ingles-->
+                        <v-flex xs12 lg8 offset-lg2>
+
+                            <v-layout class="pa-1">
+
+                                <v-flex xs6>
+                                    <v-tooltip top>
+                                    <v-btn color="purple" large dark slot="activator" class="text-uppercase"> {{getQuestionEn(item)}}
+                                    </v-btn>
+                                        <span>{{getQuestionEs(item)}}</span>
+                                    </v-tooltip>
+                                </v-flex>
+
+                                <v-flex xs6>
+                                    <v-tooltip bottom>
+                                        <v-btn color="green" large dark slot="activator" class="text-uppercase"> {{getAnswerEn(item)}}</v-btn>
+                                        <span>{{getAnswerEs(item)}}</span>
+                                    </v-tooltip>
+                                </v-flex>
+                            </v-layout>
+
+                        </v-flex>
+
+
+                    </v-layout>
 
                 </v-card-text>
 
@@ -53,6 +71,8 @@
             textEnable: {type: Boolean, default: true},
             fab: {type: Boolean, default: true}
         },
+        mounted: function () {
+        },
         computed: {
             enDesc: function () {
                 return "Press the button to hear their pronunciation"
@@ -60,6 +80,20 @@
             esDesc: function () {
                 return "Oprime el boton para escuchar su pronunciación"
             },
+        },
+        methods: {
+            getQuestionEn: function(item){
+                return item.question.en+" ?"
+            },
+            getAnswerEn: function(item){
+                return item.answer.en.replace("#",item.answer.enWord)
+            },
+            getQuestionEs: function(item){
+                return "¿ "+item.question.es+" ?"
+            },
+            getAnswerEs: function(item){
+                return item.answer.es.replace("#",item.answer.enWord)
+            }
         }
     }
 </script>

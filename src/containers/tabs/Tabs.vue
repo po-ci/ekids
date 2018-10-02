@@ -64,9 +64,9 @@
             </v-tab-item>
 
 
-            <!--Learn-->
+            <!--ShowQa-->
             <v-tab-item key="6" v-if="exercises.showQa && exercises.showQa.enable">
-                <show-qa :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+                <show-qa :qa="qa" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                        :soundPath="soundPath" :img="img" :imgPath="imgPath" :fab="fab" :textEnable="textEnable">
                 </show-qa>
             </v-tab-item>
@@ -104,6 +104,7 @@
         components: {Learn, Listen, Read, Dictation, Pairs, Remember,ShowQa},
         props: {
             words: Array,
+            qa: Array,
             learnHeaders: Object,
             enName: String,
             esName: String,

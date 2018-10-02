@@ -16,10 +16,10 @@ export const store = new Vuex.Store({
                 {
                     question: {en: "what is your name", es: "cual es tu nombre"},
                     answer: {
-                        en: "My name is #",
-                        enWord: "Norton",
-                        es: "Mi nombre es #",
-                        esWord: "Norton"
+                        en: "my name is #",
+                        enWord: "Lisa",
+                        es: "mi nombre es #",
+                        esWord: "Lisa"
                     }
                 },
                 {

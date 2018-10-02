@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
             <tabs
-                    :words="qa.profile"
+                    :qa="qa.profile"
                     :enName="enName"
                     :esName="esName"
                     :enTitle="enTitle"
