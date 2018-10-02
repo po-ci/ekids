@@ -27,6 +27,10 @@ import Animals from './containers/pages/Animals.vue'
 
 import Hair from './containers/pages/Hair.vue'
 
+import Body from './containers/pages/Body.vue'
+
+import Profile from './containers/pages/Profile.vue'
+
 Vue.use(VueRouter)
 
 
@@ -48,7 +52,9 @@ const routes = [
     {name: "family", path: '/family', component: Family},
     {name: "weather", path: '/weather', component: Weather},
     {name: "animals", path: '/animals', component: Animals},
-    {name: "hair", path: '/hair', component: Hair}
+    {name: "hair", path: '/hair', component: Hair},
+    {name: "body", path: '/body', component: Body},
+    {name: "profile", path: '/profile', component: Profile}
 ]
 
 // 3. Create the router instance and pass the `routes` option

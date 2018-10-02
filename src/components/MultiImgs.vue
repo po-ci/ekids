@@ -2,15 +2,22 @@
     <v-container fluid grid-list-xs class="pa-0 ma-0">
         <v-layout row wrap align-start>
             <template v-for="(item,index) in items">
-                <v-flex class="text-xs-center" shrink>
 
-                    <img :key="'img'+index" class="pa-1 btnImg"
-                         :class="getImgClass(item) "
-                         :src="getSrc(item)" height="120px"
-                         v-on:click="playButton(item)"
-                    />
+                <v-flex class="text-xs-center" shrink>
+                    <v-tooltip top>
+                        <img
+                                slot="activator"
+                                :key="'img'+index" class="pa-1 btnImg"
+                                :class="getImgClass(item) "
+                                :src="getSrc(item)" height="120px"
+                                v-on:click="playButton(item)"
+                        />
+                        <span >{{getTextEs(item)}}</span>
+                    </v-tooltip>
                     <br>
                     <span v-if="showName" :key="'text'+index">{{getText(item).toUpperCase()}}</span>
+
+
                 </v-flex>
             </template>
         </v-layout>
@@ -22,6 +29,7 @@
         name: 'MultiImg',
         props: {
             showName: {type: Boolean, default: false},
+            tooltip: {type: Boolean, default: false},
             cssclass: String,
             items: Array,
             soundPath: String,
@@ -41,7 +49,7 @@
         computed: {},
         methods: {
             playSound: function (sound) {
-                var target = this.soundPath + sound.replace(' ','_') + '.mp3';
+                var target = this.soundPath + sound.replace(' ', '_') + '.mp3';
                 var audio = new Audio(target);
                 audio.play()
             },
@@ -66,6 +74,12 @@
                     return item.text
                 }
                 return "";
+            },
+            getTextEs: function(item){
+              if(item.es){
+                  return item.es.toUpperCase()
+              }
+              return ""
             },
             getImgClass: function (item) {
                 if (this.gameListDone.find(obj => obj === item)) {

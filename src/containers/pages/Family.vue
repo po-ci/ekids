@@ -79,11 +79,11 @@
                 enTitle: "Family",
                 esTitle: "Familia",
                 exercises: {
-                    listen: {enable: true},
-                    read: {enable: true},
-                    dictation: {enable: true},
-                    pairs: {enable: true},
-                    remember: {enable: true}
+                    listen: {enable: false},
+                    read: {enable: false},
+                    dictation: {enable: false},
+                    pairs: {enable: false},
+                    remember: {enable: false}
                 }
             }
         }

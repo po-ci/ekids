@@ -8,7 +8,7 @@
                 :show-arrows="true"
         >
             <v-tabs-slider color="yellow"></v-tabs-slider>
-            <v-tab key="0" ripple>Learn</v-tab>
+            <v-tab key="0" ripple v-if="exercises.learn && exercises.learn.enable">Learn</v-tab>
             <v-tab key="1" ripple v-if="exercises.listen && exercises.listen.enable">Listen</v-tab>
             <v-tab key="2" ripple v-if="exercises.read && exercises.read.enable">Read</v-tab>
             <v-tab key="3" ripple v-if="exercises.pairs && exercises.pairs.enable">Memotest</v-tab>
@@ -16,8 +16,11 @@
             <v-tab key="5" ripple v-if="exercises.remember && exercises.remember.enable">Identify</v-tab>
 
 
+            <!--QA-->
+            <v-tab key="6" ripple v-if="exercises.showQa && exercises.showQa.enable">Learn</v-tab>
+
             <!--Learn-->
-            <v-tab-item key="0">
+            <v-tab-item key="0" v-if="exercises.learn && exercises.learn.enable">
                 <learn :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                        :soundPath="soundPath" :img="img" :imgPath="imgPath" :fab="fab" :textEnable="textEnable">
                 </learn>
@@ -61,6 +64,14 @@
             </v-tab-item>
 
 
+            <!--Learn-->
+            <v-tab-item key="6" v-if="exercises.showQa && exercises.showQa.enable">
+                <show-qa :words="words" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+                       :soundPath="soundPath" :img="img" :imgPath="imgPath" :fab="fab" :textEnable="textEnable">
+                </show-qa>
+            </v-tab-item>
+
+
         </v-tabs>
 
         <!--<v-btn-->
@@ -79,17 +90,18 @@
 </template>
 
 <script>
-    import Learn from './Learn'
-    import Listen from './Listen'
-    import Read from './Read'
-    import Dictation from './Dictation'
-    import Pairs from './Pairs'
-    import Remember from './Remember.vue'
+    import Learn from './vocabulary/Learn'
+    import Listen from './vocabulary/Listen'
+    import Read from './vocabulary/Read'
+    import Dictation from './vocabulary/Dictation'
+    import Pairs from './vocabulary/Pairs'
+    import Remember from './vocabulary/Remember.vue'
+    import ShowQa from './question&answer/ShowQa.vue'
     import {mapState} from 'vuex'
 
     export default {
         name: 'Tabs',
-        components: {Learn, Listen, Read, Dictation, Pairs, Remember},
+        components: {Learn, Listen, Read, Dictation, Pairs, Remember,ShowQa},
         props: {
             words: Array,
             learnHeaders: Object,

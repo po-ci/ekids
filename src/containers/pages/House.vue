@@ -41,6 +41,7 @@
                 enTitle: "The House",
                 esTitle: "La casa",
                 exercises: {
+                    learn: {enable: true},
                     listen: {enable: true},
                     read: {enable: true},
                     dictation: {enable: true},

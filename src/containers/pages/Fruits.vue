@@ -41,6 +41,7 @@
                 enTitle: "The House",
                 esTitle: "Frutas",
                 exercises: {
+                    learn: {enable: true},
                     listen: {enable: true},
                     read: {enable: true},
                     dictation: {enable: true},

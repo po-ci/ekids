@@ -41,6 +41,7 @@
                 enTitle: "Shapes",
                 esTitle: "Formas",
                 exercises: {
+                    learn: {enable: true},
                     listen: {enable: true},
                     read: {enable: true},
                     dictation: {enable: true},

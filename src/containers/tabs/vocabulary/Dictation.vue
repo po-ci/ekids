@@ -58,12 +58,12 @@
 </template>
 
 <script>
-    import MultiButtons from './../../components/MultiButtons.vue'
-    import Spell from './../../components/Spell.vue'
-    import HeaderPage from './../../components/HeaderPage'
-    import {soundHelpersPath} from '../../config/config'
-    import InputSplit from './../../components/InputSplit.vue'
-    import RewardDialog from '../../components/RewardDialog.vue'
+    import MultiButtons from '../../../components/MultiButtons.vue'
+    import Spell from '../../../components/Spell.vue'
+    import HeaderPage from '../../../components/HeaderPage'
+    import {soundHelpersPath} from '../../../config/config'
+    import InputSplit from '../../../components/InputSplit.vue'
+    import RewardDialog from '../../../components/RewardDialog.vue'
     import MixinTabs from './MixinTabs'
 
     export default {

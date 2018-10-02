@@ -36,6 +36,7 @@
                 enTitle: "Alphabet",
                 esTitle: "Abecedario",
                 exercises: {
+                    learn: {enable: true},
                     listen: {enable: true},
                     dictation: {enable: true},
                     pairs: {enable: true}

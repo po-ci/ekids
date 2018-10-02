@@ -50,11 +50,11 @@
 </template>
 
 <script>
-    import Cards from '../../components/Cards.vue'
-    import HeaderPage from '../../components/HeaderPage.vue'
-    import {soundHelpersPath} from '../../config/config'
-    import RewardDialog from '../../components/RewardDialog.vue'
-    import shuffle from './../../helpers/shuffle'
+    import Cards from '../../../components/Cards.vue'
+    import HeaderPage from '../../../components/HeaderPage.vue'
+    import {soundHelpersPath} from '../../../config/config'
+    import RewardDialog from '../../../components/RewardDialog.vue'
+    import shuffle from '../../../helpers/shuffle'
 
     export default {
         name: 'Pairs',

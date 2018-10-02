@@ -35,39 +35,56 @@
 
                 </v-toolbar>
 
-                <!--show item-->
+                <!--Excercise-->
                 <v-card-text>
-                    <card
-                            :item="itemSelected"
-                            :showCard="getShowCard"
-                            :img="img"
-                            :imgPath="imgPath"
-                            :soundPath="imgPath"
-                            :ready="ready"
-                            :gameListDone="gameListDone"
-                            :soundEnable="false"
-                    />
+                    <template v-if="img">
+                        <multi-imgs
+                                :soundEnable="false"
+                                :items="this.baseList"
+                                :fab="fab"
+                                :soundPath="soundPath"
+                                :showName="false"
+                                :img="img" :imgPath="imgPath"
+                                :textEnable="textEnable"
+                                :gameBgColor="gameBgColor"
+                                :gameListDone="gameListDone"
+                                v-on:playButton="playButton"
+                        ></multi-imgs>
+                    </template>
 
-                    <input-split :word="getItemSelectedText" v-on:match="match"></input-split>
+                    <template v-else>
+                        <multi-buttons
+                                :soundEnable="false"
+                                :items="this.baseList"
+                                :fab="fab"
+                                :soundPath="soundPath"
+                                :showName="false"
+                                :textEnable="textEnable"
+                                :gameBgColor="gameBgColor"
+                                :gameListDone="gameListDone"
+                                v-on:playButton="playButton"
+                        ></multi-buttons>
+                    </template>
                 </v-card-text>
 
             </v-card>
         </v-flex>
+
         <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog" v-on:repeat="repeat"></reward-dialog>
     </v-layout>
 </template>
 
 <script>
-    import Card from './../../components/Card.vue'
-    import HeaderPage from './../../components/HeaderPage'
-    import {soundHelpersPath} from '../../config/config'
-    import InputSplit from './../../components/InputSplit.vue'
-    import RewardDialog from '../../components/RewardDialog.vue'
+    import MultiButtons from '../../../components/MultiButtons.vue'
+    import MultiImgs from '../../../components/MultiImgs.vue'
+    import HeaderPage from '../../../components/HeaderPage.vue'
+    import {soundHelpersPath} from '../../../config/config'
+    import RewardDialog from '../../../components/RewardDialog.vue'
     import MixinTabs from './MixinTabs'
 
     export default {
-        name: 'Remember',
-        components: {HeaderPage, Card,InputSplit,RewardDialog},
+        name: 'Listen',
+        components: {MultiButtons,MultiImgs, HeaderPage, RewardDialog},
         mixins: [MixinTabs],
         props: {
             enName: String,
@@ -75,7 +92,6 @@
             enTitle: String,
             esTitle: String,
             words: Array,
-            headers: Object,
             exercises: Array,
             soundPath: String,
             //MultiButtons
@@ -83,7 +99,7 @@
             img: {type: Boolean, default: false},
             fab: {type: Boolean, default: true},
             textEnable: {type: Boolean, default: true},
-            gameBgColor: {type: String, default: "green"},
+            gameBgColor: {type: String, default: "lime"},
         },
         mounted: function () {
             this.baseList = Object.assign([], this.words);
@@ -91,7 +107,6 @@
         },
         data: function () {
             return {
-                inputText: "",
                 baseList: [],
                 gameList: [],
                 gameListDone: [],
@@ -103,21 +118,15 @@
                 stars: 1,
                 helpShow: null,
                 finishGame: false,
-                dialog: false
+                dialog: false,
             }
         },
         computed: {
-            getShowCard: function(){
-              if(this.itemSelected){
-                  return true
-              }
-              return false
-            },
             enDesc: function () {
-                return "Press the green button and write the "+this.enName+" you see. Correct answer: +3"
+                return "Press the green button and click on the " + this.enName + " you heard. Correct answer: +3. Incorrect answer: -1"
             },
             esDesc: function () {
-                return "Oprime el  boton verde y escribe "+this.esName+" que ves. Respuesta correcta: +3"
+                return "Oprime el  boton verde y has click en " + this.esName + " que escuchaste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
             },
             getIcon: function () {
                 if (this.ready == true) {
@@ -137,18 +146,9 @@
                 if (this.itemShow && this.itemShow.text != undefined && typeof this.itemShow.text === "string") {
                     return this.itemShow.text.toUpperCase()
                 }
-
+                console.log(this.itemShow)
                 return "";
-            },
-            getItemSelectedText: function () {
-                if (typeof this.itemSelected === "string") {
-                    return this.itemSelected.toLowerCase()
-                }
-                if (this.itemSelected && this.itemSelected.text != undefined && typeof this.itemSelected.text === "string") {
-                    return this.itemSelected.text.toLowerCase()
-                }
-                return null;
-            },
+            }
         },
         methods: {
             pay: function () {
@@ -156,14 +156,11 @@
                 this.$store.commit("addPoints", this.points)
                 this.dialog = true
             },
-            onSpell: function () {
-                this.$refs.inputText.focus()
-            },
             removeItem: function (item) {
                 this.gameList.splice(this.gameList.findIndex(obj => obj === item), 1)
                 this.gameListDone.push(item)
                 if (this.gameList.length == 0) {
-                    this.finishGame = true;
+                    this.finishGame = true
                     this.pay()
                 }
             },
@@ -175,60 +172,51 @@
                 var audio = new Audio(soundHelpersPath + 'nonono.mp3')
                 audio.play()
             },
-            match: function (word) {
+            playButton: function (item) {
                 if (this.ready == true) {
                     return
                 }
-                this.playYes()
-                this.ready = true
-                this.itemShow = word
-                this.helpShow = true
-                this.points = this.points + 3
-                this.removeItem(this.itemSelected)
 
-            },
-            checkName: function () {
-                if (this.ready == true) {
-                    return
-                }
-                if (this.inputText && this.inputText.toLowerCase() == this.getText(this.itemSelected)) {
+                if (item == this.itemSelected) {
                     this.playYes()
                     this.ready = true
-                    this.itemShow = this.inputText
+                    this.itemShow = item
                     this.helpShow = true
                     this.points = this.points + 3
-                    this.removeItem(this.itemSelected)
+                    this.removeItem(item)
 
+                } else {
+                    if(this.points > 1) {
+                        this.points--
+                    }
+                    this.helpShow = true
+                    this.playNo()
                 }
             },
             randomItem: function () {
                 if(this.finishGame){
                     this.repeat()
                 }
+
                 if (this.ready == true) {
-                    this.inputText = ""
-                   // this.$refs.inputText.focus()
                     this.helpShow = null
                     this.itemShow = null
                     this.ready = false
                     var item = this.gameList[Math.floor(Math.random() * this.gameList.length)]
                     this.itemSelected = item
-                   // this.playSound(item)
+                    this.playSound(item)
                 } else {
-                   // this.playSound(this.itemSelected);
+                    this.playSound(this.itemSelected);
                 }
-            },
-            getText: function (item) {
-                if (typeof item === "string") {
-                    return item.toLowerCase()
-                }
-                if (item && item.text != undefined && typeof item.text === "string") {
-                    return item.text.toLowerCase()
-                }
-                return null;
             },
             getSound: function (item) {
-                return this.getText(item)
+                if (typeof item === "string") {
+                    return item.replace(' ','_')
+                }
+                if (item.text != undefined && typeof item.text === "string") {
+                    return item.text.replace(' ','_')
+                }
+                return "";
             },
             playSound: function (item) {
                 var target = this.soundPath + this.getSound(item) + '.mp3';

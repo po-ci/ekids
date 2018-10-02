@@ -35,6 +35,10 @@
 
                 </v-toolbar>
 
+                <v-card-text>
+                    <h4 v-if="itemSelected" class="text-xs-center display-1">{{getItemSelectedText.toUpperCase()}}</h4>
+                </v-card-text>
+
                 <!--Excercise-->
                 <v-card-text>
                     <template v-if="img">
@@ -65,25 +69,28 @@
                                 v-on:playButton="playButton"
                         ></multi-buttons>
                     </template>
+
                 </v-card-text>
 
             </v-card>
         </v-flex>
 
-        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog" v-on:repeat="repeat"></reward-dialog>
+        <reward-dialog :stars="this.stars" :points="this.points" :inDialog="dialog"
+                       v-on:repeat="repeat"></reward-dialog>
     </v-layout>
 </template>
 
 <script>
-    import MultiButtons from '../../components/MultiButtons.vue'
-    import MultiImgs from '../../components/MultiImgs.vue'
-    import HeaderPage from '../../components/HeaderPage.vue'
-    import {soundHelpersPath} from '../../config/config'
-    import RewardDialog from '../../components/RewardDialog.vue'
+    import MultiButtons from '../../../components/MultiButtons.vue'
+    import MultiImgs from '../../../components/MultiImgs.vue'
+    import HeaderPage from '../../../components/HeaderPage.vue'
+    import {soundHelpersPath} from '../../../config/config'
+    import RewardDialog from '../../../components/RewardDialog.vue'
     import MixinTabs from './MixinTabs'
 
+
     export default {
-        name: 'Listen',
+        name: 'Read',
         components: {MultiButtons,MultiImgs, HeaderPage, RewardDialog},
         mixins: [MixinTabs],
         props: {
@@ -123,10 +130,10 @@
         },
         computed: {
             enDesc: function () {
-                return "Press the green button and click on the " + this.enName + " you heard. Correct answer: +3. Incorrect answer: -1"
+                return "Press the green button and click on the " + this.enName + " you read. Correct answer: +3. Incorrect answer: -1"
             },
             esDesc: function () {
-                return "Oprime el  boton verde y has click en " + this.esName + " que escuchaste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
+                return "Oprime el  boton verde y has click en " + this.esName + " que leiste. Respuesta correcta: +3. Respuesta Incorrecta: -1 "
             },
             getIcon: function () {
                 if (this.ready == true) {
@@ -148,9 +155,19 @@
                 }
                 console.log(this.itemShow)
                 return "";
-            }
+            },
+            getItemSelectedText: function () {
+                if (typeof this.itemSelected === "string") {
+                    return this.itemSelected.toLowerCase()
+                }
+                if (this.itemSelected && this.itemSelected.text != undefined && typeof this.itemSelected.text === "string") {
+                    return this.itemSelected.text.toLowerCase()
+                }
+                return null;
+            },
         },
         methods: {
+
             pay: function () {
                 this.$store.commit("addStars", this.stars)
                 this.$store.commit("addPoints", this.points)
@@ -204,17 +221,15 @@
                     this.ready = false
                     var item = this.gameList[Math.floor(Math.random() * this.gameList.length)]
                     this.itemSelected = item
-                    this.playSound(item)
-                } else {
-                    this.playSound(this.itemSelected);
+
                 }
             },
             getSound: function (item) {
                 if (typeof item === "string") {
-                    return item.replace(' ','_')
+                    return item
                 }
                 if (item.text != undefined && typeof item.text === "string") {
-                    return item.text.replace(' ','_')
+                    return item.text
                 }
                 return "";
             },

@@ -1,18 +1,9 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs
-                    :words="qa.profile"
-                    :enName="enName"
-                    :esName="esName"
-                    :enTitle="enTitle"
-                    :esTitle="esTitle"
-                    :exercises="exercises"
-                    :soundPath="getSoundPath"
-                    :fab="fab"
-                    :textEnable="textEnable"
-                    :img="img">
-
+            <tabs :words="words.body" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+                  :exercises="exercises"
+                  :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
         </v-slide-y-transition>
     </v-container>
@@ -24,11 +15,11 @@
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Profile',
+        name: 'Body',
         components: {Tabs},
         computed: {
             ...mapState([
-                'qa'
+                'words'
             ]),
             getSoundPath: function () {
                 return soundPath+this.enName+"/";
@@ -37,20 +28,25 @@
                 return imgPath+this.enName+"/";
             }
         },
-        mounted: function () {
-            this.$store.commit("setMaxTab", 1)
+        mounted: function(){
+            this.$store.commit("setMaxTab",6)
         },
         data: function () {
             return {
                 fab: false,
                 textEnable: false,
-                img: false,
-                enName: "profile",
-                esName: "perfil",
-                enTitle: "Profile",
-                esTitle: "Perfil",
+                img: true,
+                enName: "body",
+                esName: "el cuerpo",
+                enTitle: "Body",
+                esTitle: "El cuerpo",
                 exercises: {
-                    showQa: {enable: true},
+                    learn: {enable: true},
+                    listen: {enable: true},
+                    read: {enable: true},
+                    dictation: {enable: true},
+                    pairs: {enable: true},
+                    remember: {enable: true}
                 }
             }
         }

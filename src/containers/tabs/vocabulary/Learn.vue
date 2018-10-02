@@ -19,6 +19,7 @@
                                         :soundPath="soundPath"
                                         :showName="true"
                                         :img="img" :imgPath="imgPath"
+                                        :tooltip="true"
                             ></multi-imgs>
                         </template>
 
@@ -41,9 +42,9 @@
 </template>
 
 <script>
-    import MultiButtons from './../../components/MultiButtons.vue'
-    import MultiImgs from '../../components/MultiImgs.vue'
-    import HeaderPage from './../../components/HeaderPage.vue'
+    import MultiButtons from '../../../components/MultiButtons.vue'
+    import MultiImgs from '../../../components/MultiImgs.vue'
+    import HeaderPage from '../../../components/HeaderPage.vue'
 
     export default {
         name: 'Learn',
