@@ -19,7 +19,7 @@
                 <v-tab-item key="0">
                     <h2 class="text-xs-center mt-3">Change <v-icon color="orange">star</v-icon> for collectible cards!</h2>
                     <p class="text-xs-center">You can get stars by doing exercises in the different categories</p>
-                    <album album="Emojis"></album>
+                    <album album="emojis"></album>
                 </v-tab-item>
             </v-tabs>
         </v-slide-y-transition>

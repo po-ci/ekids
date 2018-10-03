@@ -5,7 +5,7 @@
             <v-layout row wrap justify-center>
 
                 <v-flex xs12>
-                    <h1 class="text-xs-center deep-purple--text display-3">{{album}} Album</h1>
+                    <h1 class="text-xs-center deep-purple--text display-3 text-capitalize">{{album}} Album</h1>
                 </v-flex>
 
                 <v-flex v-for="(card,i) in getCards" shrink>
