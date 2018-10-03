@@ -46,6 +46,12 @@ export const store = new Vuex.Store({
                     {number: 29, name: "wink"},
                     {number: 30, name: "sticking tongue"}
                 ]
+            },
+            toys: {
+                cards: [
+                    {number: 101, name: "train"},
+                    {number: 102, name: "dinosaur"},
+                ]
             }
         },
         qa: {
@@ -312,26 +318,33 @@ export const store = new Vuex.Store({
             // }
         ],
     },
-    getters: {
-        getWords: state => {
-            return state.words
-        },
-        getName: () => {
-            return localStorage.getItem("name")
-        },
-        getStars: () => {
-            return localStorage.getItem("stars")
-        },
-        getPoints: () => {
-            return localStorage.getItem("points")
-        },
-        getLevel: () => {
-            return localStorage.getItem("level")
-        },
-        getUserCards: () => {
-            return localStorage.getItem("userCards").split(",")
+    getters:
+        {
+            getWords: state => {
+                return state.words
+            },
+            getName:
+                () => {
+                    return localStorage.getItem("name")
+                },
+            getStars:
+                () => {
+                    return localStorage.getItem("stars")
+                },
+            getPoints:
+                () => {
+                    return localStorage.getItem("points")
+                },
+            getLevel:
+                () => {
+                    return localStorage.getItem("level")
+                },
+            getUserCards:
+                () => {
+                    return localStorage.getItem("userCards").split(",")
+                }
         }
-    },
+    ,
     actions: {
         initLocalStorage: ({commit}) => {
             commit("setName", localStorage.getItem("name") ? localStorage.getItem("name") : "")
@@ -341,53 +354,66 @@ export const store = new Vuex.Store({
 
             commit("setUserCards", localStorage.getItem("userCards") ? localStorage.getItem("userCards").split(",") : [])
         }
-    },
+    }
+    ,
     mutations: {
         setTab(state, tab) {
             state.activeTab = tab
-        },
+        }
+        ,
         nextTab(state) {
             state.activeTab = (state.activeTab < state.maxTab) ? state.activeTab + 1 : 0
-        },
+        }
+        ,
         setMaxTab(state, max) {
             state.maxTab = max;
-        },
-       addUserCard(state, cardNumber) {
+        }
+        ,
+        addUserCard(state, cardNumber) {
             state.userCards.push(String(cardNumber));
             localStorage.setItem("userCards", state.userCards)
-        },
+        }
+        ,
         setUserCards(state, userCards) {
             state.userCards = userCards;
             localStorage.setItem("userCards", state.userCards)
-        },
+        }
+        ,
         setName(state, name) {
             state.name = name;
             localStorage.setItem("name", state.name)
-        },
+        }
+        ,
         setLevel(state, level) {
             state.level = level
             localStorage.setItem("level", state.level)
-        },
+        }
+        ,
         setStars(state, stars) {
             state.stars = (stars) ? stars : 9
             localStorage.setItem("stars", state.stars)
-        },
+        }
+        ,
         setPoints(state, points) {
             state.points = points
             localStorage.setItem("points", state.points)
-        },
+        }
+        ,
         addLevel(state) {
             state.level = parseInt(state.level) + 1
             localStorage.setItem("level", state.level)
-        },
+        }
+        ,
         addStars(state, stars) {
             state.stars = parseInt(state.stars) + parseInt(stars)
             localStorage.setItem("stars", state.stars)
-        },
+        }
+        ,
         subtractStars(state, stars) {
             state.stars = parseInt(state.stars) - parseInt(stars)
             localStorage.setItem("stars", state.stars)
-        },
+        }
+        ,
         addPoints(state, points) {
             state.points = parseInt(state.points) + parseInt(points)
 

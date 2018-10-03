@@ -11,15 +11,26 @@
                     centered
             >
                 <v-tabs-slider color="white"></v-tabs-slider>
-                <v-tab key="0">
+                <v-tab key="Emojis">
                     Emojis
                     <v-icon>mood</v-icon>
+                </v-tab>
+
+                <v-tab key="Toys">
+                    Toys
+                    <v-icon>bug_report</v-icon>
                 </v-tab>
 
                 <v-tab-item key="0">
                     <h2 class="text-xs-center mt-3">Change <v-icon color="orange">star</v-icon> for collectible cards!</h2>
                     <p class="text-xs-center">You can get stars by doing exercises in the different categories</p>
                     <album album="emojis"></album>
+                </v-tab-item>
+
+                <v-tab-item key="0">
+                    <h2 class="text-xs-center mt-3">Change <v-icon color="orange">star</v-icon> for collectible cards!</h2>
+                    <p class="text-xs-center">You can get stars by doing exercises in the different categories</p>
+                    <album album="toys"></album>
                 </v-tab-item>
             </v-tabs>
         </v-slide-y-transition>
