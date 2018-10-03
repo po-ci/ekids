@@ -1,7 +1,13 @@
 <template>
     <v-container grid-list-lg>
         <v-slide-y-transition mode="out-in">
+
             <v-layout row wrap justify-center>
+
+                <v-flex xs12>
+                    <h1 class="text-xs-center deep-purple--text display-3">{{album}} Album</h1>
+                </v-flex>
+
                 <v-flex v-for="(card,i) in getCards" shrink>
                     <album-card
                             :album="album"

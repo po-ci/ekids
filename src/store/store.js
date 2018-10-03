@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
         level: null,
         userCards: [],
         albums: {
-            emojis: {
+            Emojis: {
                 cards: [
                     {number: 1, name: "romantic"},
                     {number: 2, name: "dreamer"},
