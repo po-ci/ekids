@@ -6,6 +6,8 @@
 
                 <v-flex xs12>
                     <h1 class="text-xs-center deep-purple--text display-3 text-capitalize">{{album}} Album</h1>
+                    <h2 class="text-xs-center mt-3">Change <v-icon color="orange">star</v-icon> for collectible cards!</h2>
+                    <p class="text-xs-center">You can get stars by doing exercises in the different categories</p>
                 </v-flex>
 
                 <v-flex v-for="(card,i) in getCards" shrink>
