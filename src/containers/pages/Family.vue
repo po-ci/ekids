@@ -48,23 +48,18 @@
 </template>
 
 <script>
-    import {soundFamilyPath, imgFamilyPath} from '../../config/config'
+    import MiximPages from './MixinPages'
     import FamilyImg from '../../components/FamilyImg.vue'
     import {mapState} from 'vuex'
 
     export default {
         name: 'Family',
         components: {FamilyImg},
+        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
-            ]),
-            getSoundPath: function () {
-                return soundFamilyPath;
-            },
-            getImgPath: function () {
-                return imgFamilyPath;
-            }
+            ])
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)

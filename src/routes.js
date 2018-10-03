@@ -31,6 +31,8 @@ import Body from './containers/pages/Body.vue'
 
 import Profile from './containers/pages/Profile.vue'
 
+import Albums from './containers/pages/Albums.vue'
+
 Vue.use(VueRouter)
 
 
@@ -54,7 +56,8 @@ const routes = [
     {name: "animals", path: '/animals', component: Animals},
     {name: "hair", path: '/hair', component: Hair},
     {name: "body", path: '/body', component: Body},
-    {name: "profile", path: '/profile', component: Profile}
+    {name: "profile", path: '/profile', component: Profile},
+    {name: "albums", path: '/albums', component: Albums}
 ]
 
 // 3. Create the router instance and pass the `routes` option

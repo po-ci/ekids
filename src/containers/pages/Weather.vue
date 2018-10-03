@@ -10,23 +10,18 @@
 </template>
 
 <script>
-    import {soundWeatherPath, imgWeatherPath} from '../../config/config'
+    import MiximPages from './MixinPages'
     import Tabs from '../tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
         name: 'Weather',
         components: {Tabs},
+        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
-            ]),
-            getSoundPath: function () {
-                return soundWeatherPath;
-            },
-            getImgPath: function () {
-                return imgWeatherPath;
-            }
+            ])
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)

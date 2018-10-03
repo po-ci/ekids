@@ -10,23 +10,19 @@
 </template>
 
 <script>
-    import {soundPath, imgPath} from '../../config/config'
+
+    import MiximPages from './MixinPages'
     import Tabs from '../tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
         name: 'Animals',
         components: {Tabs},
+        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
             ]),
-            getSoundPath: function () {
-                return soundPath+this.enName+"/";
-            },
-            getImgPath: function () {
-                return imgPath+this.enName+"/";
-            }
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)

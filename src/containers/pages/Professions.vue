@@ -10,23 +10,18 @@
 </template>
 
 <script>
-    import {soundProfessionsPath, imgProfessionsPath} from '../../config/config'
+    import MiximPages from './MixinPages'
     import Tabs from '../tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
         name: 'Professions',
         components: {Tabs},
+        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
-            ]),
-            getSoundPath: function () {
-                return soundProfessionsPath;
-            },
-            getImgPath: function () {
-                return imgProfessionsPath;
-            }
+            ])
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)
@@ -36,8 +31,8 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "profession",
-                esName: "la profesion",
+                enName: "professions",
+                esName: "las profesiones",
                 enTitle: "Professions",
                 esTitle: "Profesiones",
                 exercises: {

@@ -86,6 +86,11 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title v-text="title"></v-toolbar-title>
             <v-spacer></v-spacer>
+
+            <v-btn icon to="/albums">
+                <v-icon>layers</v-icon>
+            </v-btn>
+
             <v-btn icon to="/">
                 <v-icon>home</v-icon>
             </v-btn>

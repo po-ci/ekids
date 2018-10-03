@@ -11,6 +11,7 @@
 
 <script>
     import {soundHousePath, imgHousePath} from '../../config/config'
+
     import Tabs from '../tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
