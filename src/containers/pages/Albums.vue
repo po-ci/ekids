@@ -21,12 +21,12 @@
                     <v-icon>bug_report</v-icon>
                 </v-tab>
 
-                <v-tab-item key="0">
+                <v-tab-item key="item-emojis">
 
                     <album album="emojis"></album>
                 </v-tab-item>
 
-                <v-tab-item key="0">
+                <v-tab-item key="item-toys">
 
                     <album album="toys"></album>
                 </v-tab-item>

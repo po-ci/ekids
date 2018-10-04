@@ -203,15 +203,17 @@ export const store = new Vuex.Store({
                 {text: "bird", src: "bird.png", es: "pajaro"}
             ],
             body: [
+                {text: "head", src: "head.png", es: "cabeza"},
+                {text: "hair", src: "hair.png", es: "pelo"},
                 {text: "ear", src: "ear.png", es: "oreja"},
                 {text: "eye", src: "eye.png", es: "ojo"},
                 {text: "nose", src: "nose.png", es: "nariz"},
                 {text: "mouth", src: "mouth.png", es: "boca"},
+                {text: "tooth", src: "tooth.png", es: "diente"},
                 {text: "tongue", src: "tongue.png", es: "lengua"},
                 {text: "arm", src: "arm.png", es: "brazo"},
                 {text: "hand", src: "hand.png", es: "mano"},
                 {text: "finger", src: "finger.png", es: "dedo"},
-                {text: "tooth", src: "tooth.png", es: "diente"},
                 {text: "leg", src: "leg.png", es: "pierna"},
                 {text: "foot", src: "foot.png", es: "pie"},
             ],
@@ -246,6 +248,7 @@ export const store = new Vuex.Store({
                 link: {name: "colors"},
 
             },
+
             {
                 icon: 'work',
                 text: 'Professions',
@@ -282,13 +285,6 @@ export const store = new Vuex.Store({
 
             },
             {
-                icon: 'gesture',
-                text: 'Hair',
-                esText: 'Pelo',
-                link: {name: "hair"},
-
-            },
-            {
                 icon: 'store',
                 text: 'The House',
                 esText: 'La Casa',
@@ -307,6 +303,20 @@ export const store = new Vuex.Store({
                 text: 'Animals',
                 esText: 'Animales',
                 link: {name: "animals"},
+
+            },
+            {
+                icon: 'accessibility_new',
+                text: 'Body',
+                esText: 'Cuerpo',
+                link: {name: "body"},
+
+            },
+            {
+                icon: 'gesture',
+                text: 'Hair',
+                esText: 'Pelo',
+                link: {name: "hair"},
 
             },
             // {
