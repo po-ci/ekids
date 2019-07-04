@@ -19,8 +19,8 @@
 </template>
 
 <script>
-    import {soundPath, imgPath} from '../../config/config'
-    import Tabs from '../tabs/Tabs.vue'
+    import {soundPath, imgPath} from '../../../config/config'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {

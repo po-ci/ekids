@@ -111,8 +111,8 @@
 </template>
 
 <script>
-  import MyNameIs from './components/MyNameIs.vue'
-  import Stats from './components/Stats.vue'
+  import MyNameIs from './modules/app/components/MyNameIs.vue'
+  import Stats from './modules/app/components/Stats.vue'
   import {mapState} from 'vuex'
 
   export default {

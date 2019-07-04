@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import {soundAbcPath} from '../../config/config'
-    import Tabs from '../tabs/Tabs.vue'
+    import {soundAbcPath} from '../../../config/config'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {

@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.body" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.fruits" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
@@ -10,23 +10,18 @@
 </template>
 
 <script>
-    import {soundPath, imgPath} from '../../config/config'
-    import Tabs from '../tabs/Tabs.vue'
+    import MiximPages from './MixinPages'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Body',
+        name: 'Fruits',
         components: {Tabs},
+        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
-            ]),
-            getSoundPath: function () {
-                return soundPath+this.enName+"/";
-            },
-            getImgPath: function () {
-                return imgPath+this.enName+"/";
-            }
+            ])
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)
@@ -36,10 +31,10 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "body",
-                esName: "el cuerpo",
-                enTitle: "Body",
-                esTitle: "El cuerpo",
+                enName: "fruits",
+                esName: "frutas",
+                enTitle: "Fruits",
+                esTitle: "Frutas",
                 exercises: {
                     learn: {enable: true},
                     listen: {enable: true},

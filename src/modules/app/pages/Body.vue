@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.house" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.body" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
@@ -10,23 +10,22 @@
 </template>
 
 <script>
-    import {soundHousePath, imgHousePath} from '../../config/config'
-
-    import Tabs from '../tabs/Tabs.vue'
+    import {soundPath, imgPath} from '../../../config/config'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'House',
+        name: 'Body',
         components: {Tabs},
         computed: {
             ...mapState([
                 'words'
             ]),
             getSoundPath: function () {
-                return soundHousePath;
+                return soundPath+this.enName+"/";
             },
             getImgPath: function () {
-                return imgHousePath;
+                return imgPath+this.enName+"/";
             }
         },
         mounted: function(){
@@ -37,10 +36,10 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "the parts of House",
-                esName: "las partes de la casa",
-                enTitle: "The House",
-                esTitle: "La casa",
+                enName: "body",
+                esName: "el cuerpo",
+                enTitle: "Body",
+                esTitle: "El cuerpo",
                 exercises: {
                     learn: {enable: true},
                     listen: {enable: true},

@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.shapes" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.professions" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
@@ -11,11 +11,11 @@
 
 <script>
     import MiximPages from './MixinPages'
-    import Tabs from '../tabs/Tabs.vue'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Shapes',
+        name: 'Professions',
         components: {Tabs},
         mixins: [MiximPages],
         computed: {
@@ -31,10 +31,10 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "shapes",
-                esName: "las formas",
-                enTitle: "Shapes",
-                esTitle: "Formas",
+                enName: "professions",
+                esName: "las profesiones",
+                enTitle: "Professions",
+                esTitle: "Profesiones",
                 exercises: {
                     learn: {enable: true},
                     listen: {enable: true},

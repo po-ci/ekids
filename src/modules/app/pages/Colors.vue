@@ -1,27 +1,30 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.clothes" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.colors" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
-                  :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
+                  :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img">
             </tabs>
+
         </v-slide-y-transition>
     </v-container>
 </template>
 
 <script>
-    import MiximPages from './MixinPages'
-    import Tabs from '../tabs/Tabs.vue'
+    import {soundColorsPath} from '../../../config/config'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Clothes',
+        name: 'Abc',
         components: {Tabs},
-        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
             ]),
+            getSoundPath: function () {
+                return soundColorsPath;
+            }
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)
@@ -30,11 +33,11 @@
             return {
                 fab: false,
                 textEnable: false,
-                img: true,
-                enName: "clothes",
-                esName: "las ropa",
-                enTitle: "Clothes",
-                esTitle: "Ropa",
+                img: false,
+                enName: "color",
+                esName: "el color",
+                enTitle: "Colors",
+                esTitle: "Colores",
                 exercises: {
                     learn: {enable: true},
                     listen: {enable: true},

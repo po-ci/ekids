@@ -1,37 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from './containers/pages/Home.vue'
+import Home from './modules/app/pages/Home.vue'
 
-import Numbers from './containers/pages/Numbers.vue'
+import Numbers from './modules/app/pages/Numbers.vue'
 
-import Abc from './containers/pages/Abc.vue'
+import Abc from './modules/app/pages/Abc.vue'
 
-import Colors from './containers/pages/Colors.vue'
+import Colors from './modules/app/pages/Colors.vue'
 
-import Professions from './containers/pages/Professions.vue'
+import Professions from './modules/app/pages/Professions.vue'
 
-import Shapes from './containers/pages/Shapes.vue'
+import Shapes from './modules/app/pages/Shapes.vue'
 
-import Clothes from './containers/pages/Clothes.vue'
+import Clothes from './modules/app/pages/Clothes.vue'
 
-import House from './containers/pages/House.vue'
+import House from './modules/app/pages/House.vue'
 
-import Fruits from './containers/pages/Fruits.vue'
+import Fruits from './modules/app/pages/Fruits.vue'
 
-import Family from './containers/pages/Family.vue'
+import Family from './modules/app/pages/Family.vue'
 
-import Weather from './containers/pages/Weather.vue'
+import Weather from './modules/app/pages/Weather.vue'
 
-import Animals from './containers/pages/Animals.vue'
+import Animals from './modules/app/pages/Animals.vue'
 
-import Hair from './containers/pages/Hair.vue'
+import Hair from './modules/app/pages/Hair.vue'
 
-import Body from './containers/pages/Body.vue'
+import Body from './modules/app/pages/Body.vue'
 
-import Profile from './containers/pages/Profile.vue'
+import Profile from './modules/app/pages/Profile.vue'
 
-import Albums from './containers/pages/Albums.vue'
+import Albums from './modules/app/pages/Albums.vue'
 
 Vue.use(VueRouter)
 

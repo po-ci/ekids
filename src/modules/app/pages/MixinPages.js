@@ -1,4 +1,4 @@
-import {soundPath, imgPath} from '../../config/config'
+import {soundPath, imgPath} from '../../../config/config'
 
 export default {
     data: function(){

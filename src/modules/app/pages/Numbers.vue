@@ -9,8 +9,8 @@
 </template>
 
 <script>
-    import {soundNumbersPath} from '../../config/config'
-    import Tabs from '../tabs/Tabs.vue'
+    import {soundNumbersPath} from '../../../config/config'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import { mapState } from 'vuex'
 
     export default {

@@ -58,11 +58,11 @@
 </template>
 
 <script>
-    import Card from '../../../components/Card.vue'
-    import HeaderPage from '../../../components/HeaderPage'
+    import Card from '../../../modules/app/components/Card.vue'
+    import HeaderPage from '../../../modules/app/components/HeaderPage'
     import {soundHelpersPath} from '../../../config/config'
-    import InputSplit from '../../../components/InputSplit.vue'
-    import RewardDialog from '../../../components/RewardDialog.vue'
+    import InputSplit from '../../../modules/app/components/InputSplit.vue'
+    import RewardDialog from '../../../modules/app/components/RewardDialog.vue'
     import MixinTabs from './MixinTabs'
 
     export default {

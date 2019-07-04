@@ -49,7 +49,7 @@
 
 <script>
     import MiximPages from './MixinPages'
-    import FamilyImg from '../../components/FamilyImg.vue'
+    import FamilyImg from '../components/FamilyImg.vue'
     import {mapState} from 'vuex'
 
     export default {

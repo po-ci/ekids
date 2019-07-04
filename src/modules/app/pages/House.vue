@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.animals" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.house" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
@@ -10,19 +10,24 @@
 </template>
 
 <script>
+    import {soundHousePath, imgHousePath} from '../../../config/config'
 
-    import MiximPages from './MixinPages'
-    import Tabs from '../tabs/Tabs.vue'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Animals',
+        name: 'House',
         components: {Tabs},
-        mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
             ]),
+            getSoundPath: function () {
+                return soundHousePath;
+            },
+            getImgPath: function () {
+                return imgHousePath;
+            }
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)
@@ -32,10 +37,10 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "animals",
-                esName: "los animales",
-                enTitle: "Animals",
-                esTitle: "Animales",
+                enName: "the parts of House",
+                esName: "las partes de la casa",
+                enTitle: "The House",
+                esTitle: "La casa",
                 exercises: {
                     learn: {enable: true},
                     listen: {enable: true},

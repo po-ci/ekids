@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.fruits" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="words.hair" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img" :imgPath="getImgPath">
             </tabs>
@@ -11,17 +11,17 @@
 
 <script>
     import MiximPages from './MixinPages'
-    import Tabs from '../tabs/Tabs.vue'
+    import Tabs from '../../../containers/tabs/Tabs.vue'
     import {mapState} from 'vuex'
 
     export default {
-        name: 'Fruits',
+        name: 'Hair',
         components: {Tabs},
         mixins: [MiximPages],
         computed: {
             ...mapState([
                 'words'
-            ])
+            ]),
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)
@@ -31,10 +31,10 @@
                 fab: false,
                 textEnable: false,
                 img: true,
-                enName: "fruits",
-                esName: "frutas",
-                enTitle: "Fruits",
-                esTitle: "Frutas",
+                enName: "hair",
+                esName: "el pelo",
+                enTitle: "Hair",
+                esTitle: "pelo",
                 exercises: {
                     learn: {enable: true},
                     listen: {enable: true},

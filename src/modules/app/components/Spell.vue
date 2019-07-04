@@ -6,7 +6,7 @@
 
 <script>
     import {mapState} from 'vuex'
-    import {soundAbcPath} from '../config/config'
+    import {soundAbcPath} from '../../../config/config'
 
     export default {
         name: 'Spell',

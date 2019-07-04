@@ -75,11 +75,11 @@
 </template>
 
 <script>
-    import MultiButtons from '../../../components/MultiButtons.vue'
-    import MultiImgs from '../../../components/MultiImgs.vue'
-    import HeaderPage from '../../../components/HeaderPage.vue'
+    import MultiButtons from '../../../modules/app/components/MultiButtons.vue'
+    import MultiImgs from '../../../modules/app/components/MultiImgs.vue'
+    import HeaderPage from '../../../modules/app/components/HeaderPage.vue'
     import {soundHelpersPath} from '../../../config/config'
-    import RewardDialog from '../../../components/RewardDialog.vue'
+    import RewardDialog from '../../../modules/app/components/RewardDialog.vue'
     import MixinTabs from './MixinTabs'
 
     export default {
