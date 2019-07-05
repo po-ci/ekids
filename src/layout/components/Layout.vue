@@ -36,31 +36,20 @@
     import LayoutMenuList from './LayoutMenuList'
     import LayoutToolbarLogo from './LayoutToolbarLogo'
     import LoginToolbar from './LoginToolbar'
-    import {mapActions, mapGetters} from 'vuex'
 
     export default {
         components: {LayoutMenuList, LayoutToolbarLogo, LoginToolbar},
         props: {
-            nav: {type: Array, default: null}
+            nav: {type: Array, default: null},
+            title: {type: String, default: "title"},
         },
         data: () => ({
                 drawer: false,
                 clipped: true,
                 miniVariant: false,
                 fixed: true,
-                title: 'Son.Riu',
             }
-        ),
-        computed: {
-            ...mapGetters(['getToken'])
-        },
-        methods: {
-            ...mapActions(['me'])
-        },
-        mounted: function () {
-            this.me()
-        },
-
+        )
     }
 </script>
 

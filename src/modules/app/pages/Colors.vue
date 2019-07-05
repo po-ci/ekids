@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.colors" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
+            <tabs :words="getColors" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle"
                   :exercises="exercises"
                   :fab="fab" :textEnable="textEnable" :soundPath="getSoundPath" :img="img">
             </tabs>
@@ -13,14 +13,14 @@
 <script>
     import {soundColorsPath} from '../../../config/config'
     import Tabs from '../../../containers/tabs/Tabs.vue'
-    import {mapState} from 'vuex'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: 'Abc',
         components: {Tabs},
         computed: {
-            ...mapState([
-                'words'
+            ...mapGetters([
+                'getColors'
             ]),
             getSoundPath: function () {
                 return soundColorsPath;

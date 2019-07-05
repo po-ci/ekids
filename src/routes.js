@@ -9,29 +9,14 @@ import Abc from './modules/app/pages/Abc.vue'
 
 import Colors from './modules/app/pages/Colors.vue'
 
-import Professions from './modules/app/pages/Professions.vue'
-
-import Shapes from './modules/app/pages/Shapes.vue'
-
-import Clothes from './modules/app/pages/Clothes.vue'
-
-import House from './modules/app/pages/House.vue'
-
-import Fruits from './modules/app/pages/Fruits.vue'
-
 import Family from './modules/app/pages/Family.vue'
 
-import Weather from './modules/app/pages/Weather.vue'
-
-import Animals from './modules/app/pages/Animals.vue'
-
-import Hair from './modules/app/pages/Hair.vue'
-
-import Body from './modules/app/pages/Body.vue'
 
 import Profile from './modules/app/pages/Profile.vue'
 
 import Albums from './modules/app/pages/Albums.vue'
+
+import Vocabulary from "./modules/app/pages/Vocabulary";
 
 Vue.use(VueRouter)
 
@@ -43,21 +28,15 @@ Vue.use(VueRouter)
 // We'll talk about nested routes later.
 const routes = [
     {name: "home", path: '/', component: Home},
+    {name: "profile", path: '/profile', component: Profile},
+    {name: "albums", path: '/albums', component: Albums},
+
     {name: "abc", path: '/abc', component: Abc},
     {name: "numbers", path: '/numbers', component: Numbers},
     {name: "colors", path: '/colors', component: Colors},
-    {name: "professions", path: '/professions', component: Professions},
-    {name: "shapes", path: '/shapes', component: Shapes},
-    {name: "clothes", path: '/clothes', component: Clothes},
-    {name: "house", path: '/house', component: House},
-    {name: "fruits", path: '/fruits', component: Fruits},
     {name: "family", path: '/family', component: Family},
-    {name: "weather", path: '/weather', component: Weather},
-    {name: "animals", path: '/animals', component: Animals},
-    {name: "hair", path: '/hair', component: Hair},
-    {name: "body", path: '/body', component: Body},
-    {name: "profile", path: '/profile', component: Profile},
-    {name: "albums", path: '/albums', component: Albums}
+
+    {name: "vocabulary", path: '/vocabulary/:category', component: Vocabulary, props:true}
 ]
 
 // 3. Create the router instance and pass the `routes` option

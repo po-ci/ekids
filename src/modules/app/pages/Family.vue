@@ -3,44 +3,44 @@
 
         <v-layout row wrap>
             <v-flex lg1 offset-lg5  xs3 offset-xs3>
-                <family-img :item="words.family.grandpa" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+                <family-img :item="getFamily.grandpa" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
             </v-flex>
             <v-flex lg1 xs1>
-                <family-img :item="words.family.grandma" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+                <family-img :item="getFamily.grandma" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
             </v-flex>
 
         </v-layout>
         <v-layout >
             <v-flex lg1  offset-lg4 xs3 >
-                <family-img :item="words.family.dad" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+                <family-img :item="getFamily.dad" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
             </v-flex>
             <v-flex lg1 xs3>
-                <family-img :item="words.family.mum" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+                <family-img :item="getFamily.mum" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
             </v-flex>
 
             <v-flex lg1 offset-lg1 xs3 >
-                <family-img :item="words.family.aunt" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+                <family-img :item="getFamily.aunt" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
             </v-flex>
             <v-flex lg1 xs3>
-                <family-img :item="words.family.uncle" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+                <family-img :item="getFamily.uncle" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
             </v-flex>
 
         </v-layout>
        <v-layout >
            <v-flex lg1 offset-lg3 xs3>
-               <family-img :item="words.family.sister" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+               <family-img :item="getFamily.sister" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
            </v-flex>
            <v-flex lg1 xs3>
-               <family-img :item="words.family.me" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+               <family-img :item="getFamily.me" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
            </v-flex>
            <v-flex lg1 xs3>
-               <family-img :item="words.family.brother" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+               <family-img :item="getFamily.brother" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
            </v-flex>
            <v-flex lg1  offset-lg1 xs3 offset-xs1>
-               <family-img :item="words.family.cousin" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+               <family-img :item="getFamily.cousin" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
            </v-flex>
            <v-flex lg1 xs3>
-               <family-img :item="words.family.baby" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
+               <family-img :item="getFamily.baby" :img-path="getImgPath" :sound-path="getSoundPath"></family-img>
            </v-flex>
 
        </v-layout>
@@ -50,16 +50,19 @@
 <script>
     import MiximPages from './MixinPages'
     import FamilyImg from '../components/FamilyImg.vue'
-    import {mapState} from 'vuex'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: 'Family',
         components: {FamilyImg},
         mixins: [MiximPages],
         computed: {
-            ...mapState([
-                'words'
-            ])
+            ...mapGetters([
+                'getFamily'
+            ]),
+            words(){
+                return this.getFamily
+            }
         },
         mounted: function(){
             this.$store.commit("setMaxTab",6)

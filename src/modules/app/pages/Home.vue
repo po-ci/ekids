@@ -25,16 +25,16 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import nav from '../../../nav'
 
     export default {
         name: 'Home',
         props: {},
-        computed: {
-            ...mapState([
-                'nav'
-            ]),
-        },
+        data() {
+            return {
+                nav: nav,
+            }
+        }
     }
 </script>
 

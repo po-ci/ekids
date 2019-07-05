@@ -28,49 +28,6 @@ export default [
         link: {name: "colors"},
 
     },
-
-    {
-        icon: 'work',
-        text: 'Professions',
-        esText: 'Profesiones',
-        link: {name: "professions"},
-
-    },
-    {
-        icon: 'category',
-        text: 'Shapes',
-        esText: 'Formas',
-        link: {name: "shapes"},
-
-    },
-    {
-        icon: 'loyalty',
-        text: 'Clothes',
-        esText: 'Ropa',
-        link: {name: "clothes"},
-
-    },
-    {
-        icon: 'wb_sunny',
-        text: 'Weather',
-        esText: 'Clima',
-        link: {name: "weather"},
-
-    },
-    {
-        icon: 'shopping_basket',
-        text: 'Fruits',
-        esText: 'Frutas',
-        link: {name: "fruits"},
-
-    },
-    {
-        icon: 'store',
-        text: 'The House',
-        esText: 'La Casa',
-        link: {name: "house"},
-
-    },
     {
         icon: 'child_friendly',
         text: 'Family',
@@ -79,24 +36,66 @@ export default [
 
     },
     {
+        icon: 'work',
+        text: 'Professions',
+        esText: 'Profesiones',
+        link: {name: "vocabulary", params: {category: "professions"}},
+
+    },
+    {
+        icon: 'category',
+        text: 'Shapes',
+        esText: 'Formas',
+        link: {name: "vocabulary", params: {category: "shapes"}},
+
+    },
+    {
+        icon: 'loyalty',
+        text: 'Clothes',
+        esText: 'Ropa',
+        link: {name: "vocabulary", params: {category: "clothes"}},
+
+    },
+    {
+        icon: 'wb_sunny',
+        text: 'Weather',
+        esText: 'Clima',
+        link: {name: "vocabulary", params: {category: "weather"}},
+
+    },
+    {
+        icon: 'shopping_basket',
+        text: 'Fruits',
+        esText: 'Frutas',
+        link: {name: "vocabulary", params: {category: "fruits"}},
+
+    },
+    {
+        icon: 'store',
+        text: 'The House',
+        esText: 'La Casa',
+        link: {name: "vocabulary", params: {category: "house"}},
+
+    },
+    {
         icon: 'pets',
         text: 'Animals',
         esText: 'Animales',
-        link: {name: "animals"},
+        link: {name: "vocabulary", params: {category: "animals"}},
 
     },
     {
         icon: 'accessibility_new',
         text: 'Body',
         esText: 'Cuerpo',
-        link: {name: "body"},
+        link: {name: "vocabulary", params: {category: "body"}},
 
     },
     {
         icon: 'gesture',
         text: 'Hair',
         esText: 'Pelo',
-        link: {name: "hair"},
+        link: {name: "vocabulary", params: {category: "hair"}},
 
     },
     // {

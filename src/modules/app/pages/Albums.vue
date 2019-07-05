@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import Album from '../components/Album.vue'
+    import Album from '../components/Album/Album.vue'
     import {mapState} from 'vuex'
 
     export default {

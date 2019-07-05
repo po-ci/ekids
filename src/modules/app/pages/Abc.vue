@@ -1,7 +1,7 @@
 <template>
     <v-container fluid>
         <v-slide-y-transition mode="out-in">
-            <tabs :words="words.abc" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
+            <tabs :words="getLetters" :enName="enName" :esName="esName" :enTitle="enTitle" :esTitle="esTitle" :exercises="exercises"
                         :soundPath="getSoundPath"  :fab="fab"  :textEnable="textEnable" :img="img" ></tabs>
         </v-slide-y-transition>
     </v-container>
@@ -10,7 +10,7 @@
 <script>
     import {soundAbcPath} from '../../../config/config'
     import Tabs from '../../../containers/tabs/Tabs.vue'
-    import {mapState} from 'vuex'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: 'Abc',
@@ -19,8 +19,8 @@
           this.$store.commit("setMaxTab",4)
         },
         computed: {
-            ...mapState([
-                'words'
+            ...mapGetters([
+                'getLetters'
             ]),
             getSoundPath: function () {
                 return soundAbcPath;

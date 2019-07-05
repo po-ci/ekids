@@ -1,609 +1,500 @@
-export default{
-  abc: [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z"
-  ],
-  numbers: [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20"
-  ],
-  colors: [
-    {
-      text: "red",
-      bgcolor: "red",
-      es: "rojo"
+export default {
+    professions: {
+        en: "profession",
+        es: "profesión",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "policeman",
+                img: "policeman.png",
+                es: "policia"
+            },
+            {
+                en: "fireman",
+                img: "fireman.png",
+                es: "bombero"
+            },
+            {
+                en: "medic",
+                img: "medic.png",
+                es: "medico"
+            },
+            {
+                en: "farmer",
+                img: "farmer.png",
+                es: "granjero"
+            },
+            {
+                en: "journalist",
+                img: "journalist.png",
+                es: "periodista"
+            },
+            {
+                en: "student",
+                img: "student.png",
+                es: "estudiante"
+            },
+            {
+                en: "artist",
+                img: "artist.png",
+                es: "artista"
+            },
+            {
+                en: "chef",
+                img: "chef.png",
+                es: "cocinero"
+            },
+            {
+                en: "waiter",
+                img: "waiter.png",
+                es: "camarero"
+            },
+            {
+                en: "postman",
+                img: "postman.png",
+                es: "cartero"
+            },
+            {
+                en: "judge",
+                img: "judge.png",
+                es: "juez"
+            },
+            {
+                en: "pirate",
+                img: "pirate.png",
+                es: "pirata"
+            }
+        ]
     },
-    {
-      text: "blue",
-      bgcolor: "blue",
-      es: "azul"
+    shapes: {
+        en: "shapes",
+        es: "formas",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "square",
+                img: "square.png",
+                es: "cuadrado"
+            },
+            {
+                en: "triangle",
+                img: "triangle.png",
+                es: "triangulo"
+            },
+            {
+                en: "circle",
+                img: "circle.png",
+                es: "circulo"
+            },
+            {
+                en: "rectangle",
+                img: "rectangle.png",
+                es: "rectangulo"
+            },
+            {
+                en: "diamond",
+                img: "diamond.png",
+                es: "diamante"
+            },
+            {
+                en: "star",
+                img: "star.png",
+                es: "estrella"
+            }
+        ]
     },
-    {
-      text: "green",
-      bgcolor: "green",
-      es: "verde"
+    clothes: {
+        en: "clothes",
+        es: "ropa",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "cardigan",
+                img: "cardigan.png",
+                es: "cardigan"
+            },
+            {
+                en: "coat",
+                img: "coat.png",
+                es: "capa"
+            },
+            {
+                en: "dress",
+                img: "dress.png",
+                es: "vestido"
+            },
+            {
+                en: "hat",
+                img: "hat.png",
+                es: "sombrero"
+            },
+            {
+                en: "jacket",
+                img: "jacket.png",
+                es: "campera"
+            },
+            {
+                en: "shoes",
+                img: "shoes.png",
+                es: "zapatillas"
+            },
+            {
+                en: "shorts",
+                img: "shorts.png",
+                es: "pantalon corto"
+            },
+            {
+                en: "socks",
+                img: "socks.png",
+                es: "medias"
+            },
+            {
+                en: "skirt",
+                img: "skirt.png",
+                es: "pollera"
+            },
+            {
+                en: "t-shirt",
+                img: "t-shirt.png",
+                es: "remera"
+            },
+            {
+                en: "tracksuit",
+                img: "tracksuit.png",
+                es: "chandal"
+            },
+            {
+                en: "trousers",
+                img: "trousers.png",
+                es: "pantalones"
+            }
+        ]
     },
-    {
-      text: "yellow",
-      bgcolor: "yellow",
-      es: "amarillo"
+    house: {
+        en: "house",
+        es: "casa",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "house",
+                img: "house.png",
+                es: "casa"
+            },
+            {
+                en: "kitchen",
+                img: "kitchen.png",
+                es: "cocina"
+            },
+            {
+                en: "bathroom",
+                img: "bathroom.png",
+                es: "baño"
+            },
+            {
+                en: "bedroom",
+                img: "bedroom.png",
+                es: "dormitorio"
+            },
+            {
+                en: "living room",
+                img: "living_room.png",
+                es: "living"
+            },
+            {
+                en: "dining room",
+                img: "dining_room.png",
+                es: "comedor"
+            },
+            {
+                en: "garden",
+                img: "garden.png",
+                es: "jardin"
+            },
+            {
+                en: "front door",
+                img: "front_door.png",
+                es: "puerta principal"
+            }
+        ]
     },
-    {
-      text: "pink",
-      bgcolor: "pink",
-      es: "rosa"
+    weather: {
+        en: "weather",
+        es: "clima",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "sunny",
+                img: "sunny.png",
+                es: "soleado"
+            },
+            {
+                en: "cloudy",
+                img: "cloudy.png",
+                es: "nublado"
+            },
+            {
+                en: "rainy",
+                img: "rainy.png",
+                es: "lluvioso"
+            },
+            {
+                en: "windy",
+                img: "windy.png",
+                es: "ventoso"
+            },
+            {
+                en: "snowy",
+                img: "snowy.png",
+                es: "nevado"
+            }
+        ]
     },
-    {
-      text: "grey",
-      bgcolor: "grey",
-      es: "gris"
+    hair: {
+        en: "hair",
+        es: "cabello",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "blond",
+                img: "blond.png",
+                es: "rubio"
+            },
+            {
+                en: "brown",
+                img: "brown.png",
+                es: "castaño"
+            },
+            {
+                en: "long",
+                img: "long.png",
+                es: "largo"
+            },
+            {
+                en: "short",
+                img: "short.png",
+                es: "corto"
+            },
+            {
+                en: "curly",
+                img: "curly.png",
+                es: "rizado"
+            },
+            {
+                en: "straight",
+                img: "straight.png",
+                es: "lacio"
+            }
+        ]
     },
-    {
-      text: "brown",
-      bgcolor: "brown",
-      es: "marron"
+    fruits: {
+        en: "fruits",
+        es: "frutas",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "apple",
+                img: "apple.png",
+                es: "manzana"
+            },
+            {
+                en: "pear",
+                img: "pear.png",
+                es: "pera"
+            },
+            {
+                en: "grapes",
+                img: "grapes.png",
+                es: "uvas"
+            },
+            {
+                en: "orange",
+                img: "orange.png",
+                es: "naranja"
+            },
+            {
+                en: "cherries",
+                img: "cherries.png",
+                es: "cerezas"
+            },
+            {
+                en: "banana",
+                img: "banana.png",
+                es: "banana"
+            }
+        ]
     },
-    {
-      text: "orange",
-      bgcolor: "orange",
-      es: "naranja"
+
+    animals: {
+        en: "animals",
+        es: "animales",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "dog",
+                img: "dog.png",
+                es: "perro"
+            },
+            {
+                en: "cat",
+                img: "cat.png",
+                es: "gato"
+            },
+            {
+                en: "lion",
+                img: "lion.png",
+                es: "leon"
+            },
+            {
+                en: "turtle",
+                img: "turtle.png",
+                es: "tortuga"
+            },
+            {
+                en: "horse",
+                img: "horse.png",
+                es: "caballo"
+            },
+            {
+                en: "donkey",
+                img: "donkey.png",
+                es: "burro"
+            },
+            {
+                en: "rabbit",
+                img: "rabbit.png",
+                es: "conejo"
+            },
+            {
+                en: "hippo",
+                img: "hippo.png",
+                es: "hipopotamo"
+            },
+            {
+                en: "gorilla",
+                img: "gorilla.png",
+                es: "gorila"
+            },
+            {
+                en: "leopard",
+                img: "leopard.png",
+                es: "leopardo"
+            },
+            {
+                en: "elephant",
+                img: "elephant.png",
+                es: "elefante"
+            },
+            {
+                en: "giraffe",
+                img: "giraffe.png",
+                es: "girafa"
+            },
+            {
+                en: "dolphin",
+                img: "dolphin.png",
+                es: "delfin"
+            },
+            {
+                en: "monkey",
+                img: "monkey.png",
+                es: "mono"
+            },
+            {
+                en: "penguin",
+                img: "penguin.png",
+                es: "pinguino"
+            },
+            {
+                en: "snake",
+                img: "snake.png",
+                es: "vivora"
+            },
+            {
+                en: "bird",
+                img: "bird.png",
+                es: "pajaro"
+            }
+        ]
     },
-    {
-      text: "purple",
-      bgcolor: "purple",
-      es: "purpura"
-    },
-    {
-      text: "white",
-      bgcolor: "white",
-      es: "blanco"
-    },
-    {
-      text: "black",
-      bgcolor: "black",
-      es: "negro"
+    body: {
+        en: "body",
+        es: "cuerpo",
+        enDesc: "",
+        esDesc: "",
+        list: [
+            {
+                en: "head",
+                img: "head.png",
+                es: "cabeza"
+            },
+            {
+                en: "hair",
+                img: "hair.png",
+                es: "pelo"
+            },
+            {
+                en: "ear",
+                img: "ear.png",
+                es: "oreja"
+            },
+            {
+                en: "eye",
+                img: "eye.png",
+                es: "ojo"
+            },
+            {
+                en: "nose",
+                img: "nose.png",
+                es: "nariz"
+            },
+            {
+                en: "mouth",
+                img: "mouth.png",
+                es: "boca"
+            },
+            {
+                en: "tooth",
+                img: "tooth.png",
+                es: "diente"
+            },
+            {
+                en: "tongue",
+                img: "tongue.png",
+                es: "lengua"
+            },
+            {
+                en: "arm",
+                img: "arm.png",
+                es: "brazo"
+            },
+            {
+                en: "hand",
+                img: "hand.png",
+                es: "mano"
+            },
+            {
+                en: "finger",
+                img: "finger.png",
+                es: "dedo"
+            },
+            {
+                en: "leg",
+                img: "leg.png",
+                es: "pierna"
+            },
+            {
+                en: "foot",
+                img: "foot.png",
+                es: "pie"
+            }
+        ]
     }
-  ],
-  professions: [
-    {
-      text: "policeman",
-      src: "policeman.png",
-      es: "policia"
-    },
-    {
-      text: "fireman",
-      src: "fireman.png",
-      es: "bombero"
-    },
-    {
-      text: "medic",
-      src: "medic.png",
-      es: "medico"
-    },
-    {
-      text: "farmer",
-      src: "farmer.png",
-      es: "granjero"
-    },
-    {
-      text: "journalist",
-      src: "journalist.png",
-      es: "periodista"
-    },
-    {
-      text: "student",
-      src: "student.png",
-      es: "estudiante"
-    },
-    {
-      text: "artist",
-      src: "artist.png",
-      es: "artista"
-    },
-    {
-      text: "chef",
-      src: "chef.png",
-      es: "cocinero"
-    },
-    {
-      text: "waiter",
-      src: "waiter.png",
-      es: "camarero"
-    },
-    {
-      text: "postman",
-      src: "postman.png",
-      es: "cartero"
-    },
-    {
-      text: "judge",
-      src: "judge.png",
-      es: "juez"
-    },
-    {
-      text: "pirate",
-      src: "pirate.png",
-      es: "pirata"
-    }
-  ],
-  shapes: [
-    {
-      text: "square",
-      src: "square.png",
-      es: "cuadrado"
-    },
-    {
-      text: "triangle",
-      src: "triangle.png",
-      es: "triangulo"
-    },
-    {
-      text: "circle",
-      src: "circle.png",
-      es: "circulo"
-    },
-    {
-      text: "rectangle",
-      src: "rectangle.png",
-      es: "rectangulo"
-    },
-    {
-      text: "diamond",
-      src: "diamond.png",
-      es: "diamante"
-    },
-    {
-      text: "star",
-      src: "star.png",
-      es: "estrella"
-    }
-  ],
-  clothes: [
-    {
-      text: "cardigan",
-      src: "cardigan.png",
-      es: "cardigan"
-    },
-    {
-      text: "coat",
-      src: "coat.png",
-      es: "capa"
-    },
-    {
-      text: "dress",
-      src: "dress.png",
-      es: "vestido"
-    },
-    {
-      text: "hat",
-      src: "hat.png",
-      es: "sombrero"
-    },
-    {
-      text: "jacket",
-      src: "jacket.png",
-      es: "campera"
-    },
-    {
-      text: "shoes",
-      src: "shoes.png",
-      es: "zapatillas"
-    },
-    {
-      text: "shorts",
-      src: "shorts.png",
-      es: "pantalon corto"
-    },
-    {
-      text: "socks",
-      src: "socks.png",
-      es: "medias"
-    },
-    {
-      text: "skirt",
-      src: "skirt.png",
-      es: "pollera"
-    },
-    {
-      text: "t-shirt",
-      src: "t-shirt.png",
-      es: "remera"
-    },
-    {
-      text: "tracksuit",
-      src: "tracksuit.png",
-      es: "chandal"
-    },
-    {
-      text: "trousers",
-      src: "trousers.png",
-      es: "pantalones"
-    }
-  ],
-  house: [
-    {
-      text: "house",
-      src: "house.png",
-      es: "casa"
-    },
-    {
-      text: "kitchen",
-      src: "kitchen.png",
-      es: "cocina"
-    },
-    {
-      text: "bathroom",
-      src: "bathroom.png",
-      es: "baño"
-    },
-    {
-      text: "bedroom",
-      src: "bedroom.png",
-      es: "dormitorio"
-    },
-    {
-      text: "living room",
-      src: "living_room.png",
-      es: "living"
-    },
-    {
-      text: "dining room",
-      src: "dining_room.png",
-      es: "comedor"
-    },
-    {
-      text: "garden",
-      src: "garden.png",
-      es: "jardin"
-    },
-    {
-      text: "front door",
-      src: "front_door.png",
-      es: "puerta principal"
-    }
-  ],
-  weather: [
-    {
-      text: "sunny",
-      src: "sunny.png",
-      es: "soleado"
-    },
-    {
-      text: "cloudy",
-      src: "cloudy.png",
-      es: "nublado"
-    },
-    {
-      text: "rainy",
-      src: "rainy.png",
-      es: "lluvioso"
-    },
-    {
-      text: "windy",
-      src: "windy.png",
-      es: "ventoso"
-    },
-    {
-      text: "snowy",
-      src: "snowy.png",
-      es: "nevado"
-    }
-  ],
-  hair: [
-    {
-      text: "blond",
-      src: "blond.png",
-      es: "rubio"
-    },
-    {
-      text: "brown",
-      src: "brown.png",
-      es: "castaño"
-    },
-    {
-      text: "long",
-      src: "long.png",
-      es: "largo"
-    },
-    {
-      text: "short",
-      src: "short.png",
-      es: "corto"
-    },
-    {
-      text: "curly",
-      src: "curly.png",
-      es: "rizado"
-    },
-    {
-      text: "straight",
-      src: "straight.png",
-      es: "lacio"
-    }
-  ],
-  fruits: [
-    {
-      text: "apple",
-      src: "apple.png",
-      es: "manzana"
-    },
-    {
-      text: "pear",
-      src: "pear.png",
-      es: "pera"
-    },
-    {
-      text: "grapes",
-      src: "grapes.png",
-      es: "uvas"
-    },
-    {
-      text: "orange",
-      src: "orange.png",
-      es: "naranja"
-    },
-    {
-      text: "cherries",
-      src: "cherries.png",
-      es: "cerezas"
-    },
-    {
-      text: "banana",
-      src: "banana.png",
-      es: "banana"
-    }
-  ],
-  family: {
-    me: {
-      text: "me",
-      src: "me.png",
-      es: "yo"
-    },
-    sister: {
-      text: "sister",
-      src: "sister.png",
-      es: "hermana"
-    },
-    brother: {
-      text: "brother",
-      src: "brother.png",
-      es: "hermano"
-    },
-    dad: {
-      text: "dad",
-      src: "dad.png",
-      es: "papa"
-    },
-    mum: {
-      text: "mum",
-      src: "mum.png",
-      es: "mama"
-    },
-    grandpa: {
-      text: "grandpa",
-      src: "grandpa.png",
-      es: "abuelo"
-    },
-    grandma: {
-      text: "grandma",
-      src: "grandma.png",
-      es: "abuela"
-    },
-    aunt: {
-      text: "aunt",
-      src: "aunt.png",
-      es: "tia"
-    },
-    uncle: {
-      text: "uncle",
-      src: "uncle.png",
-      es: "tio"
-    },
-    cousin: {
-      text: "cousin",
-      src: "cousin.png",
-      es: "primo"
-    },
-    baby: {
-      text: "baby",
-      src: "baby.png",
-      es: "bebe"
-    }
-  },
-  animals: [
-    {
-      text: "dog",
-      src: "dog.png",
-      es: "perro"
-    },
-    {
-      text: "cat",
-      src: "cat.png",
-      es: "gato"
-    },
-    {
-      text: "lion",
-      src: "lion.png",
-      es: "leon"
-    },
-    {
-      text: "turtle",
-      src: "turtle.png",
-      es: "tortuga"
-    },
-    {
-      text: "horse",
-      src: "horse.png",
-      es: "caballo"
-    },
-    {
-      text: "donkey",
-      src: "donkey.png",
-      es: "burro"
-    },
-    {
-      text: "rabbit",
-      src: "rabbit.png",
-      es: "conejo"
-    },
-    {
-      text: "hippo",
-      src: "hippo.png",
-      es: "hipopotamo"
-    },
-    {
-      text: "gorilla",
-      src: "gorilla.png",
-      es: "gorila"
-    },
-    {
-      text: "leopard",
-      src: "leopard.png",
-      es: "leopardo"
-    },
-    {
-      text: "elephant",
-      src: "elephant.png",
-      es: "elefante"
-    },
-    {
-      text: "giraffe",
-      src: "giraffe.png",
-      es: "girafa"
-    },
-    {
-      text: "dolphin",
-      src: "dolphin.png",
-      es: "delfin"
-    },
-    {
-      text: "monkey",
-      src: "monkey.png",
-      es: "mono"
-    },
-    {
-      text: "penguin",
-      src: "penguin.png",
-      es: "pinguino"
-    },
-    {
-      text: "snake",
-      src: "snake.png",
-      es: "vivora"
-    },
-    {
-      text: "bird",
-      src: "bird.png",
-      es: "pajaro"
-    }
-  ],
-  body: [
-    {
-      text: "head",
-      src: "head.png",
-      es: "cabeza"
-    },
-    {
-      text: "hair",
-      src: "hair.png",
-      es: "pelo"
-    },
-    {
-      text: "ear",
-      src: "ear.png",
-      es: "oreja"
-    },
-    {
-      text: "eye",
-      src: "eye.png",
-      es: "ojo"
-    },
-    {
-      text: "nose",
-      src: "nose.png",
-      es: "nariz"
-    },
-    {
-      text: "mouth",
-      src: "mouth.png",
-      es: "boca"
-    },
-    {
-      text: "tooth",
-      src: "tooth.png",
-      es: "diente"
-    },
-    {
-      text: "tongue",
-      src: "tongue.png",
-      es: "lengua"
-    },
-    {
-      text: "arm",
-      src: "arm.png",
-      es: "brazo"
-    },
-    {
-      text: "hand",
-      src: "hand.png",
-      es: "mano"
-    },
-    {
-      text: "finger",
-      src: "finger.png",
-      es: "dedo"
-    },
-    {
-      text: "leg",
-      src: "leg.png",
-      es: "pierna"
-    },
-    {
-      text: "foot",
-      src: "foot.png",
-      es: "pie"
-    }
-  ]
 }

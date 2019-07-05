@@ -68,7 +68,7 @@
 </template>
 
 <script>
-    import {imgPath} from '../../../config/config'
+    import {imgPath} from '../../../../config/config'
     import {mapState} from 'vuex'
 
     export default {
