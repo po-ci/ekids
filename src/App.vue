@@ -14,7 +14,7 @@
             <my-name-is></my-name-is>
             <v-divider></v-divider>
             <stats class="pa-2"></stats>
-<v-divider></v-divider>
+            <v-divider></v-divider>
             <v-list dense>
                 <template v-for="item in nav">
                     <v-layout
@@ -104,38 +104,33 @@
         </v-content>
 
 
-    <!--    <v-footer :fixed="fixed" app>
-            <span>&copy; 2018 - ZfMetal</span>
-        </v-footer>-->
+        <!--    <v-footer :fixed="fixed" app>
+                <span>&copy; 2018 - ZfMetal</span>
+            </v-footer>-->
     </v-app>
 </template>
 
 <script>
-  import MyNameIs from './modules/app/components/MyNameIs.vue'
-  import Stats from './modules/app/components/Stats.vue'
-  import {mapState} from 'vuex'
+    import MyNameIs from './modules/app/components/MyNameIs.vue'
+    import Stats from './modules/app/components/Stats.vue'
+    import nav from './nav'
 
-  export default {
-    name: 'App',
-    components: {
-      MyNameIs,Stats
-    },
-    computed: {
-      ...mapState([
-        'nav'
-      ]),
-    },
-    data() {
-      return {
-        clipped: false,
-        drawer: false,
-        fixed: false,
-
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'EKIDS'
-      }
+    export default {
+        name: 'App',
+        components: {
+            MyNameIs, Stats
+        },
+        data() {
+            return {
+                nav: nav,
+                clipped: false,
+                drawer: false,
+                fixed: false,
+                miniVariant: false,
+                right: true,
+                rightDrawer: false,
+                title: 'EKIDS'
+            }
+        }
     }
-  }
 </script>
