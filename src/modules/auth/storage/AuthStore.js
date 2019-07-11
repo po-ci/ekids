@@ -1,5 +1,5 @@
 import {router} from '../../../routes'
-
+import graphqlClient from "../../../apollo";
 import AuthProvider from './../providers/AuthProvider'
 
 import {
@@ -67,8 +67,9 @@ export default {
             commit(SET_USER_INVALID, false)
 
             AuthProvider.auth(login.username, login.password).then((response) => {
-                commit(SET_TOKEN, response.data.tokenAuth.token)
-                commit(SET_ME_USER, response.data.tokenAuth.user)
+
+                commit(SET_TOKEN, response.data.auth.token)
+                commit(SET_ME_USER, response.data.auth.user)
                 commit(SET_AUTH_LOADING, false)
                 router.push('/')
 

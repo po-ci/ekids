@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from './modules/app/pages/Home.vue'
+import Login from './modules/auth/pages/Login.vue'
 
 import Numbers from './modules/app/pages/Numbers.vue'
 
@@ -28,6 +29,8 @@ Vue.use(VueRouter)
 // We'll talk about nested routes later.
 const routes = [
     {name: "home", path: '/', component: Home},
+    {name: "login", path: '/login', component: Login},
+
     {name: "profile", path: '/profile', component: Profile},
     {name: "albums", path: '/albums', component: Albums},
 

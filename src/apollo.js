@@ -7,16 +7,18 @@ import {restartWebsockets} from 'vue-cli-plugin-apollo/graphql-client'
 
 const uploadLink = createUploadLink({
     // You should use an absolute URL here
-    uri: process.env.VUE_APP_APIHOST + '/graphqlupload/',
+    uri: process.env.VUE_APP_APIHOST + '/graphql/',
 })
 
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-    operation.setContext({
-        headers: {
-            Authorization: 'JWT ' + store.getters.getToken
-        }
-    });
+    if(store.getters.getToken) {
+        operation.setContext({
+            headers: {
+                Authorization: 'bearer ' + store.getters.getToken
+            }
+        });
+    }
     return forward(operation);
 })
 
@@ -28,3 +30,5 @@ const apolloClient = new ApolloClient({
     link: concat(authMiddleware, uploadLink),
     cache,
 })
+
+export default apolloClient

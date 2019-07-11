@@ -16,7 +16,7 @@
 
         <v-toolbar color="primary" dark fixed app clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <layout-toolbar-logo></layout-toolbar-logo>
+            <layout-toolbar-logo title="EKIDS"></layout-toolbar-logo>
             <v-spacer></v-spacer>
             <slot name="toolbar"></slot>
             <login-toolbar></login-toolbar>

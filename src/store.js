@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import authStore from './modules/auth/storage/AuthStore'
 
 import appStore from './modules/app/storage/AppStore'
-import profileStore from  './modules/profile/storage/ProfileStore'
+import profileStore from './modules/profile/storage/ProfileStore'
 
 import createPersistedState from 'vuex-persistedstate'
 
@@ -22,7 +22,16 @@ export default new Vuex.Store({
     },
     plugins: [
         createPersistedState({
-            paths: ['authStore','profileStore']
+            key: 'ekids',
+            paths: ['authStore'],
+            reducer: state => (
+                {
+                    authStore: {
+                        access_token: state.authStore.access_token,
+                        me: state.authStore.me
+                    }
+                })
+            // filter: (mutation) => {return ['SET_AUTH_LOADING'].indexOf(mutation.type) ==  -1}
         })
     ]
 })

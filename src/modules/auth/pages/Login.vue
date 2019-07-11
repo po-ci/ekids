@@ -1,4 +1,4 @@
-<template>
+ <template>
     <v-container fluid fill-height class="grey lighten-3">
 
         <v-layout align-center justify-center>
@@ -91,7 +91,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getLogin', 'getAuthLoading', 'getUserInvalid'])
+            ...mapGetters([ 'getAuthLoading', 'getUserInvalid'])
         },
         methods: {
             ...mapActions(['login', 'me']),

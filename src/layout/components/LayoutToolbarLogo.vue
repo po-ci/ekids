@@ -1,25 +1,29 @@
 <template>
 
-    <v-btn icon large to="/">
+    <router-link to="/">
+        <h3 v-if="title" class="white--text">{{title}}</h3>
+
         <v-avatar
-                :tile="tile"
+                v-else
+                tile
                 :size="avatarSize"
                 color="grey lighten-4"
 
         >
-            <img :src="src">
+            <img :src="logoSrc">
         </v-avatar>
-    </v-btn>
+    </router-link>
+
 </template>
 
 <script>
     export default {
         name: "LayoutToolbarLogo",
-        data: () => ({
-            src: '/assets/sondeos.png',
-            avatarSize: 40,
-            tile: false
-        })
+        props: {
+            logoSrc: String,
+            title: String,
+            avatarSize: {type: Number, default: 40}
+        },
     }
 </script>
 

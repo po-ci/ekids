@@ -6,28 +6,21 @@ class AuthProvider {
 
     auth(username,password){
         return graphqlClient.mutate({
-            mutation: gql`mutation ( $password: String!, $username: String!){
-                tokenAuth(username: $username, password: $password){
+            mutation: gql`mutation ( $username: String!, $password: String!){
+                auth(username: $username, password: $password){
                     token
                     user{
                         id
-                        firstName
                         username
-                        lastName
+                        name
                         email
-                        groups{
-                            id
-                            name
-                        }
-                        avatar{
-                            image
-                        }
-                      }
+                    }
                     }
                 }`,
             variables: {
-                password: password,
                 username: username,
+                password: password,
+
             }
         })
     }
