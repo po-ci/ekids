@@ -13,7 +13,7 @@
                     <v-card-text class="pb-0">
 
                         <v-alert
-                                :value="getUserInvalid"
+                                :value="userInvalid"
                                 type="error"
                                 outline
 
@@ -53,7 +53,7 @@
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn round
-                               :loading="getAuthLoading"
+                               :loading="loadingAuth"
                                color="grey"
                                dark
                                @click="loginUser">
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex'
+    import {mapActions, mapState} from 'vuex'
 
     export default {
         name: "Login",
@@ -91,7 +91,7 @@
             }
         },
         computed: {
-            ...mapGetters([ 'getAuthLoading', 'getUserInvalid'])
+            ...mapState([ 'loadingAuth', 'userInvalid'])
         },
         methods: {
             ...mapActions(['login', 'me']),

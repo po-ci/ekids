@@ -1,6 +1,6 @@
-import {router} from '../../../routes'
-import graphqlClient from "../../../apollo";
-import AuthProvider from './../providers/AuthProvider'
+import {router} from '../../../../routes'
+import graphqlClient from "../../../../apollo";
+import AuthProvider from '../providers/AuthProvider'
 
 import {
     SET_TOKEN,
@@ -23,35 +23,21 @@ export default {
             email: null,
             phone: null,
             img: null,
-            roles: []
+            roles: [],
+            avatar: null
         },
         loadingAuth: false,
         generalError: null,
         userInvalid: false,
     },
     getters: {
-        getToken(state) {
-            return state.access_token
-        },
-        getMe(state) {
-            return state.me
-        },
-        getAuthLoading(state) {
-            return state.loadingAuth
-        },
-        getGeneralError(state) {
-            return state.generalError
-        },
-        isAuth(state) {
+        isAuth: (state) => {
             return (state.access_token) ? true : false
-        },
-        getUserInvalid(state) {
-            return state.userInvalid
         },
         hasRole: (state) => (groups) => {
             let value = false
-            groups.forEach(function (gruop) {
-                if (state.me && state.me.groups && state.me.groups.some(value => value.name == gruop)) {
+            groups.forEach(function (group) {
+                if (state.me && state.me.groups && state.me.groups.some(value => value.name == group)) {
                     value = true
                 }
             })
@@ -125,6 +111,8 @@ export default {
             }
 
         },
+
+
     },
     mutations: {
         [SET_TOKEN](state, token) {

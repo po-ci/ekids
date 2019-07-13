@@ -1,4 +1,4 @@
-import graphqlClient from "../../../apollo";
+import graphqlClient from "../../../../apollo";
 import gql from "graphql-tag";
 
 

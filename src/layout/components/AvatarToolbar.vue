@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapState, mapActions} from 'vuex'
 
     export default {
         name: "AvatarToolbar",
@@ -63,23 +63,21 @@
         },
         computed: {
             getSrc: function () {
-                let user = this.getMe
-
-                if (user.avatar) {
-                    return user.avatar.image
+                if (this.me && this.me.avatar) {
+                    return this.me.avatar.image
                 } else {
                     return this.src
                 }
             },
             getUsername: function () {
-                return this.getMe.username
+                return this.me.username
             },
             getEmail: function () {
-                return this.getMe.email
+                return this.me.email
             },
-            ...mapGetters([
-                'getMe'
-            ])
+            ...mapState({
+                me: state => state.UserAuthStore.me,
+            })
         }
     }
 </script>

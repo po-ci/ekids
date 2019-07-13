@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+//Users
+import Login from './modules/user/auth/pages/Login.vue'
+import Recovery from './modules/user/recovery/pages/Recovery.vue'
+
+
 import Home from './modules/app/pages/Home.vue'
-import Login from './modules/auth/pages/Login.vue'
+
 
 import Numbers from './modules/app/pages/Numbers.vue'
 
@@ -28,17 +33,25 @@ Vue.use(VueRouter)
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-    {name: "home", path: '/', component: Home},
-    {name: "login", path: '/login', component: Login},
 
+    //USERS
+    {name: "login", path: '/login', component: Login},
+    {name: "recovery", path: '/recovery', component: Recovery},
+
+    //HOME
+    {name: "home", path: '/', component: Home},
+
+    //OTHERS
     {name: "profile", path: '/profile', component: Profile},
     {name: "albums", path: '/albums', component: Albums},
 
+    //Vocabulary Specific
     {name: "abc", path: '/abc', component: Abc},
     {name: "numbers", path: '/numbers', component: Numbers},
     {name: "colors", path: '/colors', component: Colors},
     {name: "family", path: '/family', component: Family},
 
+    //Vocabulary Replica
     {name: "vocabulary", path: '/vocabulary/:category', component: Vocabulary, props:true}
 ]
 
