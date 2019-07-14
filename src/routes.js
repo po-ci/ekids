@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 //Users
 import Login from './modules/user/auth/pages/Login.vue'
 import Recovery from './modules/user/recovery/pages/Recovery.vue'
-
+import Me from './modules/user/profile/pages/Profile.vue'
 
 import Home from './modules/app/pages/Home.vue'
 
@@ -37,6 +37,7 @@ const routes = [
     //USERS
     {name: "login", path: '/login', component: Login},
     {name: "recovery", path: '/recovery', component: Recovery},
+    {name: "me", path: '/me', component: Me},
 
     //HOME
     {name: "home", path: '/', component: Home},

@@ -32,7 +32,7 @@
 
             <v-divider></v-divider>
 
-            <v-list-tile to="profile">
+            <v-list-tile to="me">
                 <v-list-tile-title>Perfil</v-list-tile-title>
             </v-list-tile>
 
@@ -76,7 +76,7 @@
                 return this.me.email
             },
             ...mapState({
-                me: state => state.UserAuthStore.me,
+                me: state => state.auth.me,
             })
         }
     }

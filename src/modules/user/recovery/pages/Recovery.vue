@@ -51,8 +51,8 @@
         ),
         computed: {
             ...mapState({
-                status: state => state.UserRecoveryStore.recoveryStatus,
-                message: state => state.UserRecoveryStore.recoveryMessage
+                status: state => state.recovery.recoveryStatus,
+                message: state => state.recovery.recoveryMessage
             })
         },
         methods: {

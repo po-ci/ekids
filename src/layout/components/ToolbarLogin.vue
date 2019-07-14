@@ -1,6 +1,6 @@
 <template>
 
-    <avatar-tolbar v-if="isAuth"></avatar-tolbar>
+    <toolbar-login-avatar v-if="isAuth"></toolbar-login-avatar>
     <v-btn v-else
            flat
            dark
@@ -14,11 +14,11 @@
 
 <script>
     import {mapGetters} from 'vuex'
-    import AvatarTolbar from './AvatarToolbar'
+    import ToolbarLoginAvatar from './ToolbarLoginAvatar'
 
     export default {
         name: "LoginToolbar",
-        components: {AvatarTolbar},
+        components: {ToolbarLoginAvatar},
         computed: {
             ...mapGetters(['isAuth'])
         }

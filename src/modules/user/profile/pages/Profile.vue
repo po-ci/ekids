@@ -5,79 +5,40 @@
             <v-flex xs12 sm8 md4>
                 <v-card class="elevation-12">
 
-                    <profile-image></profile-image>
-
+                    <v-card-text class="text-xs-center">
+                        <profile-image :me="me"/>
+                    </v-card-text>
 
                     <v-divider></v-divider>
 
                     <v-card-text>
-                        <v-list two-line>
-                            <v-list-tile>
-                                <v-list-tile-action>
-                                    <v-icon color="primary">account_box</v-icon>
-                                </v-list-tile-action>
-
-                                <v-list-tile-content>
-                                    <v-list-tile-sub-title class="primary--text">Nombre</v-list-tile-sub-title>
-                                    <v-list-tile-title> {{getMe.firstName}}</v-list-tile-title>
-
-                                </v-list-tile-content>
-                            </v-list-tile>
-
-                            <v-list-tile>
-                                <v-list-tile-action>
-                                    <v-icon color="primary">mail</v-icon>
-                                </v-list-tile-action>
-
-                                <v-list-tile-content>
-                                    <v-list-tile-sub-title class="primary--text">Email</v-list-tile-sub-title>
-                                    <v-list-tile-title> {{getMe.email}}</v-list-tile-title>
-
-                                </v-list-tile-content>
-                            </v-list-tile>
-
-                            <v-list-tile>
-                                <v-list-tile-action>
-                                    <v-icon color="primary">phone</v-icon>
-                                </v-list-tile-action>
-
-                                <v-list-tile-content>
-                                    <v-list-tile-sub-title class="primary--text">Télefono</v-list-tile-sub-title>
-                                    <v-list-tile-title> {{getMe.phone}}</v-list-tile-title>
-
-                                </v-list-tile-content>
-
-
-                            </v-list-tile>
-                        </v-list>
-
+                        <profile-view :me="me"/>
                     </v-card-text>
-
 
                     <v-card-text class="text-xs-center pt-0 pb-3">
                         <v-btn round @click="openDialog">
                             <v-icon left>lock</v-icon>
                             Cambiar Contraseña
                         </v-btn>
-
                     </v-card-text>
                 </v-card>
             </v-flex>
-
-
         </v-layout>
-        <profile-password :openDialog="dialog" :id="getMe.id" @closeDialog="dialog = false"></profile-password>
+
+        <profile-password :openDialog="dialog" :id="me.id" @closeDialog="dialog = false"/>
+
     </v-container>
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters, mapActions, mapState} from 'vuex'
     import ProfileImage from './../components/ProfileImage'
     import ProfilePassword from './../components/ProfilePassword'
+    import ProfileView from './../components/ProfileView'
 
     export default {
         name: "Profile",
-        components: {ProfileImage, ProfilePassword},
+        components: {ProfileImage, ProfilePassword, ProfileView},
         data: () => {
             return {
                 dialog: false
@@ -85,9 +46,8 @@
         },
         computed: {
             ...mapGetters([
-                'getMe',
                 'isAuth',
-                'getAuthLoading'
+                'me'
             ]),
         },
         methods: {

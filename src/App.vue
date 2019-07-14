@@ -1,7 +1,6 @@
 <template>
     <v-app>
-        <layout :nav="nav" title="EKIDS">
-
+        <layout :nav="nav" :title="title">
             <!--Contenido-->
                 <router-view></router-view>
         </layout>
@@ -9,25 +8,18 @@
 </template>
 
 <script>
-    import MyNameIs from './modules/app/components/MyNameIs.vue'
-    import Stats from './modules/app/components/Stats.vue'
+
     import nav from './nav'
-    import Layout from './layout/components/Layout'
+    import Layout from './layout/pages/Layout'
 
     export default {
         name: 'App',
         components: {
-            Layout, MyNameIs, Stats
+            Layout
         },
         data() {
             return {
                 nav: nav,
-                clipped: false,
-                drawer: false,
-                fixed: false,
-                miniVariant: false,
-                right: true,
-                rightDrawer: false,
                 title: 'EKIDS'
             }
         }

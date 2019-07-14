@@ -12,7 +12,6 @@ import {
 } from './auth-mutations-type'
 
 
-
 export default {
     state: {
         access_token: null,
@@ -31,6 +30,9 @@ export default {
         userInvalid: false,
     },
     getters: {
+        me: (state) => {
+            return state.me
+        },
         isAuth: (state) => {
             return (state.access_token) ? true : false
         },

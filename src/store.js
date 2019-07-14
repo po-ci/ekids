@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 
 import UserAuthStore from './modules/user/auth/storage/UserAuthStore'
 import UserRecoveryStore from "./modules/user/recovery/storage/UserRecoveryStore";
+import UserProfileStore from "./modules/user/profile/storage/UserProfileStore";
 
 import appStore from './modules/app/storage/AppStore'
 import profileStore from './modules/profile/storage/ProfileStore'
@@ -20,8 +21,10 @@ export default new Vuex.Store({
     modules: {
         //USER
         //userStore: UserStore,
-        UserAuthStore: UserAuthStore,
-        UserRecoveryStore: UserRecoveryStore,
+        auth: UserAuthStore,
+        recovery: UserRecoveryStore,
+        profile: UserProfileStore,
+
         //APP
         appStore: appStore,
         profileStore: profileStore
@@ -29,12 +32,12 @@ export default new Vuex.Store({
     plugins: [
         createPersistedState({
             key: 'ekidss',
-            paths: ['UserAuthStore'],
+            paths: ['auth'],
             reducer: state => (
                 {
-                    UserAuthStore: {
-                        access_token: state.UserAuthStore.access_token,
-                        me: state.UserAuthStore.me
+                    auth: {
+                        access_token: state.auth.access_token,
+                        me: state.auth.me
                     }
                 })
         })

@@ -12,10 +12,10 @@
     >
         <img style="position: absolute" :src="getSrc">
 
-        <img v-show="hover || getAuthLoading" style="position: absolute" :src="getSrc">
+        <img v-show="hover || loading" style="position: absolute" :src="getSrc">
 
         <v-progress-circular
-                v-if="getAuthLoading"
+                v-if="loading"
                 :size="50"
                 color="primary"
                 indeterminate
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapState, mapActions} from 'vuex'
 
     export default {
         name: "ProfileAvatar",
@@ -49,7 +49,7 @@
         },
         computed: {
             getSrc: function () {
-                let user = this.getMe
+                let user = this.me
 
                 if (user.avatar) {
                     return user.avatar.image
@@ -58,12 +58,12 @@
                 }
             },
             getUsername: function () {
-                return this.getMe.username
+                return this.me.username
             },
-            ...mapGetters([
-                'getMe',
-                'getAuthLoading'
-            ])
+            ...mapState({
+                me: state => state.auth.me,
+                loading: state => state.profile.loadingUserProfile
+            })
         }
     }
 </script>

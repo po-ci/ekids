@@ -30,7 +30,7 @@
                                           name="username"
                                           label="Usuario"
                                           type="text"
-                                          v-model="loginA.username"
+                                          v-model="loginForm.username"
                                           placeholder="Usuario"
                             >
 
@@ -41,7 +41,7 @@
                                           name="password"
                                           label="Contraseña"
                                           type="password"
-                                          v-model="loginA.password"
+                                          v-model="loginForm.password"
                                           placeholder="Contraseña"
                             >
 
@@ -84,7 +84,7 @@
         name: "Login",
         data: () => {
             return {
-                loginA: {
+                loginForm: {
                     "username": null,
                     "password": null
                 }
@@ -97,7 +97,7 @@
             ...mapActions(['login', 'me']),
 
             loginUser() {
-                this.login(this.loginA)
+                this.login(this.loginForm)
             }
         }
     }

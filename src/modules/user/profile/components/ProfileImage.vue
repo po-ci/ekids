@@ -1,24 +1,11 @@
 <template>
-
-    <v-card-text class="text-xs-center">
+    <div>
         <profile-avatar v-on:avatarClick="pickFile"></profile-avatar>
 
-
         <v-form ref="form" autocomplete="off" v-model="valid">
-            <input
-                    type="file"
-                    style="display: none"
-                    ref="img"
-                    accept="image/*"
-                    @change="onFilePicked"
-            >
+            <input type="file" style="display: none" ref="img" accept="image/*" @change="onFilePicked"/>
 
-            <v-alert
-                    :value="errors.img.length?true:false"
-                    color="error"
-                    icon="warning"
-                    outline
-            >
+            <v-alert :value="errors.img.length?true:false" color="error" icon="warning" outline>
                 <ul>
                     <li v-for="error in errors.img">
                         {{error}}
@@ -27,7 +14,7 @@
             </v-alert>
 
         </v-form>
-    </v-card-text>
+    </div>
 
 </template>
 
@@ -38,6 +25,9 @@
     export default {
         name: "ProfileImage",
         components: {ProfileAvatar},
+        props: {
+            me: Object
+        },
         data: () => ({
             valid: true,
             imageName: null,
@@ -46,13 +36,6 @@
             },
             img: null,
         }),
-        computed: {
-            ...mapGetters([
-                'getMe',
-                'isAuth',
-                'getAuthLoading'
-            ]),
-        },
         methods: {
             ...mapActions(['avatarChange']),
             pickFile() {
@@ -68,14 +51,9 @@
 
                 this.img = e.target.files[0]
                 this.imageName = this.img
-
                 this.resetValidation()
-
                 if (this.$refs.form.validate()) {
-                     this.avatarChange({id: this.getMe.id, avatar: this.img}).then((response) => {
-
-                     })
-
+                    this.avatarChange({id: this.me.id, avatar: this.img})
                 }
             },
         }
