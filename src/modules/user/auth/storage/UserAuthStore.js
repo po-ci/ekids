@@ -33,6 +33,9 @@ export default {
         me: (state) => {
             return state.me
         },
+        getToken: (state) => {
+            return state.access_token
+        },
         isAuth: (state) => {
             return (state.access_token) ? true : false
         },
@@ -62,7 +65,7 @@ export default {
                 router.push('/')
 
             }).catch((error) => {
-                commit(SET_GENERAL_ERROR, error)
+                commit(SET_GENERAL_ERROR, error.message)
                 commit(SET_AUTH_LOADING, false)
                 commit(SET_USER_INVALID, true)
             })

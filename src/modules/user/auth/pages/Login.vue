@@ -1,4 +1,4 @@
- <template>
+<template>
     <v-container fluid fill-height class="grey lighten-3">
 
         <v-layout align-center justify-center>
@@ -53,7 +53,7 @@
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn round
-                               :loading="loadingAuth"
+                               :loading="loading"
                                color="grey"
                                dark
                                @click="loginUser">
@@ -91,7 +91,10 @@
             }
         },
         computed: {
-            ...mapState([ 'loadingAuth', 'userInvalid'])
+            ...mapState({
+                loading: state => state.auth.loadingAuth,
+                userInvalid: state => state.auth.userInvalid
+            })
         },
         methods: {
             ...mapActions(['login', 'me']),

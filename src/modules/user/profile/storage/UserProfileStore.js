@@ -3,10 +3,11 @@ import UserProfileProvider from './../providers/UserProfileProvider'
 
 export default {
     state: {
-        loadingUserProfile: false
+        loadingUserProfile: false,
+        changePasswordStatus: null,
+        changePasswordMessage: ""
     },
-    getters: {
-    },
+    getters: {},
     actions: {
 
         changeAvatar({commit}, params) {
@@ -17,9 +18,11 @@ export default {
                 //Todo handleErrors
             })
         },
-        changePassword({commit}, params) {
+        changePassword({commit}, {password, passwordVerify}) {
             commit('LOADING_USER_PROFILE_ON')
-            UserProfileProvider.changePassword(params).then((response) => {
+            UserProfileProvider.changePassword(password, passwordVerify).then((response) => {
+                commit('SET_CHANGE_PASSWORD_STATUS', response.data.changePassword.status)
+                commit('SET_CHANGE_PASSWORD_MESSAGE', response.data.changePassword.message)
                 commit('LOADING_USER_PROFILE_OFF')
             }).catch((error) => {
                 //Todo handleErrors
@@ -31,10 +34,13 @@ export default {
             state.loadingUserProfile = true
         },
         LOADING_USER_PROFILE_OFF(state) {
-            state.loadingUserProfile = true
+            state.loadingUserProfile = false
         },
-        SET_TEMPLATE_RESULT(state, value) {
-
+        SET_CHANGE_PASSWORD_STATUS(state, value) {
+            state.changePasswordStatus = value
+        },
+        SET_CHANGE_PASSWORD_MESSAGE(state, value) {
+            state.changePasswordMessage = value
         }
 
     }

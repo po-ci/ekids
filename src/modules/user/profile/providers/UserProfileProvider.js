@@ -2,7 +2,7 @@ import graphqlClient from "../../../../apollo";
 import gql from "graphql-tag";
 
 
-class TemplateProvider {
+class UserProfileProvider {
 
     changeAvatar(email) {
         return graphqlClient.mutate({
@@ -19,17 +19,17 @@ class TemplateProvider {
         })
     }
 
-    changePassword(password, passwordConfirm) {
+    changePassword( password, passwordVerify) {
         return graphqlClient.mutate({
-            mutation: gql`mutation ( $password: String!, $passwordConfirm: String!){
-                changeAvatar(password: $password, passwordConfirm: $passwordConfirm){
+            mutation: gql`mutation ($password: String!, $passwordVerify: String!){
+                changePassword( password: $password, passwordVerify: $passwordVerify){
                     status
                     message
                 }
             }`,
             variables: {
                 password: password,
-                passwordConfirm: passwordConfirm
+                passwordVerify: passwordVerify
             },
         })
     }
@@ -37,4 +37,4 @@ class TemplateProvider {
 
 }
 
-export default new TemplateProvider()
+export default new UserProfileProvider()

@@ -51,9 +51,7 @@
             ]),
         },
         methods: {
-            ...mapActions([]),
             openDialog() {
-                this.$store.commit('SET_CHANGE_PASSWORD', false)
                 this.dialog = true
             }
         }
