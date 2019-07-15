@@ -36,7 +36,6 @@ export default {
             state.loadingUserProfile = true
         },
         SET_RECOVERY_RESULT(state, {status, message}) {
-            console.log(message)
             state.recoveryStatus = status
             state.recoveryMessage = message
         }

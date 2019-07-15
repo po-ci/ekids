@@ -56,9 +56,9 @@
         ),
         computed: {
             ...mapState({
-                loading: state => state.UserRecoveryStore.loadingUserRecovery,
-                status: state => state.UserRecoveryStore.recoveryStatus,
-                message: state => state.UserRecoveryStore.recoveryMessage
+                loading: state => state.recovery.loadingUserRecovery,
+                status: state => state.recovery.recoveryStatus,
+                message: state => state.recovery.recoveryMessage
             }),
 
         },
