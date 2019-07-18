@@ -49,10 +49,9 @@
         },
         computed: {
             getSrc: function () {
-                let user = this.me
-
-                if (user.avatar) {
-                    return user.avatar.image
+                console.log(this.me)
+                if (this.me.avatarurl) {
+                    return this.me.avatarurl
                 } else {
                     return this.src
                 }

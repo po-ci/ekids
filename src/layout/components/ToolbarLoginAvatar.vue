@@ -63,8 +63,8 @@
         },
         computed: {
             getSrc: function () {
-                if (this.me && this.me.avatar) {
-                    return this.me.avatar.image
+                if (this.me && this.me.avatarurl) {
+                    return this.me.avatarurl
                 } else {
                     return this.src
                 }

@@ -37,7 +37,7 @@
             img: null,
         }),
         methods: {
-            ...mapActions(['avatarChange']),
+            ...mapActions(['changeAvatar']),
             pickFile() {
                 this.$refs.img.click()
             },
@@ -53,7 +53,7 @@
                 this.imageName = this.img
                 this.resetValidation()
                 if (this.$refs.form.validate()) {
-                    this.avatarChange({id: this.me.id, avatar: this.img})
+                    this.changeAvatar(this.img)
                 }
             },
         }

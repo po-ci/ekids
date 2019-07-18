@@ -1,4 +1,5 @@
 import UserProfileProvider from './../providers/UserProfileProvider'
+import {AVATAR_UPDATE} from "../../auth/storage/auth-mutations-type";
 
 
 export default {
@@ -10,9 +11,11 @@ export default {
     getters: {},
     actions: {
 
-        changeAvatar({commit}, params) {
+        changeAvatar({commit}, file) {
             commit('LOADING_USER_PROFILE_ON')
-            UserProfileProvider.changeAvatar(params).then((response) => {
+            UserProfileProvider.avatarUpload(file).then((response) => {
+                console.log(response.data.avatarUpload.url)
+                commit(AVATAR_UPDATE,response.data.avatarUpload.url)
                 commit('LOADING_USER_PROFILE_OFF')
             }).catch((error) => {
                 //Todo handleErrors

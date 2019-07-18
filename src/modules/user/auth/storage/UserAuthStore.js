@@ -8,7 +8,7 @@ import {
     SET_AUTH_LOADING,
     SET_GENERAL_ERROR,
     SET_USER_IMG,
-    SET_USER_INVALID,
+    SET_USER_INVALID, AVATAR_UPDATE,
 } from './auth-mutations-type'
 
 
@@ -126,6 +126,9 @@ export default {
         ,
         [SET_ME_USER](state, data) {
             state.me = data
+        },
+        [AVATAR_UPDATE](state, url) {
+            state.me.avatarurl = url
         }
         ,
         [SET_AUTH_LOADING](state, data) {

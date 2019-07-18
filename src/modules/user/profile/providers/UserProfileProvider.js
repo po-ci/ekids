@@ -4,17 +4,18 @@ import gql from "graphql-tag";
 
 class UserProfileProvider {
 
-    changeAvatar(email) {
+    avatarUpload(file) {
         return graphqlClient.mutate({
-            mutation: gql`mutation ( $id: Integer!, $img: Upload!){
-                changeAvatar(id: $id, img: img){
-                    status
-                    message
+            mutation: gql`mutation ( $file: Upload!){
+                avatarUpload(file: $file){
+                    filename
+                    mimetype
+                    encoding
+                    url
                 }
             }`,
             variables: {
-                id: id,
-                img: img
+                file: file
             },
         })
     }

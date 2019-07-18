@@ -14,6 +14,8 @@ class AuthProvider {
                         username
                         name
                         email
+                        phone
+                        avatarurl
                     }
                     }
                 }`,
