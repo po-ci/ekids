@@ -175,7 +175,7 @@
 
 <script>
     import {mapGetters, mapActions, mapState} from 'vuex'
-    import cloneByJsonCopy from './../../../helpers/cloneByJsonCopy'
+  //  import cloneByJsonCopy from './../../../helpers/cloneByJsonCopy'
 
     export default {
         name: "UsersCrudDialog",
@@ -189,7 +189,7 @@
         mounted: function () {
             this.fetchAllRoles()
             if (this.user.id) {
-                this.form = cloneByJsonCopy(this.user)
+         //       this.form = cloneByJsonCopy(this.user)
                 for (var indice in this.form.groups) {
                     this.form.groups[indice] = this.form.groups[indice].id;
                 }

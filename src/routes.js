@@ -5,6 +5,8 @@ import VueRouter from 'vue-router'
 import Login from './modules/user/auth/pages/Login.vue'
 import Recovery from './modules/user/recovery/pages/Recovery.vue'
 import Me from './modules/user/profile/pages/Profile.vue'
+import UserAdmin from './modules/user/admin/pages/UsersAdmin.vue'
+
 
 import Home from './modules/app/pages/Home.vue'
 
@@ -38,6 +40,7 @@ const routes = [
     {name: "login", path: '/login', component: Login},
     {name: "recovery", path: '/recovery', component: Recovery},
     {name: "me", path: '/me', component: Me},
+    {name: "usersAdmin", path: '/admin', component: UserAdmin},
 
     //HOME
     {name: "home", path: '/', component: Home},

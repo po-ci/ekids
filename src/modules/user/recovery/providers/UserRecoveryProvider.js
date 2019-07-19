@@ -6,7 +6,8 @@ class UserProvider {
 
     recoveryPassword(email) {
         return graphqlClient.mutate({
-            mutation: gql`mutation ( $email: String!){
+            mutation: gql`
+                mutation ( $email: String!){
                 recoveryPassword(email: $email){
                     status
                     message

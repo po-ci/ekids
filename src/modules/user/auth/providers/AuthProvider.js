@@ -50,7 +50,7 @@ class AuthProvider {
     me(){
        return graphqlClient.query({
             query: gql`
-                query me{
+                query{
                 me{
                     id
                     firstName
