@@ -10,7 +10,7 @@
 
 <script>
     import ToolbarLogo from './ToolbarLogo'
-    import ToolbarLogin from './ToolbarLogin'
+    import ToolbarLogin from '../../modules/user/auth/components/ToolbarLogin'
 
     export default {
         name: "Toolbar",

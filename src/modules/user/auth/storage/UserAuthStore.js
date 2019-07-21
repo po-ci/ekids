@@ -1,6 +1,7 @@
 import {router} from '../../../../routes'
 import graphqlClient from "../../../../apollo";
 import AuthProvider from '../providers/AuthProvider'
+import jwt_decode from 'jwt-decode'
 
 import {
     SET_TOKEN,
@@ -106,10 +107,12 @@ export default {
 
         checkAuth: ({state, dispatch}) => {
             if (state.access_token) {
-                let payload = JSON.parse(atob(state.access_token.split('.')[1]))
+                let payload = jwt_decode(state.access_token)
                 if (payload.exp) {
                     let dateNow = new Date();
-                    if ((dateNow.getTime() / 1000) > state.exp) {
+                    let dateToken = new Date(payload.exp * 1000)
+                    if (dateNow > dateToken) {
+                        console.log("Token expire. Logout.")
                         dispatch('logout')
                     }
                 }

@@ -8,7 +8,7 @@ import {
     SET_LOADING_ROLES,
 
     SET_FLASH_MESSAGE,
-    SET_NEW_USER,
+    ADD_USER,
     UPDATE_USER,
     SET_RESULT,
     SET_INPUT_ERROR_USER,
@@ -32,7 +32,6 @@ export default {
         roles: [],
         loadingRoles: false,
 
-        result: false,
         flashMessage: null,
         inputErrorUser: [],
 
@@ -74,11 +73,11 @@ export default {
 
         createUser({commit}, data) {
             commit(SET_LOADING_USERS, true)
-            commit(SET_RESULT, null)
             commit(SET_FLASH_MESSAGE, "")
             commit(SET_INPUT_ERROR_USER, [])
 
-            UserAdminProvider.createUser(
+
+            return UserAdminProvider.createUser(
                 data.username,
                 data.password,
                 data.name,
@@ -88,52 +87,56 @@ export default {
                 data.active
             ).then((response) => {
                 if (response.data.createUser.user) {
-                    commit(SET_NEW_USER, response.data.createUser.user)
-                    commit(SET_RESULT, true)
+                    commit(ADD_USER, response.data.createUser.user)
                     commit(SET_FLASH_MESSAGE, "Se creo correctamente el Usuario")
                 }
                 commit(SET_LOADING_USERS, false)
+                return true
             }).catch((error) => {
-                if (error.graphQLErrors[0].code == "BAD_USER_INPUT" && error.graphQLErrors[0].inputErrors) {
+                if (error.graphQLErrors && error.graphQLErrors[0].code == "BAD_USER_INPUT" && error.graphQLErrors[0].inputErrors) {
                     commit(SET_INPUT_ERROR_USER, error.graphQLErrors[0].inputErrors)
                 } else {
                     //@TODO Handle GENERAL Errors
-                    console.log(error.graphQLErrors)
+                    console.log(error)
                 }
                 commit(SET_LOADING_USERS, false)
+                return false
             })
+
 
         },
 
 
-        userUpdate({commit}, data) {
+        updateUser({commit}, data) {
             commit(SET_LOADING_USERS, true)
-            commit(SET_RESULT, null)
             commit(SET_FLASH_MESSAGE, "")
             commit(SET_INPUT_ERROR_USER, [])
 
-            UserAdminProvider.updateUser(
+            return UserAdminProvider.updateUser(
                 data.id,
                 data.name,
+                data.username,
                 data.email,
                 data.phone,
-                data.role,
+                parseInt(data.role),
                 data.active
             ).then((response) => {
+               // console.log(response.data.updateUser.user)
                 if (response.data.updateUser.user) {
                     commit(UPDATE_USER, response.data.updateUser.user)
-                    commit(SET_RESULT, true)
                     commit(SET_FLASH_MESSAGE, "Se edito correctamente el Usuario")
                 }
                 commit(SET_LOADING_USERS, false)
+                return true
             }).catch((error) => {
-                if (error.graphQLErrors[0].code == "BAD_USER_INPUT" && error.graphQLErrors[0].inputError) {
-                    commit(SET_INPUT_ERROR_USER, error.graphQLErrors[0].inputError)
+                if (error.graphQLErrors && error.graphQLErrors[0].code == "BAD_USER_INPUT" && error.graphQLErrors[0].inputErrors) {
+                    commit(SET_INPUT_ERROR_USER, error.graphQLErrors[0].inputErrors)
                 } else {
                     //@TODO Handle GENERAL Errors
-                    console.log(error.graphQLErrors)
+                    console.log(error)
                 }
                 commit(SET_LOADING_USERS, false)
+                return false
             })
 
         },
@@ -170,20 +173,16 @@ export default {
             state.loadingRoles = data
         },
 
-        [SET_NEW_USER](state, data) {
-            state.users.users.push(data)
+        [ADD_USER](state, data) {
+            state.users.push(data)
         },
         [UPDATE_USER](state, data) {
-            let index = state.users.users.findIndex(user => user.id == data.id)
-            Vue.set(state.users.users, index, data)
+            let index = state.users.findIndex(user => user.id == data.id)
+            Vue.set(state.users, index, data)
         },
 
         [SET_INPUT_ERROR_USER](state, data) {
             state.inputErrorUser = data
-        },
-
-        [SET_RESULT](state, value) {
-            state.result = value
         },
 
 

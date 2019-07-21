@@ -51,7 +51,8 @@
 
                             <td>
                                 <v-avatar size="36px">
-                                    <img :src="props.item.avatarurl?props.item.avatarurl:src" />
+                                    <img v-if="props.item.avatarurl" :src="props.item.avatarurl" />
+                                    <img v-else src="@/assets/user.png">
                                 </v-avatar>
                             </td>
 
@@ -64,6 +65,8 @@
                             <!--EMAIL-->
                             <td>{{ props.item.email}}</td>
 
+                            <td>{{ props.item.role.name}}</td>
+
                             <!--ACTIVE-->
                             <td v-if="props.item.active == 1">
                                 <v-icon color="success">check_circle</v-icon>
@@ -74,7 +77,7 @@
 
                             <!--ACTIONS-->
                             <td class="text-xs-center">
-                                <v-icon small class="mr-2" @click="editUser(props.item)">edit</v-icon>
+                                <v-icon small class="mr-2" @click="openEdit(props.item)">edit</v-icon>
                             </td>
 
                         </tr>
@@ -98,8 +101,13 @@
         </v-card>
 
 
-        <v-dialog :value="dialog" width="800" persistent>
-            <user-create v-if="creating" v-on:closeDialog="dialog=false"></user-create>
+        <v-dialog :value="creating" width="800" persistent>
+            <user-create v-if="creating" v-on:closeDialog="creating=false"></user-create>
+        </v-dialog>
+
+
+        <v-dialog :value="updating" width="800" persistent>
+            <user-update v-if="updating" :user="userToEdit" v-on:closeDialog="updating=false"></user-update>
         </v-dialog>
 
 
@@ -116,11 +124,13 @@
     import {mapActions, mapState} from 'vuex'
     import Snackbar from "./Snackbar";
     import UserCreate from "./UserCreate";
+    import UserUpdate from './UserUpdate'
 
     export default {
         name: "UserCrud",
         components: {
             UserCreate,
+            UserUpdate,
             Snackbar
         },
         mounted: function () {
@@ -128,19 +138,21 @@
         },
         data() {
             return {
-                src: '/assets/user.jpg',
+                src: './user.jpg',
                 headers: [
                     {text: '', value: 'img', sortable: false},
                     {text: 'Nombre', value: 'name'},
                     {text: 'Usuario', value: 'username'},
                     {text: 'Email', value: 'email'},
+                    {text: 'Rol', value: 'role.name'},
                     {text: 'Activo', value: 'active'},
                     {text: 'Aciones', value: 'acciones', sortable: false},
                 ],
                 search: '',
                 dialog: false,
                 creating:false,
-                user: {},
+                updating: false,
+                userToEdit: null,
                 expand: false,
                 username: false
             }
@@ -159,7 +171,10 @@
                 this.creating = true
                 this.dialog = true
             },
-
+            openEdit(user){
+                this.updating = true
+                this.userToEdit = user
+            }
         },
 
     }

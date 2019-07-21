@@ -15,8 +15,6 @@
             </v-btn>
 
         </v-toolbar-items>
-
-
         <v-list subheader>
 
             <v-list-tile avatar>
@@ -41,6 +39,8 @@
             </v-list-tile>
 
         </v-list>
+
+
     </v-menu>
 
 </template>
@@ -49,16 +49,20 @@
     import {mapState, mapActions} from 'vuex'
 
     export default {
-        name: "AvatarToolbar",
-        components: {},
+        name: "ToolbarProfileMenu",
         data: () => ({
             src: '/assets/user.jpg',
             avatarSize: 45,
             tile: false
         }),
+        mounted() {
+            //TODO put in a better place
+            this.checkAuth()
+        },
         methods: {
             ...mapActions([
-                'logout'
+                'logout',
+                'checkAuth'
             ])
         },
         computed: {

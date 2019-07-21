@@ -74,42 +74,6 @@
 
 
                     <v-flex xs12 md6>
-                        <v-text-field id="password"
-                                      prepend-icon="lock"
-                                      name="password"
-                                      label="Contraseña"
-                                      type="password"
-                                      v-model="form.password"
-                                      class="pa-3"
-                                      placeholder="Contraseña"
-                                      autocomplete="new-password"
-                                      ref="password"
-                                      :rules="[rules.required]"
-                                      :error="hasFieldInUserErrors('password')"
-                                      :error-messages="getMessagesInUserErrors('password')"
-                                      required
-                        ></v-text-field>
-                    </v-flex>
-
-                    <v-flex xs12 md6>
-                        <v-text-field
-                                id="password_verify"
-                                prepend-icon="lock"
-                                name="password_verify"
-                                label="Repetir Contraseña"
-                                type="password"
-                                v-model="form.password_verify"
-                                placeholder="Repetir Contraseña"
-                                autocomplete="new-password"
-                                class="pa-3"
-                                :rules="[rules.required]"
-                                :error="passwordMatchError == '' ? false : true"
-                                :error-messages="passwordMatchError"
-                                required
-                        ></v-text-field>
-                    </v-flex>
-
-                    <v-flex xs12 md6>
                         <v-select
                                 prepend-icon="account_box"
                                 class="pa-3"
@@ -147,7 +111,7 @@
             <v-spacer></v-spacer>
 
             <v-btn round color="primary" @click="saveUser" :loading="loadingUsers">
-                Crear
+                Actualizar
             </v-btn>
 
         </v-card-actions>
@@ -159,14 +123,16 @@
     import {mapActions, mapState, mapGetters} from 'vuex'
 
     export default {
-        name: "UserCreate",
+        name: "UserUpdate",
+        props: {
+            user: Object
+        },
         data() {
             return {
-                title: "Creando Usuario",
+                title: "Editando Usuario",
                 form: {
+                    id: null,
                     username: '',
-                    password: '',
-                    password_verify: '',
                     name: '',
                     email: '',
                     phone: '',
@@ -178,8 +144,17 @@
                 }
             }
         },
-        mounted() {
+        created() {
             this.fetchRoles()
+            this.form = {
+                id: this.user.id,
+                username: this.user.username,
+                name: this.user.name,
+                email: this.user.email,
+                phone: this.user.phone,
+                role: this.user.role.id,
+                active: this.user.active
+            };
         },
         computed: {
             ...mapState({
@@ -188,21 +163,19 @@
                 loadingRoles: state => state.admin.loadingRoles,
             }),
             ...mapGetters(['hasFieldInUserErrors', 'getMessagesInUserErrors']),
-            passwordMatchError() {
-                return (this.form.password === this.form.password_verify) ? '' : 'Contraseña no coincide'
-            },
         },
         methods: {
-            ...mapActions(['createUser', 'fetchRoles']),
+            ...mapActions(['updateUser', 'fetchRoles']),
             saveUser() {
                 if (this.$refs.form.validate()) {
-                    this.createUser(this.form).then(r => {
+                    this.updateUser(this.form).then(r => {
                             if (r) {
                                 this.$emit('closeDialog')
                             }
                         }
                     )
                 }
+
 
             }
         },

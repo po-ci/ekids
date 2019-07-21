@@ -135,7 +135,7 @@
                                     chips
                                     multiple
                                     :loading="getRolesLoading"
-
+                                    :rules="rules.role"
                                     :error="hasFieldInUserErrors('groups')"
                                     :error-messages="getMessagesInUserErrors('groups')"
 

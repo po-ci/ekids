@@ -77,11 +77,11 @@ class UserAdminProvider {
     }
 
 
-    updateUser(id, name, email, phone, role, active) {
+    updateUser(id, name, username, email, phone, role, active) {
         return graphqlClient.mutate({
             mutation: gql`
-                mutation ( $id: ID!, $name:String!, $email: String!, $phone: String!, $role: ID!, $active: Boolean!){
-                    updateUser(id: $id, name:$name, email:$email, phone:$phone, role: $role, active: $active)
+                mutation ( $id: ID!, $name:String!,$username: String!, $email: String!, $phone: String!, $role: Int!, $active: Boolean!){
+                    updateUser(id: $id, name:$name, username: $username, email:$email, phone:$phone, role: $role, active: $active)
                     {
                         user
                         {
@@ -101,6 +101,7 @@ class UserAdminProvider {
                 }`, variables: {
                 id: id,
                 name: name,
+                username:username,
                 email: email,
                 phone: phone,
                 role: role,

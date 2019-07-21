@@ -6,9 +6,8 @@ export const SET_ROLES = "SET_ROLES"
 export const SET_LOADING_ROLES = "SET_LOADING_ROLES"
 
 export const SET_FLASH_MESSAGE = "SET_FLASH_MESSAGE"
-export const SET_NEW_USER = "SET_NEW_USER"
+export const ADD_USER = "ADD_USER"
 export const UPDATE_USER = "UPDATE_USER"
-export const SET_RESULT = "SET_RESULT"
 export const SET_INPUT_ERROR_USER = "SET_INPUT_ERROR_USER"
 
 export const SET_CHANGE_PASSWORD = "SET_CHANGE_PASSWORD"
