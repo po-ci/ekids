@@ -24,9 +24,11 @@ import Profile from './modules/app/pages/Profile.vue'
 
 import Albums from './modules/app/pages/Albums.vue'
 
-import Vocabulary from "./modules/app/pages/Vocabulary";
+import Vocabulary from './modules/app/pages/Vocabulary';
 
 Vue.use(VueRouter)
+
+import store from './store'
 
 
 // 2. Define some routes
@@ -37,32 +39,131 @@ Vue.use(VueRouter)
 const routes = [
 
     //USERS
-    {name: "login", path: '/login', component: Login},
-    {name: "recovery", path: '/recovery', component: Recovery},
-    {name: "me", path: '/me', component: Me},
-    {name: "usersAdmin", path: '/admin', component: UserAdmin},
+    {
+        name: "login",
+        path: '/login',
+        component: Login
+    },
+    {
+        name: "recovery",
+        path: '/recovery',
+        component: Recovery
+    },
+    {
+        name: "me",
+        path: '/me',
+        component: Me,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        name: "usersAdmin",
+        path: '/admin',
+        component: UserAdmin,
+        meta: {
+            requiresAuth: true,
+            role: "administrator"
+        }
+    },
 
     //HOME
     {name: "home", path: '/', component: Home},
 
     //OTHERS
-    {name: "profile", path: '/profile', component: Profile},
-    {name: "albums", path: '/albums', component: Albums},
+    {
+        name: "profile",
+        path: '/profile',
+        component: Profile,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        name: "albums",
+        path: '/albums',
+        component: Albums,
+        meta: {
+            requiresAuth: true
+        }
+    },
 
     //Vocabulary Specific
-    {name: "abc", path: '/abc', component: Abc},
-    {name: "numbers", path: '/numbers', component: Numbers},
-    {name: "colors", path: '/colors', component: Colors},
-    {name: "family", path: '/family', component: Family},
+    {
+        name: "abc", path: '/abc', component: Abc,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        name: "numbers", path: '/numbers', component: Numbers,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        name: "colors", path: '/colors', component: Colors,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        name: "family", path: '/family', component: Family,
+        meta: {
+            requiresAuth: true
+        }
+    },
 
     //Vocabulary Replica
-    {name: "vocabulary", path: '/vocabulary/:category', component: Vocabulary, props:true}
+    {
+        name: "vocabulary",
+        path: '/vocabulary/:category',
+        component: Vocabulary,
+        props: true,
+        meta: {
+            requiresAuth: true
+        }
+    }
 ]
+
 
 // 3. Create the router instance and pass the `routes` option
 // You can pass in additional options here, but let's
 // keep it simple for now.
-export const router = new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     routes: routes
 })
+
+router.beforeEach((to, from, next) => {
+
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        store.dispatch('checkAuth')
+
+        if (!store.getters.isAuth) {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            })
+        } else {
+
+
+            if (to.meta.role && !store.getters.hasRole(to.meta.role)) {
+                next({
+                    path: '/',
+                    query: {redirect: to.fullPath}
+                })
+            } else {
+                next()
+            }
+
+        }
+    } else {
+        next() // make sure to always call next()!
+    }
+})
+
+
+export default router

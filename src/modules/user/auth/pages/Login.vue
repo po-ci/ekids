@@ -78,7 +78,7 @@
 </template>
 
 <script>
-    import {mapActions, mapState} from 'vuex'
+    import {mapActions, mapState, mapGetters} from 'vuex'
 
     export default {
         name: "Login",
@@ -90,11 +90,17 @@
                 }
             }
         },
+        created(){
+            if(this.isAuth){
+                this.$router.push({name:"home"})
+            }
+        },
         computed: {
             ...mapState({
                 loading: state => state.auth.loadingAuth,
                 userInvalid: state => state.auth.userInvalid
-            })
+            }),
+            ...mapGetters(['isAuth'])
         },
         methods: {
             ...mapActions(['login', 'me']),
