@@ -1,11 +1,10 @@
 <template>
 
 
-
     <v-container v-else fluid fill-height class="grey lighten-3">
 
         <v-layout align-center justify-center>
-            <v-flex xs12 sm8 md4>
+            <v-flex xs12 sm8 md6>
                 <v-card class="elevation-12">
                     <v-toolbar dark color="secondary">
                         <v-toolbar-title>Crear Cuenta</v-toolbar-title>
@@ -15,129 +14,132 @@
                     </v-toolbar>
                     <v-card-text>
                         <v-form ref="form" autocomplete="off" v-model="valid">
+                            <v-layout row wrap>
+                                <v-flex xs12 md6>
+                                    <v-text-field
+
+                                            prepend-icon="account_box"
+                                            name="name"
+                                            label="Nombre y Apellido"
+                                            type="text"
+                                            v-model="form.name"
+                                            placeholder="Nombre y Apellido"
+
+                                            :rules="[rules.required]"
+                                            :error="hasFieldInRegisterErrors('name')"
+                                            :error-messages="getMessagesInRegisterErrors('name')"
+
+                                            required
+                                    />
+                                </v-flex>
+                                <v-flex xs12 md6>
+                                    <v-text-field
+                                            xs6
+                                            prepend-icon="person"
+                                            name="username"
+                                            label="Usuario"
+                                            type="text"
+                                            v-model="form.username"
+                                            placeholder="Usuario"
+                                            autocomplete="new-password"
+
+                                            :rules="[rules.required]"
+
+                                            :error="hasFieldInRegisterErrors('username')"
+                                            :error-messages="getMessagesInRegisterErrors('username')"
+
+                                            required
+                                    />
+                                </v-flex>
+
+                                <v-flex xs12 md6>
+                                    <v-text-field prepend-icon="email"
+                                                  name="email"
+                                                  label="Email"
+                                                  type="text"
+                                                  v-model="form.email"
+                                                  placeholder="Email"
+
+                                                  :rules="[rules.required]"
+                                                  :error="hasFieldInRegisterErrors('email')"
+                                                  :error-messages="getMessagesInRegisterErrors('email')"
+
+                                                  required
+                                    />
+                                </v-flex>
+
+                                <v-flex xs12 md6>
+                                    <v-text-field prepend-icon="email"
+                                                  name="email_verify"
+                                                  label="Repetir Email"
+                                                  type="text"
+                                                  v-model="form.email_verify"
+                                                  placeholder="Repetir Email"
+                                                  required
+                                                  onPaste="return false"
+
+                                                  :rules="[rules.required]"
+
+                                                  :error="emailMatchError == '' ? false : true"
+                                                  :error-messages="emailMatchError"
+
+                                    />
+                                </v-flex>
 
 
-                            <v-text-field prepend-icon="account_box"
-                                          name="name"
-                                          label="Nombre y Apellido"
-                                          type="text"
-                                          v-model="form.name"
-                                          :rules="validations.name"
-                                          placeholder="Nombre y Apellido"
+                                <v-flex xs12 md6>
+                                    <v-text-field id="password"
+                                                  prepend-icon="lock"
+                                                  name="password"
+                                                  label="Contraseña"
+                                                  type="password"
+                                                  v-model="form.password"
+                                                  placeholder="Contraseña"
+                                                  autocomplete="new-password"
+                                                  ref="password"
 
-                                          :error="errors.name.length?true:false"
-                                          :error-messages="errors.name"
+                                                  :rules="[rules.required]"
+                                                  :error="hasFieldInRegisterErrors('password')"
+                                                  :error-messages="getMessagesInRegisterErrors('password')"
 
+                                                  required
+                                    />
+                                </v-flex>
 
-                                          required
-                            >
+                                <v-flex xs12 md6>
+                                    <v-text-field id="password_verify"
+                                                  prepend-icon="lock"
+                                                  name="password_verify"
+                                                  label="Repetir Contraseña"
+                                                  type="password"
+                                                  v-model="form.password_verify"
+                                                  placeholder="Repetir Contraseña"
+                                                  autocomplete="new-password"
 
-                            </v-text-field>
+                                                  :rules="[rules.required]"
+                                                  :error="passwordMatchError == '' ? false : true"
+                                                  :error-messages="passwordMatchError"
+                                    />
+                                </v-flex>
 
-                            <v-text-field prepend-icon="person"
-                                          name="username"
-                                          label="Usuario"
-                                          type="text"
-                                          v-model="form.username"
-                                          :rules="validations.username"
-                                          placeholder="Usuario"
-                                          autocomplete="new-password"
+                                <v-flex xs12 md6>
+                                    <v-text-field prepend-icon="phone"
+                                                  name="phone"
+                                                  label="Telefono"
+                                                  type="text"
+                                                  v-model="form.phone"
+                                                  placeholder="Telefono"
 
-                                          :error="errors.username.length?true:false"
-                                          :error-messages="errors.username"
-
-                                          required
-                            >
-
-                            </v-text-field>
-
-                            <v-text-field prepend-icon="email"
-                                          name="email"
-                                          label="Email"
-                                          type="text"
-                                          v-model="form.email"
-                                          :rules="validations.email"
-                                          placeholder="Email"
-
-                                          :error="errors.email.length?true:false"
-                                          :error-messages="errors.email"
-
-                                          required
-                            >
-
-                            </v-text-field>
-
-                            <v-text-field prepend-icon="email"
-                                          name="email_verify"
-                                          label="Repetir Email"
-                                          type="text"
-                                          v-model="form.email_verify"
-                                          :rules="validations.email_verify"
-                                          placeholder="Repetir Email"
-                                          required
-                                          onPaste="return false"
-                                          :error="emailMatchError == '' ? false : true"
-                                          :error-messages="emailMatchError"
-
-                            >
-
-                            </v-text-field>
-
-                            <v-text-field prepend-icon="phone"
-                                          name="phone"
-                                          label="Telefono"
-                                          type="text"
-                                          v-model="form.phone"
-                                          :rules="validations.phone"
-                                          placeholder="Telefono"
-
-                                          :error="errors.phone.length?true:false"
-                                          :error-messages="errors.phone"
-
-                                          required
-                            >
-
-                            </v-text-field>
-
-                            <v-text-field id="password"
-                                          prepend-icon="lock"
-                                          name="password"
-                                          label="Contraseña"
-                                          type="password"
-                                          v-model="form.password"
-                                          :rules="validations.password"
-                                          placeholder="Contraseña"
-                                          autocomplete="new-password"
-                                          ref="password"
-                                          :error="errors.password.length?true:false"
-                                          :error-messages="errors.password"
-
-
-                                          required
-                            >
-                            </v-text-field>
-                            <v-text-field id="password_verify"
-                                          prepend-icon="lock"
-                                          name="password_verify"
-                                          label="Repetir Contraseña"
-                                          type="password"
-                                          v-model="form.password_verify"
-                                          placeholder="Repetir Contraseña"
-                                          autocomplete="new-password"
-
-                                          :error="passwordMatchError == '' ? false : true"
-                                          :error-messages="passwordMatchError"
-
-
-                                          required
-                            >
-
-                            </v-text-field>
+                                                  :error="hasFieldInRegisterErrors('phone')"
+                                                  :error-messages="getMessagesInRegisterErrors('phone')"
+                                    />
+                                </v-flex>
+                            </v-layout>
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn :loading="getAuthLoading" color="primary" flat dark @click="submit">Crear Cuenta</v-btn>
+                        <v-btn :loading="loading" color="primary" flat dark @click="submit">Crear Cuenta</v-btn>
                     </v-card-actions>
                 </v-card>
 
@@ -148,7 +150,7 @@
 
 <script>
 
-    import {mapActions, mapGetters} from 'vuex'
+    import {mapActions, mapGetters, mapState} from 'vuex'
 
     export default {
         name: "RegisterForm",
@@ -172,6 +174,9 @@
                     email: [],
                     phone: [],
                 },
+                rules: {
+                    required: value => !!value || 'Requerido'
+                },
                 validations: {
                     name: [
                         v => !!v || 'Nombre y Apellido es requerido',
@@ -193,15 +198,17 @@
             }
         ),
         computed: {
+            ...mapState({
+                loading: state => state.register.loadingUserRegister,
+            }),
             ...mapGetters([
-                'getUser',
-                'isLogin',
-                'getAuthLoading'
+                'hasFieldInRegisterErrors',
+                'getMessagesInRegisterErrors'
             ]),
-            passwordMatchError () {
+            passwordMatchError() {
                 return (this.form.password === this.form.password_verify) ? '' : 'Contraseña no coincide'
             },
-            emailMatchError () {
+            emailMatchError() {
                 return (this.form.email === this.form.email_verify) ? '' : 'Email no coincide'
             }
         },
@@ -217,20 +224,20 @@
                     phone: [],
                 }
             },
+
+            ...mapActions(['registerUser']),
+
             submit: function () {
 
-                this.resetValidation()
-
                 if (this.$refs.form.validate()) {
-                    this.$store.commit('SET_AUTH_LOADING', true)
-                    this.register(this.form).then((response) => {
-                        if (response.data.status) {
+                    this.registerUser(this.form).then((result) => {
+                        console.log(result)
+                        if (result && result.status) {
                             //TODO confirmar creacion de cuenta
+                            this.$emit("accountCreated", true)
                             this.isAccountCreated = true
-                        } else {
-                            this.errors = Object.assign({}, this.errors, response.data.errors);
+
                         }
-                        this.$store.commit('SET_AUTH_LOADING', false)
                     })
                 }
             },

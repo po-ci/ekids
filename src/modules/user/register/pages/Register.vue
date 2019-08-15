@@ -1,18 +1,18 @@
 <template>
 
-
+    <register-manager></register-manager>
 </template>
 
 <script>
     import {mapGetters} from 'vuex'
-    import RegisterSuccessful from "../components/RegisterSuccessful";
+    import RegisterManager from "../components/RegisterManager";
 
     export default {
         name: "Register",
-        components: {RegisterSuccessful},
+        components: {RegisterManager},
         created() {
             if (this.isAuth) {
-                this.$router.push({name: "home"})
+            //    this.$router.push({name: "home"})
             }
         },
         computed: {

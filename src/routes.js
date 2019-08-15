@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 //Users
 import Login from './modules/user/auth/pages/Login.vue'
 import Recovery from './modules/user/recovery/pages/Recovery.vue'
+import Register from './modules/user/register/pages/Register.vue'
 import Me from './modules/user/profile/pages/Profile.vue'
 import UserAdmin from './modules/user/admin/pages/UsersAdmin.vue'
 
@@ -48,6 +49,11 @@ const routes = [
         name: "recovery",
         path: '/recovery',
         component: Recovery
+    },
+    {
+        name: "register",
+        path: '/register',
+        component: Register
     },
     {
         name: "me",
@@ -140,9 +146,13 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
+
+
+
         store.dispatch('checkAuth')
 
         if (!store.getters.isAuth) {
+
             next({
                 path: '/login',
                 query: {redirect: to.fullPath}

@@ -6,6 +6,8 @@ import UserAuthStore from './modules/user/auth/storage/UserAuthStore'
 import UserRecoveryStore from "./modules/user/recovery/storage/UserRecoveryStore";
 import UserProfileStore from "./modules/user/profile/storage/UserProfileStore";
 import UserAdminStore from "./modules/user/admin/storage/UserAdminStore";
+import UserRegisterStore from "./modules/user/register/storage/UserRegisterStore";
+
 
 import appStore from './modules/app/storage/AppStore'
 import profileStore from './modules/profile/storage/ProfileStore'
@@ -26,7 +28,7 @@ export default new Vuex.Store({
         recovery: UserRecoveryStore,
         profile: UserProfileStore,
         admin: UserAdminStore,
-
+        register: UserRegisterStore,
         //APP
         appStore: appStore,
         profileStore: profileStore

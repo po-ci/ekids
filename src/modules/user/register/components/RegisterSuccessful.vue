@@ -11,7 +11,7 @@
                                 icon="check_circle"
                                 outline
                         >
-                            Hemos enviado un correo a <strong>{{form.email}}</strong> para validar y finalizar la creación de su cuenta.
+                            Hemos enviado un correo a <strong>{{email}}</strong> para validar y finalizar la creación de su cuenta.
                         </v-alert>
 
                     </v-card-text>
@@ -23,7 +23,10 @@
 
 <script>
     export default {
-        name: "RegisterSuccessful"
+        name: "RegisterSuccessful",
+        props: {
+            email: String
+        }
     }
 </script>
 

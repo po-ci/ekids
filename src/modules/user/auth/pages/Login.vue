@@ -69,7 +69,7 @@
                 <v-card class="elevation-12 mt-3">
                     <v-card-text class="text-xs-center">
                         Aun no tienes cuenta?
-                        <router-link to="" class="font-weight-black">CREAR CUENTA</router-link>
+                        <router-link to="register" class="font-weight-black">CREAR CUENTA</router-link>
                     </v-card-text>
                 </v-card>
             </v-flex>
